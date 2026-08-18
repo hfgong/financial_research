@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>著名投资人研究系列：Serenity 投资策略与 AI 供应链瓶颈战法 - 2026年最新</title>
+    <meta name="description" content="著名投资者 Serenity (@aleabitoreddit) 深度研究报告：拆解“紫苏叶理论”与“卡脖子战法”，复盘 AXTI、Sivers 等 AI 硬件瓶颈股的选股逻辑与风险提示。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --serenity-teal: #00f2fe;
+            --serenity-purple: #4facfe;
+            --serenity-accent: #7928ca;
+            --bg-dark: #070913;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(23, 33, 58, 0.88);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 242, 254, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 24px 20px 80px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 30px;
+            background: rgba(13, 19, 31, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .serenity-badge {
+            background: linear-gradient(135deg, var(--serenity-teal), var(--serenity-accent));
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #a5f3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-active {
+            border-color: var(--serenity-teal);
+            color: var(--serenity-teal);
+            background: rgba(0, 242, 254, 0.08);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--serenity-teal);
+            opacity: 0.8;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 254, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .metric-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--serenity-teal);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+        }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .metric-sub {
+            font-size: 0.8rem;
+            color: var(--serenity-teal);
+            display: flex; align-items: center; gap: 4px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-nav::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(0, 242, 254, 0.05));
+            border-color: var(--serenity-teal);
+            color: var(--serenity-teal);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .content-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 14px;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-header .icon-box {
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--serenity-teal);
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+        }
+
+        p { color: #d1d5db; font-size: 0.95rem; margin-bottom: 14px; line-height: 1.7; }
+
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+
+        ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: #d1d5db;
+            font-size: 0.93rem;
+        }
+
+        ul li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0; top: 2px;
+            font-size: 0.85rem;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        .table-custom th, .table-custom td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .table-custom th {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin-top: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-group">
+                <div class="serenity-badge">SERENITY</div>
+                <div class="header-title">
+                    <h1>著名投资人研究：Serenity 选股逻辑与 AI 供应链瓶颈战法</h1>
+                    <p>X 平台爆火研究员 (@aleabitoreddit) · 紫苏叶理论创始人 · 瓶颈点 (Chokepoint) 挖掘者</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active">
+                    <span style="display:inline-block; width:8px; height:8px; background:var(--serenity-teal); border-radius:50%;"></span>
+                    2026年8月最新更新
+                </div>
+                <div class="tag">著名投资人专题系列</div>
+            </div>
+        </header>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">核心方法论</span>
+                    <div class="metric-icon">🌿</div>
+                </div>
+                <div class="metric-value">紫苏叶理论</div>
+                <div class="metric-sub">▲ 避开拥挤主角，寻找不可替代瓶颈</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">解题战法</span>
+                    <div class="metric-icon">🔍</div>
+                </div>
+                <div class="metric-value">卡脖子倒推法</div>
+                <div class="metric-sub">▲ 物理第一性原理 + BOM 表拆解</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">成名战标的</span>
+                    <div class="metric-icon">🚀</div>
+                </div>
+                <div class="metric-value">AXTI (AXT Inc)</div>
+                <div class="metric-sub">▲ 磷化铟 (InP) 衬底垄断供应商</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">主要跟踪赛道</span>
+                    <div class="metric-icon">⚡</div>
+                </div>
+                <div class="metric-value">光互连 / 机器人</div>
+                <div class="metric-sub">▲ 1.6T 光模块 / 激光器 / 谐波减速器</div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('summary')">📌 人物与研究概要</button>
+            <button class="tab-btn" onclick="switchTab('shiso')">🌿 紫苏叶理论详解</button>
+            <button class="tab-btn" onclick="switchTab('chokepoint')">🔍 瓶颈卡脖子解法</button>
+            <button class="tab-btn" onclick="switchTab('portfolio')">📊 跟踪股票与案例 (AXTI等)</button>
+            <button class="tab-btn" onclick="switchTab('risks')">⚠️ 风险与散户避坑指南</button>
+        </div>
+
+        <!-- Tab 1: 人物与研究概要 -->
+        <div id="summary" class="tab-content active">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">👤</div>
+                        <h2>谁是 Serenity？</h2>
+                    </div>
+                    <p>Serenity（X 平台账号：<strong>@aleabitoreddit</strong>）是近年来在美股及全球 AI 硬件投资圈备受瞩目的匿名独立研究员，被网友戏称为“白毛股神”或“AI 供应链侦探”。</p>
+                    <ul>
+                        <li><strong>硬核技术背景：</strong> 据其公开推文，自称具备芯片物理与学术背景（Nature 论文作者、前高科技研发人员），擅长从第一性原理拆解产业链。</li>
+                        <li><strong>捕获数十倍暴涨股：</strong> 因在 2024-2026 年间提前精准重仓布局小盘 AI 材料股（如 AXTI），在主流资金觉醒前收获惊人涨幅而爆红。</li>
+                        <li><strong>反常人研究路径：</strong> 放弃华尔街卖方财报与估值模型，转而研究技术论文、专利号、海关关税清单及物理扩产周期。</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📊</div>
+                        <h2>Serenity 选股倒推逻辑示意图</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="logicChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: 紫苏叶理论详解 -->
+        <div id="shiso" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🌿</div>
+                    <h2>“紫苏叶理论” (Shiso Leaf Theory) 深度拆解</h2>
+                </div>
+                <p>Serenity 以日式刺身料理形象地比喻了他的核心选股哲学：</p>
+                <div class="grid-2" style="margin-top:20px; margin-bottom:0;">
+                    <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:14px; border:1px solid var(--border-color);">
+                        <h3 style="color:var(--text-secondary); font-size:1.05rem; margin-bottom:8px;">🍣 金枪鱼大腹 (Tuna Belly) —— 拥挤的主角</h3>
+                        <p style="font-size:0.9rem; margin-bottom:0;">如英伟达（NVIDIA）、台积电（TSMC）、微软（Microsoft）。它们虽然优秀，但全市场的资金和眼球都在盯着它们，估值定价极其充分，超额收益（Alpha）空间有限。</p>
+                    </div>
+
+                    <div style="background:rgba(0, 242, 254, 0.08); padding:20px; border-radius:14px; border:1px solid var(--serenity-teal);">
+                        <h3 style="color:var(--serenity-teal); font-size:1.05rem; margin-bottom:8px;">🌿 紫苏叶 (Shiso Leaf) —— 关键的隐形瓶颈</h3>
+                        <p style="font-size:0.9rem; margin-bottom:0;">衬在刺身底下的紫苏叶：平时没人注意、单价不高、小市值，**但如果缺乏这片紫苏叶，整道菜就无法呈上**。例如光模块最底层的 InP 衬底、高功率 EML 激光器等。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: 瓶颈卡脖子解法 -->
+        <div id="chokepoint" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🔍</div>
+                    <h2>“瓶颈卡脖子战法” (Chokepoint Hunting) 解题四步法</h2>
+                </div>
+                <ul>
+                    <li><strong>第一步：宏观确定性大趋势：</strong> 锁定不可逆的技术大潮（如大模型吞吐量爆破引发数据传输瓶颈）。</li>
+                    <li><strong>第二步：自上而下倒推 BOM 表：</strong> 从 GPU ➔ 光模块 ➔ 激光器 ➔ 磷化铟衬底 ➔ 提纯金属镓/铟。</li>
+                    <li><strong>第三步：寻找“最短的木板”：</strong> 找出扩产周期最长（需要 18-24 个月建厂）且专利高度集中、下游客户无法轻易更换的环节。</li>
+                    <li><strong>第四步：低位建仓建立预期差：</strong> 在华尔街卖方尚未覆盖的小市值小盘股中提前埋伏，静待产能瓶颈爆破。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab 4: 跟踪股票与案例 -->
+        <div id="portfolio" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">📊</div>
+                    <h2>Serenity 提及与跟踪的典型“紫苏叶”卡点清单</h2>
+                </div>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>股票/细分环节</th>
+                            <th>核心定位 (紫苏叶卡点)</th>
+                            <th>物理瓶颈与行业壁垒拆解</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--serenity-teal);">AXTI (AXT, Inc.)</td>
+                            <td>磷化铟 (InP) 晶圆衬底垄断商</td>
+                            <td>1.6T 高速光模块及激光器必备底层材料，全球少数具备高纯度 InP 衬底量产能力厂商。</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--serenity-purple);">SIVE (Sivers Semi)</td>
+                            <td>高性能 EML 激光器与 CPO 光源</td>
+                            <td>光共封装 (CPO) 架构下，外置激光器 (ELSFP) 成为算力集群能耗瓶颈的核心攻坚点。</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">特种 Quartz 石英玻纤布</td>
+                            <td>M8 CCL / 1.6T 交换机 High-Freq 板材</td>
+                            <td>Low-DK / Low-DF 低介电损耗石英玻璃纤维（如 Nittobo），属于扩产周期长达 2 年的高壁垒极冷门材料。</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">CoWoS-L 硅中介层与 TIM</td>
+                            <td>先进封装热界面与芯片级互连</td>
+                            <td>Blackwell / Vera Rubin 芯片发热量破千瓦后，液态金属/金刚石 TIM 热传导材料及 Interposer 成为刚性卡点。</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">行星滚柱丝杠 & 减速器</td>
+                            <td>人形机器人 (Optimus) 线性执行器</td>
+                            <td>加工精度要求达到微米级，全球仅有少数轴承与传动厂商具备高良率规模化量产能力。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 紫苏叶 vs 金枪鱼大腹 矩阵 -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚖️</div>
+                    <h2>金枪鱼大腹 (Tuna Belly) vs 紫苏叶 (Shiso Leaf) 对比矩阵</h2>
+                </div>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            <th style="color:var(--text-secondary);">金枪鱼大腹 (Tuna Belly)</th>
+                            <th style="color:var(--serenity-teal);">紫苏叶 (Shiso Leaf)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700;">代表公司</td>
+                            <td>NVIDIA、TSMC、Microsoft、AMD</td>
+                            <td style="color:var(--serenity-teal); font-weight:700;">AXTI、Sivers、特种玻纤布/丝杠厂</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">市值与流动性</td>
+                            <td>万亿美元级 (Mega-Cap)，流动性极高</td>
+                            <td>数亿美元小盘股 (Micro/Small-Cap)，机构覆盖低</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">华尔街关注度</td>
+                            <td>极高，价格充分反映（Pricing in）</td>
+                            <td>极低，存在巨大认知预期差 (Expectation Gap)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">超额收益爆发力</td>
+                            <td>稳健增长 (1.5x - 3x)</td>
+                            <td style="color:var(--serenity-teal); font-weight:700;">弹性极猛 (5x - 50x 爆发)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab 5: 风险与评估计算器 -->
+        <div id="risks" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🧮</div>
+                    <h2>紫苏叶 (Shiso Leaf) 潜在卡点评估计算器</h2>
+                </div>
+                <p>根据 Serenity 的选股法则，滑动评估某个细分环节是否具备“紫苏叶”卡点属性：</p>
+                <div style="background:rgba(10, 16, 26, 0.9); border:1px solid var(--border-color); border-radius:16px; padding:24px;">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-bottom:20px;">
+                        <div>
+                            <label style="font-size:0.85rem; color:var(--text-secondary);">扩产难度与周期 (月): <span id="capVal" style="color:var(--serenity-teal); font-weight:bold;">18</span></label>
+                            <input type="range" id="capInput" min="6" max="36" step="1" value="18" oninput="updateScore()" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.85rem; color:var(--text-secondary);">技术专利与替代难度 (1-10): <span id="patVal" style="color:var(--serenity-teal); font-weight:bold;">8</span></label>
+                            <input type="range" id="patInput" min="1" max="10" step="1" value="8" oninput="updateScore()" style="width:100%;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.85rem; color:var(--text-secondary);">华尔街关注度 (1-10, 越低越好): <span id="attVal" style="color:var(--serenity-teal); font-weight:bold;">3</span></label>
+                            <input type="range" id="attInput" min="1" max="10" step="1" value="3" oninput="updateScore()" style="width:100%;">
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-around; align-items:center; background:rgba(0, 242, 254, 0.08); border:1px solid var(--serenity-teal); border-radius:14px; padding:16px; text-align:center;">
+                        <div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">卡点指数得分</div>
+                            <div id="scoreRes" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:#fff;">88 / 100</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.8rem; color:var(--text-secondary);">紫苏叶评级</div>
+                            <div id="gradeRes" style="font-family:var(--font-mono); font-size:1.4rem; font-weight:700; color:var(--serenity-teal);">绝佳紫苏叶 (High Conviction)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚠️</div>
+                    <h2>风险提示与散户避坑指南</h2>
+                </div>
+                <ul>
+                    <li><strong>流动性与高回撤风险：</strong> “紫苏叶”目标多为小市值（Small-Cap）标的，成交量较低，暴跌时离场极其困难。</li>
+                    <li><strong>技术路线替代风险：</strong> 若下游巨头更改技术路线（如从光连接转回铜连接），卡脖子优势可能瞬间作废。</li>
+                    <li><strong>学习思维而非盲目抄作业：</strong> 散户切忌盲目跟风买入代码，Serenity 最大的价值在于其**反向物理拆解的研究思维**。</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Investor Research Series: Serenity Study. Rendered on 2026-08-16.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            if(tabId === 'summary' && window.logicChart) window.logicChart.update();
+        }
+
+        function updateScore() {
+            const cap = parseFloat(document.getElementById('capInput').value);
+            const pat = parseFloat(document.getElementById('patInput').value);
+            const att = parseFloat(document.getElementById('attInput').value);
+
+            document.getElementById('capVal').innerText = cap;
+            document.getElementById('patVal').innerText = pat;
+            document.getElementById('attVal').innerText = att;
+
+            const score = Math.round((cap / 36 * 35) + (pat / 10 * 45) + ((11 - att) / 10 * 20));
+            document.getElementById('scoreRes').innerText = score + ' / 100';
+
+            let grade = "极佳紫苏叶 (High Conviction)";
+            if(score < 70) grade = "普通瓶颈标的 (Moderate)";
+            if(score < 50) grade = "伪紫苏叶 / 拥挤同质化 (Avoid)";
+
+            document.getElementById('gradeRes').innerText = grade;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('logicChart').getContext('2d');
+            window.logicChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['英伟达/微软 (金枪鱼大腹)', '台积电 CoWoS (中游)', '光模块 1.6T (中游)', 'AXTI InP 衬底 (紫苏叶)'],
+                    datasets: [{
+                        label: '估值关注度与拥挤度 vs 超额收益空间',
+                        data: [95, 80, 65, 25],
+                        backgroundColor: [
+                            'rgba(156, 163, 175, 0.65)',
+                            'rgba(156, 163, 175, 0.65)',
+                            'rgba(79, 172, 254, 0.75)',
+                            'rgba(0, 242, 254, 0.95)'
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#9ca3af' } } },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+
+            updateScore();
+        });
+    </script>
+</body>
+</html>
+

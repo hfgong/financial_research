@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>著名投资人研究与推荐库 - Investor Research Hub</title>
+    <meta name="description" content="著名投资人研究与投资策略库，涵盖 Serenity (紫苏叶理论 / AI 瓶颈战法)、沃伦·巴菲特、德鲁肯米勒等顶级大师策略。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-cyan: #00f2fe;
+            --accent-purple: #7928ca;
+            --bg-dark: #070913;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(23, 33, 58, 0.88);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #a5f3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        header p { color: var(--text-secondary); }
+
+        .investors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .investor-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investor-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+        }
+
+        .investor-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.2);
+            background: var(--bg-card-hover);
+        }
+
+        .investor-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .avatar-box {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--accent-cyan);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .investor-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .investor-tag {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        .investor-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>著名投资人研究与推荐智库 (Investors Research Hub)</h1>
+            <p>追踪与剖析全球顶级投资者、对冲基金及链上/社交圈隐形传奇的选股哲学与实战方法论</p>
+        </header>
+
+        <div class="investors-grid">
+            <!-- Card 1: Serenity -->
+            <a href="./serenity/index.html" class="investor-card">
+                <div class="investor-header">
+                    <div class="avatar-box">🌿</div>
+                    <div>
+                        <div class="investor-name">Serenity</div>
+                        <div class="investor-tag">@aleabitoreddit · AI 供应链瓶颈专家</div>
+                    </div>
+                </div>
+                <div class="investor-desc">
+                    提出著名的“紫苏叶理论”与“卡脖子战法”。避开拥挤的金枪鱼大腹（英伟达/微软），利用物理第一性原理倒推 BOM 表，挖掘 AXTI (InP 衬底)、Sivers (CPO 激光器) 等小盘暴涨股。
+                </div>
+                <div class="btn-link">查看完整研究报告 &rarr;</div>
+            </a>
+
+            <!-- Card 2: Leopold Aschenbrenner -->
+            <a href="./leopold/index.html" class="investor-card">
+                <div class="investor-header">
+                    <div class="avatar-box" style="background:rgba(245, 158, 11, 0.15); color:#f59e0b;">⚡</div>
+                    <div>
+                        <div class="investor-name">Leopold Aschenbrenner</div>
+                        <div class="investor-tag">Situational Awareness LP 创始人</div>
+                    </div>
+                </div>
+                <div class="investor-desc">
+                    前 OpenAI 超级对齐研究员，165页轰动长文《Situational Awareness》作者。预言 2027 年 AGI 突破，聚焦万亿 AI 集群、10GW+ 电力与核能瓶颈，重仓 Bloom Energy、Constellation Energy 及高密度 AI 托管商。
+                </div>
+                <div class="btn-link" style="color:#f59e0b;">查看完整研究报告 &rarr;</div>
+            </a>
+
+            <!-- Card 3: Google Investment Empire -->
+            <a href="./google_invest.html" class="investor-card">
+                <div class="investor-header">
+                    <div class="avatar-box" style="background:rgba(66, 133, 244, 0.15); color:#4285f4;">🌐</div>
+                    <div>
+                        <div class="investor-name">谷歌 (Alphabet) 投资帝国</div>
+                        <div class="investor-tag">五位一体 (Gradient, Series X, GV, CapitalG, Corp Dev)</div>
+                    </div>
+                </div>
+                <div class="investor-desc">
+                    拥有科技历史上最高 ROI 并购（Android, YouTube, DeepMind）。涵盖从 AI 种子期（Gradient）、登月深科技（Series X）、成长独角兽到战略并购的全全全生命周期探照灯，提供散户产业链倒推与尽调工具。
+                </div>
+                <div class="btn-link" style="color:#4285f4;">查看完整研究报告 &rarr;</div>
+            </a>
+
+            <!-- Card 4: AI SME Governance & Expropriation Risk -->
+            <a href="./ai_sme_governance_risk.html" class="investor-card">
+                <div class="investor-header">
+                    <div class="avatar-box" style="background:rgba(239, 68, 68, 0.15); color:#ef4444;">🛡️</div>
+                    <div>
+                        <div class="investor-name">公司治理与散户防剥离</div>
+                        <div class="investor-tag">高管诚信度与利益输送掏空深度防守</div>
+                    </div>
+                </div>
+                <div class="investor-desc">
+                    深度拆解为什么“企业利润暴增，散户股票价值却可能缩水”。剖析高管诚信度（1 效应）、SBC 狂暴稀释、关联空壳高价收购套现及散户防剥离的四大大黄金避坑法则。
+                </div>
+                <div class="btn-link" style="color:#ef4444;">查看完整研究报告 &rarr;</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+

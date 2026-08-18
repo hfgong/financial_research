@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Reports 2026</title>
+<style>
+  :root {
+    --bg: #0a0c10;
+    --card: #13161d;
+    --border: #22252e;
+    --text: #e4e6ed;
+    --muted: #7a7f94;
+    --accent1: #6c63ff;
+    --accent2: #e07c24;
+    --accent3: #3b82f6;
+    --green: #00d4aa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Animated background */
+  .bg-glow {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-glow .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.07;
+    animation: float 25s ease-in-out infinite;
+  }
+  .bg-glow .orb:nth-child(1) {
+    width: 600px; height: 600px;
+    background: var(--accent1);
+    top: -10%; left: 10%;
+  }
+  .bg-glow .orb:nth-child(2) {
+    width: 500px; height: 500px;
+    background: var(--accent2);
+    top: 40%; right: -5%;
+    animation-delay: -8s;
+  }
+  .bg-glow .orb:nth-child(3) {
+    width: 450px; height: 450px;
+    background: var(--accent3);
+    bottom: -10%; left: 30%;
+    animation-delay: -16s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 0 50px;
+  }
+  .hero .label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(0, 212, 170, 0.08);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #e4e6ed 0%, #a0a4b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 20px 0 80px;
+  }
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+  }
+
+  .report-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 28px 32px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    border-radius: 20px 20px 0 0;
+    transition: height 0.3s ease;
+  }
+  .report-card:nth-child(1)::before { background: linear-gradient(90deg, #6c63ff, #00d4aa); }
+  .report-card:nth-child(2)::before { background: linear-gradient(90deg, #e07c24, #00d4aa); }
+  .report-card:nth-child(3)::before { background: linear-gradient(90deg, #3b82f6, #00d4aa); }
+
+  .report-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(108, 99, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+  .report-card:hover::before {
+    height: 4px;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .report-card:nth-child(1) .card-icon { background: rgba(108, 99, 255, 0.12); }
+  .report-card:nth-child(2) .card-icon { background: rgba(224, 124, 36, 0.12); }
+  .report-card:nth-child(3) .card-icon { background: rgba(59, 130, 246, 0.12); }
+
+  .report-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .report-card .desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--muted);
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green);
+    transition: gap 0.2s;
+  }
+  .report-card:hover .card-link { gap: 10px; }
+  .card-link svg {
+    width: 16px; height: 16px;
+    fill: currentColor;
+  }
+
+  /* Footer */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 28px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+  .footer a {
+    color: var(--green);
+    text-decoration: none;
+  }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="bg-glow">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</div>
+
+<div class="container">
+  <div class="hero">
+    <span class="label">February 2026 Edition</span>
+    <h1>Market Intelligence<br>Reports</h1>
+    <p>Comprehensive analysis of stock performance, forward outlook, AI exposure, ETF flows, and market rotation trends across the technology landscape and beyond.</p>
+  </div>
+
+  <div class="cards">
+
+    <a href="magnificent7.html" class="report-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#6c63ff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h2>Magnificent 7</h2>
+      <p class="desc">Stock performance, earnings analysis, forward outlook, AI CapEx breakdown, and AI skepticism trends for AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA.</p>
+      <div class="tag-row">
+        <span class="tag">6-Mo Performance</span>
+        <span class="tag">Earnings</span>
+        <span class="tag">AI CapEx $660B</span>
+        <span class="tag">Analyst Targets</span>
+        <span class="tag">AI Skepticism</span>
+      </div>
+      <span class="card-link">
+        View Report
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <a href="nasdaq100-ex-mag7.html" class="report-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#e07c24" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      <h2>Nasdaq 100 ex-Mag 7</h2>
+      <p class="desc">Top 15 players deep dive, sector analysis, the SaaSpocalypse, semiconductor giga-cycle, AI exposure tiers, and forward outlook for AVGO, MU, PLTR, CRM, AMD, and more.</p>
+      <div class="tag-row">
+        <span class="tag">Top 15 + Remaining 78</span>
+        <span class="tag">$1T Semi Cycle</span>
+        <span class="tag">SaaSpocalypse</span>
+        <span class="tag">AI Exposure Map</span>
+        <span class="tag">Cybersecurity</span>
+      </div>
+      <span class="card-link">
+        View Report
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <a href="top-etfs.html" class="report-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      </div>
+      <h2>Top ETF Funds</h2>
+      <p class="desc">36 key ETFs across all categories, record flows ($1.49T in 2025), The Great Rotation, analyst picks, income strategies, crypto ETFs, and buffer funds.</p>
+      <div class="tag-row">
+        <span class="tag">36 ETFs Ranked</span>
+        <span class="tag">Record Flows</span>
+        <span class="tag">GLD +69%</span>
+        <span class="tag">Income ETFs</span>
+        <span class="tag">Active vs Passive</span>
+        <span class="tag">S&amp;P Targets</span>
+      </div>
+      <span class="card-link">
+        View Report
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  Market Intelligence Reports &bull; February 2026 &bull; For informational purposes only, not investment advice.
+  <br>Data sourced from public filings, analyst reports, and financial news.
+</div>
+
+</body>
+</html>

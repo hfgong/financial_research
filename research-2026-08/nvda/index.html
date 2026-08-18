@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA (NVDA) 财经新闻与业绩研报深度分析 - 2026年8月</title>
+    <meta name="description" content="英伟达 NVDA 2026年8月最新财经新闻深度分析报告，涵盖 Q2 FY27 财报前瞻、Vera Rubin / Blackwell 架构路线图、云计算巨头 CapEx 及投资风险评估。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --nv-green: #76b900;
+            --nv-green-glow: rgba(118, 185, 0, 0.35);
+            --nv-green-dark: #5c9300;
+            --bg-dark: #090d14;
+            --bg-card: rgba(18, 25, 38, 0.7);
+            --bg-card-hover: rgba(26, 36, 54, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(118, 185, 0, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-cyan: #00f2fe;
+            --accent-purple: #9d4edd;
+            --accent-red: #ff4d4d;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(118, 185, 0, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.05) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        /* Layout Structure */
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 24px 20px 80px 20px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(13, 19, 31, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nvda-badge {
+            background: linear-gradient(135deg, var(--nv-green), #4e8000);
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--nv-green-glow);
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-active {
+            border-color: var(--nv-green);
+            color: var(--nv-green);
+            background: rgba(118, 185, 0, 0.08);
+        }
+
+        /* Metric Cards Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--nv-green);
+            opacity: 0.7;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px var(--nv-green-glow);
+            background: var(--bg-card-hover);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .metric-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(118, 185, 0, 0.12);
+            color: var(--nv-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .metric-sub {
+            font-size: 0.8rem;
+            color: var(--nv-green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .metric-sub.neutral {
+            color: var(--accent-cyan);
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.2), rgba(118, 185, 0, 0.05));
+            border-color: var(--nv-green);
+            color: var(--nv-green);
+            box-shadow: 0 0 15px rgba(118, 185, 0, 0.2);
+        }
+
+        /* Content Sections */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 14px;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-header .icon-box {
+            background: rgba(118, 185, 0, 0.15);
+            color: var(--nv-green);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        p {
+            color: #d1d5db;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 16px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: #d1d5db;
+            font-size: 0.93rem;
+        }
+
+        ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--nv-green);
+            font-size: 0.75rem;
+        }
+
+        /* Timeline Flow */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            margin-top: 16px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 18px 22px;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--nv-green);
+            background: rgba(118, 185, 0, 0.05);
+        }
+
+        .timeline-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #000;
+            background: var(--nv-green);
+            padding: 4px 12px;
+            border-radius: 8px;
+            height: fit-content;
+            white-space: nowrap;
+        }
+
+        .timeline-info h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        /* Chart Canvas Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin-top: 16px;
+        }
+
+        /* Valuation Calculator */
+        .calc-box {
+            background: rgba(10, 16, 26, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .calc-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .control-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .control-group span {
+            font-family: var(--font-mono);
+            color: var(--nv-green);
+            font-weight: 700;
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--nv-green);
+            cursor: pointer;
+        }
+
+        .calc-result {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(118, 185, 0, 0.08);
+            border: 1px solid var(--nv-green);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .res-item .res-title {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .res-item .res-val {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-group">
+                <div class="nvda-badge">NVDA</div>
+                <div class="header-title">
+                    <h1>英伟达财经新闻与业绩研报深度分析</h1>
+                    <p>2026年8月最新资讯 · 财报前瞻 · 算力路线图 · 估值研判</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active">
+                    <span style="display:inline-block; width:8px; height:8px; background:var(--nv-green); border-radius:50%;"></span>
+                    2026年8月9日更新
+                </div>
+                <div class="tag">共识评级: 强力买入 (Strong Buy)</div>
+            </div>
+        </header>
+
+        <!-- Metric Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">最新收盘价 (2026.08.07)</span>
+                    <div class="metric-icon">$</div>
+                </div>
+                <div class="metric-value">$223.96</div>
+                <div class="metric-sub">▲ 52周最高 $236.54 (总市值 $5.42万亿)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">Q2 FY27 预估营收</span>
+                    <div class="metric-icon">📊</div>
+                </div>
+                <div class="metric-value">$91B - $92B</div>
+                <div class="metric-sub">▲ 8月26日即将发布财报</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">华尔街12个月平均目标价</span>
+                    <div class="metric-icon">🎯</div>
+                </div>
+                <div class="metric-value">$302.00</div>
+                <div class="metric-sub">▲ 买方共识评级: 强力买入</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">旗舰架构进度</span>
+                    <div class="metric-icon">🚀</div>
+                </div>
+                <div class="metric-value">Vera Rubin</div>
+                <div class="metric-sub">▲ 大规模量产 & HBM4 部署</div>
+            </div>
+        </div>
+
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('summary')">📌 核心摘要</button>
+            <button class="tab-btn" onclick="switchTab('shortterm')">🎯 短期上涨空间预测</button>
+            <button class="tab-btn" onclick="switchTab('capex')">💰 云巨头 CapEx</button>
+            <button class="tab-btn" onclick="switchTab('architecture')">🔬 架构路线图</button>
+            <button class="tab-btn" onclick="switchTab('bullbear')">⚖️ 牛熊观点</button>
+            <button class="tab-btn" onclick="switchTab('risks')">⚠️ 风险与瓶颈</button>
+            <button class="tab-btn" onclick="switchTab('calculator')">🧮 估值模拟器</button>
+        </div>
+
+
+        <!-- Tab 1: 核心摘要 -->
+        <div id="summary" class="tab-content active">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📊</div>
+                        <h2>8月26日 Q2 财报前瞻与市场情绪</h2>
+                    </div>
+                    <p>英伟达（NVIDIA）定于 <strong>2026年8月26日（周三）美股盘后</strong> 公布 2027 财年第二季度财报。华尔街金融机构正密切审视此份财报，作为评估整体 AI 产业景气度的风向标。</p>
+                    <ul>
+                        <li><strong>营收指引高企：</strong> 分析师一致预估 Q2 营收达 910 亿至 920 亿美元。美银（BofA）等多家投行看好其表现将超越预期。</li>
+                        <li><strong>股价强劲反弹：</strong> 2026年8月首周，在马斯克（Elon Musk）确认SpaceX采购合作及各大云巨头追加 Capex 的刺激下，NVDA创下近一年来最佳单周表现。</li>
+                        <li><strong>估值性价比显著：</strong> 尽管处于 AI 建设高潮期，目前 NVDA 远期 P/E 处于近年相对合理区间，盈利增长支撑强劲。</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📈</div>
+                        <h2>季度营收增长轨道 ($ Billion)</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: 短期上涨空间预测 -->
+        <div id="shortterm" class="tab-content">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">🎯</div>
+                        <h2>短期（未来2-4周/财报期）三种场景预测</h2>
+                    </div>
+                    <p>结合 2026 年 8 月期权市场定价（Implied Move ±7.8%~8.8%）、技术面阻力/支撑位及买方暗号预期（Whisper Numbers）客观推演：</p>
+
+                    <div style="overflow-x:auto; margin-bottom:20px;">
+                        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                            <thead>
+                                <tr style="border-bottom:1px solid var(--border-color); color:var(--text-secondary);">
+                                    <th style="padding:10px 8px;">推演场景</th>
+                                    <th style="padding:10px 8px;">概率</th>
+                                    <th style="padding:10px 8px;">核心触发条件</th>
+                                    <th style="padding:10px 8px;">短期目标价</th>
+                                    <th style="padding:10px 8px;">空间幅度</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                                    <td style="padding:12px 8px; color:var(--nv-green); font-weight:700;">基准中性 (Base)</td>
+                                    <td style="padding:12px 8px;">50-55%</td>
+                                    <td style="padding:12px 8px;">Q2营收 $920B-$935B，指引强劲符合高期待</td>
+                                    <td style="padding:12px 8px; font-family:var(--font-mono);">$225 - $236</td>
+                                    <td style="padding:12px 8px; color:var(--nv-green); font-weight:700;">+6% ~ +11%</td>
+                                </tr>
+                                <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                                    <td style="padding:12px 8px; color:var(--accent-cyan); font-weight:700;">乐观冲高 (Bull)</td>
+                                    <td style="padding:12px 8px;">25-30%</td>
+                                    <td style="padding:12px 8px;">Q2营收 >$940B，Q3给出 >$1000B 爆表指引</td>
+                                    <td style="padding:12px 8px; font-family:var(--font-mono);">$250 - $260</td>
+                                    <td style="padding:12px 8px; color:var(--accent-cyan); font-weight:700;">+18% ~ +23%</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:12px 8px; color:var(--accent-red); font-weight:700;">回调巩固 (Bear)</td>
+                                    <td style="padding:12px 8px;">15-20%</td>
+                                    <td style="padding:12px 8px;">毛利率 <72% 或指引未达极端买方高预期</td>
+                                    <td style="padding:12px 8px; font-family:var(--font-mono);">$185 - $198</td>
+                                    <td style="padding:12px 8px; color:var(--accent-red); font-weight:700;">-8% ~ -12%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📊</div>
+                        <h2>短期目标区间与技术关卡可视化 ($)</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="stScenarioChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚖️</div>
+                    <h2>理性博弈约束与风险警示</h2>
+                </div>
+                <div class="grid-2" style="margin-bottom:0;">
+                    <div style="background:rgba(255,255,255,0.02); padding:18px; border-radius:14px; border:1px solid var(--border-color);">
+                        <h4 style="color:var(--nv-green); margin-bottom:8px;">1. Whisper Numbers（暗号高预期）陷阱</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0;">买方机构在官方共识 ($91B-$92B) 之外往往有更苛刻的内部预期 ($93B+)。若数据仅仅仅“符合”官方预估，可能面临利好兑现获利回吐。</p>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.02); padding:18px; border-radius:14px; border:1px solid var(--border-color);">
+                        <h4 style="color:var(--accent-cyan); margin-bottom:8px;">2. 期权 IV Crush（波幅暴跌）风险</h4>
+                        <p style="font-size:0.9rem; margin-bottom:0;">财报公布后衍生品引伸波幅骤降，纯买入看涨期权（Long Call）持仓极易遭遇时间价值大幅衰减。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tab 2: 云巨头 CapEx -->
+        <div id="capex" class="tab-content">
+
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">☁️</div>
+                    <h2>四大 Hyperscaler 资本开支（Microsoft, Meta, Alphabet, Amazon）</h2>
+                </div>
+                <p>2026年北美四大超级云计算巨头（Hyperscalers）再次砸下重金，进一步上调了全年的 AI 基础设施资本支出预算。即使市场偶有对 AI ROI（投资回报率）的质疑，各家 CEO 均明确表示：“算力不足的风险远大于过度投资的风险”。</p>
+
+                <div class="chart-container" style="height: 340px; margin-bottom: 24px;">
+                    <canvas id="capexChart"></canvas>
+                </div>
+
+                <ul>
+                    <li><strong>微软 (Microsoft)：</strong> 持续扩大数据中心储备，重点保障 Azure AI 实例与 Copilot 升级算力。</li>
+                    <li><strong>Meta：</strong> 大规模采购 GPU 用于下一代 Llama 架构及 Agent 基础设施训练。</li>
+                    <li><strong>谷歌与亚马逊：</strong> 在扩建自研 ASIC 的同时，依然维持对 NVDA 最顶级 GPU（Blackwell & Vera Rubin）的大规模采购。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab 3: 架构路线图 -->
+        <div id="architecture" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚡</div>
+                    <h2>英伟达芯片架构演进时间线 (2024 - 2028)</h2>
+                </div>
+                <p>英伟达保持着极其强悍的“一年一代”芯片迭代节奏，从 Hopper 跨越至 Blackwell，并于 2026 年全面推进 Vera Rubin 的批量部署。</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-badge">2024 - 2025</div>
+                        <div class="timeline-info">
+                            <h4>Hopper & Blackwell (H100 / B200 / GB200)</h4>
+                            <p>大模型训练时代的基石，建立并巩固了英伟达在千亿/万亿参数模型训练领域的垄断地位。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" style="border-color: var(--nv-green); background: rgba(118, 185, 0, 0.08);">
+                        <div class="timeline-badge">2026 全面量产</div>
+                        <div class="timeline-info">
+                            <h4>Vera Rubin (R100 GPU + Vera CPU)</h4>
+                            <p>搭载 HBM4 显存与 Vera CPU，专门针对智能体 AI（Agentic AI）与极高吞吐的 AI 工厂优化，大幅降低推理延迟与吞吐成本。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-badge">2027 预期</div>
+                        <div class="timeline-info">
+                            <h4>Rubin Ultra 架构</h4>
+                            <p>进一步堆叠 HBM4/HBM4e 显存，强化网络 interconnect 吞吐，专为全模态超级智算中心设计。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-badge">2028 规划</div>
+                        <div class="timeline-info">
+                            <h4>Feynman (费曼) 架构</h4>
+                            <p>下一代颠覆性算力架构，探索光子计算、芯片间极高密度三维封装与极致功耗比。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🚀</div>
+                    <h2>前沿新场景：SpaceX "Starmind" 轨道 AI 算力星群</h2>
+                </div>
+                <p>2026年8月，SpaceX 宣布在“Starmind”空间轨道算力星群中部署 Rubin 架构 GPU。这标志着高性能 AI 计算正在摆脱传统云端数据中心的限制，拓展至太空通信、卫星数据实时边缘推理与国防安全等前沿领域。</p>
+            </div>
+        </div>
+
+        <!-- Tab 4: 牛熊观点 -->
+        <div id="bullbear" class="tab-content">
+            <div class="grid-2">
+                <div class="content-card" style="border-top: 4px solid var(--nv-green);">
+                    <div class="card-header">
+                        <div class="icon-box" style="color:var(--nv-green);">🐂</div>
+                        <h2>看多观点 (Bull Case)</h2>
+                    </div>
+                    <ul>
+                        <li><strong>Agentic AI 带来推理算力大爆发：</strong> AI 从简单问答转向自主任务执行，调用次数与 Token 消耗量呈数量级增加。</li>
+                        <li><strong>绝对软硬件护城河：</strong> CUDA 生态、TensorRT、以及最新的 `cuFile` API 锁定了开发者与企业基础设施，竞品迁移成本极高。</li>
+                        <li><strong>业绩增长确定性高：</strong> 超级云厂商的排单已延伸至未来多个季度，业绩兑现度极强。</li>
+                        <li><strong>估值性价比突出：</strong> 相较于爆发性的 EPS 增长，远期 P/E 处于近年来相对具备安全边际的水平。</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="border-top: 4px solid var(--accent-red);">
+                    <div class="card-header">
+                        <div class="icon-box" style="color:var(--accent-red);">🐻</div>
+                        <h2>看空/隐患观点 (Bear Case)</h2>
+                    </div>
+                    <ul>
+                        <li><strong>AI ROI 回报率质疑：</strong> 如果下游应用层（SaaS/Consumer AI）短期内无法产生千亿美元级的商业变现，Hyperscaler 的 CapEx 增速可能放缓。</li>
+                        <li><strong>供应链与毛利率压制：</strong> HBM4 及 Advanced Packaging (CoWoS) 成本上升，可能在短期内压低整体毛利率。</li>
+                        <li><strong>自研 ASIC 芯片分流：</strong> Google TPU、AWS Trainium 等芯片在特定大云客户内部推理场景中份额逐渐提升。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 5: 风险与瓶颈 -->
+        <div id="risks" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚠️</div>
+                    <h2>关键瓶颈："Speed to Power" 与供应链风险</h2>
+                </div>
+                <p>随着 AI 算力集群规模向数十万卡级迈进，限制行业发展的瓶颈已不再仅仅是 GPU 本身的产能，而是多维度的基础设施约束：</p>
+                
+                <div class="grid-2" style="margin-top:20px; margin-bottom:0;">
+                    <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:14px; border:1px solid var(--border-color);">
+                        <h3 style="color:var(--nv-green); font-size:1.05rem; margin-bottom:10px;">1. 电力供应与液冷散热 (Power & Cooling)</h3>
+                        <p>超级数据中心的供电申请周期变长。水冷/液冷技术的部署速度直接决定了 Vera Rubin 等高功耗 GPU 集群的上线时间。</p>
+                    </div>
+
+                    <div style="background:rgba(255,255,255,0.02); padding:20px; border-radius:14px; border:1px solid var(--border-color);">
+                        <h3 style="color:var(--accent-cyan); font-size:1.05rem; margin-bottom:10px;">2. HBM4 显存与封装限制</h3>
+                        <p>新一代 HBM4 内存的产线转换与台积电先进封装（CoWoS）产能虽然持续扩建，但在尖峰需求下仍处于紧平衡状态。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 6: 估值模拟器 -->
+        <div id="calculator" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🧮</div>
+                    <h2>NVDA 2026/2027 财年估值场景模拟计算器</h2>
+                </div>
+                <p>拖动下方滑块，调整预估营收超预期幅度、毛利率水平及远期 P/E 估值倍数，查看推演股价目标。</p>
+
+                <div class="calc-box">
+                    <div class="calc-controls">
+                        <div class="control-group">
+                            <label>Q2 季度营收 ($B): <span id="revVal">92.0</span></label>
+                            <input type="range" id="revInput" min="85" max="100" step="0.5" value="92" oninput="updateCalc()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>预计毛利率 (%): <span id="marginVal">74.5</span></label>
+                            <input type="range" id="marginInput" min="68" max="78" step="0.5" value="74.5" oninput="updateCalc()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>给予远期 P/E 倍数: <span id="peVal">30</span></label>
+                            <input type="range" id="peInput" min="20" max="45" step="1" value="30" oninput="updateCalc()">
+                        </div>
+                    </div>
+
+                    <div class="calc-result">
+                        <div class="res-item">
+                            <div class="res-title">推演年化 EPS</div>
+                            <div class="res-val" id="epsRes">$8.40</div>
+                        </div>
+                        <div class="res-item">
+                            <div class="res-title">隐含理论目标价</div>
+                            <div class="res-val" style="color:var(--nv-green);" id="priceRes">$252.00</div>
+                        </div>
+                        <div class="res-item">
+                            <div class="res-title">情景评级</div>
+                            <div class="res-val" style="color:var(--accent-cyan);" id="statusRes">基准情景 (Base)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 NVIDIA (NVDA) Financial Research Report. For Internal & Analytical Reference Only.</p>
+            <p style="margin-top:4px; color:var(--text-muted);">数据来源：BofA Research, Financial Times, NVIDIA Newsroom, SEC Filings | 渲染时间：2026-08-09</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            // Trigger chart update when entering tab
+            if(tabId === 'summary' && window.revChart) window.revChart.update();
+            if(tabId === 'shortterm' && window.stChart) window.stChart.update();
+            if(tabId === 'capex' && window.cxChart) window.cxChart.update();
+        }
+
+        // Valuation Calculator Logic
+        function updateCalc() {
+            const rev = parseFloat(document.getElementById('revInput').value);
+            const margin = parseFloat(document.getElementById('marginInput').value);
+            const pe = parseFloat(document.getElementById('peInput').value);
+
+            document.getElementById('revVal').innerText = rev.toFixed(1);
+            document.getElementById('marginVal').innerText = margin.toFixed(1);
+            document.getElementById('peVal').innerText = pe;
+
+            // Simplified forward EPS model calculation
+            // Annualized Revenue estimate approx = rev * 4 * net_margin_ratio
+            const netMargin = (margin - 22) / 100; // rough net margin estimate
+            const annualRev = rev * 4;
+            const estimatedNetIncomeB = annualRev * netMargin;
+            const sharesB = 24.5; // ~24.5B shares
+            const eps = estimatedNetIncomeB / sharesB;
+            const targetPrice = eps * pe;
+
+            document.getElementById('epsRes').innerText = '$' + eps.toFixed(2);
+            document.getElementById('priceRes').innerText = '$' + targetPrice.toFixed(2);
+
+            let status = "基准情景 (Base)";
+            if(rev > 94 && margin >= 75) status = "强劲牛市 (Bull)";
+            else if(rev < 88 || margin < 71) status = "保守偏熊 (Bear)";
+
+            document.getElementById('statusRes').innerText = status;
+        }
+
+        // Initialize Charts on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Chart 1: Revenue Growth
+            const ctxRev = document.getElementById('revenueChart').getContext('2d');
+            window.revChart = new Chart(ctxRev, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1 FY26', 'Q2 FY26', 'Q3 FY26', 'Q4 FY26', 'Q1 FY27', 'Q2 FY27 (E)'],
+                    datasets: [{
+                        label: '季度营收 ($ Billion)',
+                        data: [26.0, 30.0, 35.1, 39.3, 44.2, 91.5],
+                        backgroundColor: [
+                            'rgba(118, 185, 0, 0.4)',
+                            'rgba(118, 185, 0, 0.5)',
+                            'rgba(118, 185, 0, 0.6)',
+                            'rgba(118, 185, 0, 0.7)',
+                            'rgba(118, 185, 0, 0.85)',
+                            'rgba(0, 242, 254, 0.9)'
+                        ],
+                        borderColor: '#76b900',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Plus Jakarta Sans' } } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+
+            // Chart 2: Hyperscaler CapEx Growth
+            const ctxCx = document.getElementById('capexChart').getContext('2d');
+            window.cxChart = new Chart(ctxCx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025', '2026E'],
+                    datasets: [
+                        {
+                            label: '微软 CapEx ($B)',
+                            data: [32, 53, 75, 110],
+                            borderColor: '#00a4ef',
+                            backgroundColor: 'rgba(0, 164, 239, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Meta CapEx ($B)',
+                            data: [28, 39, 62, 95],
+                            borderColor: '#0668e1',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Alphabet CapEx ($B)',
+                            data: [32, 51, 78, 108],
+                            borderColor: '#ea4335',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Amazon CapEx ($B)',
+                            data: [48, 75, 105, 140],
+                            borderColor: '#ff9900',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Plus Jakarta Sans' } } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+
+            // Chart 3: Short-term Scenario Target Range
+            const ctxSt = document.getElementById('stScenarioChart').getContext('2d');
+            window.stChart = new Chart(ctxSt, {
+                type: 'bar',
+                data: {
+                    labels: ['S1强支撑位', '当前整理区', 'R1第一阻力(Base)', 'R2第二阻力(Bull)'],
+                    datasets: [{
+                        label: '股价区间参考 ($)',
+                        data: [192.5, 210.0, 230.5, 255.0],
+                        backgroundColor: [
+                            'rgba(255, 77, 77, 0.7)',
+                            'rgba(156, 163, 175, 0.7)',
+                            'rgba(118, 185, 0, 0.85)',
+                            'rgba(0, 242, 254, 0.9)'
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af' } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: 150 }
+                    }
+                }
+            });
+
+            // Initial calc call
+            updateCalc();
+        });
+    </script>
+
+</body>
+</html>

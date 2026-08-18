@@ -1,319 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Reports 2026</title>
-<style>
-  :root {
-    --bg: #0a0c10;
-    --card: #13161d;
-    --border: #22252e;
-    --text: #e4e6ed;
-    --muted: #7a7f94;
-    --accent1: #6c63ff;
-    --accent2: #e07c24;
-    --accent3: #3b82f6;
-    --green: #00d4aa;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Research Hub | 金融研报与定量分析智库</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070914;
+            --bg-card: rgba(18, 22, 40, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2fe;
+            --accent-purple: #9d4edd;
+            --accent-blue: #3b82f6;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+        }
 
-  /* Animated background */
-  .bg-glow {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .bg-glow .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.07;
-    animation: float 25s ease-in-out infinite;
-  }
-  .bg-glow .orb:nth-child(1) {
-    width: 600px; height: 600px;
-    background: var(--accent1);
-    top: -10%; left: 10%;
-  }
-  .bg-glow .orb:nth-child(2) {
-    width: 500px; height: 500px;
-    background: var(--accent2);
-    top: 40%; right: -5%;
-    animation-delay: -8s;
-  }
-  .bg-glow .orb:nth-child(3) {
-    width: 450px; height: 450px;
-    background: var(--accent3);
-    bottom: -10%; left: 30%;
-    animation-delay: -16s;
-  }
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 15px) scale(0.95); }
-  }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(0, 242, 254, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.06) 0%, transparent 40%);
+            padding: 40px 20px;
+        }
 
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 80px 0 50px;
-  }
-  .hero .label {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--green);
-    background: rgba(0, 212, 170, 0.08);
-    border: 1px solid rgba(0, 212, 170, 0.2);
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #e4e6ed 0%, #a0a4b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-  /* Cards grid */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    padding: 20px 0 80px;
-  }
-  @media (max-width: 900px) {
-    .cards { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2rem; }
-  }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-  .report-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 36px 28px 32px;
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .report-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    border-radius: 20px 20px 0 0;
-    transition: height 0.3s ease;
-  }
-  .report-card:nth-child(1)::before { background: linear-gradient(90deg, #6c63ff, #00d4aa); }
-  .report-card:nth-child(2)::before { background: linear-gradient(90deg, #e07c24, #00d4aa); }
-  .report-card:nth-child(3)::before { background: linear-gradient(90deg, #3b82f6, #00d4aa); }
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
 
-  .report-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(108, 99, 255, 0.3);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  }
-  .report-card:hover::before {
-    height: 4px;
-  }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
 
-  .card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  .report-card:nth-child(1) .card-icon { background: rgba(108, 99, 255, 0.12); }
-  .report-card:nth-child(2) .card-icon { background: rgba(224, 124, 36, 0.12); }
-  .report-card:nth-child(3) .card-icon { background: rgba(59, 130, 246, 0.12); }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 24px;
+        }
 
-  .report-card h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-  .report-card .desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-  .tag {
-    font-size: 0.68rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--muted);
-  }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.15);
+        }
 
-  .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--green);
-    transition: gap 0.2s;
-  }
-  .report-card:hover .card-link { gap: 10px; }
-  .card-link svg {
-    width: 16px; height: 16px;
-    fill: currentColor;
-  }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
 
-  /* Footer */
-  .footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 28px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.78rem;
-  }
-  .footer a {
-    color: var(--green);
-    text-decoration: none;
-  }
-  .footer a:hover { text-decoration: underline; }
-</style>
+        .icon-box {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--accent-cyan);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+        }
+
+        .card-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Financial Research Repository</h1>
+            <p>金融市场大盘分析、半导体/AI 核心标的深度研报与投资者智库</p>
+        </header>
 
-<div class="bg-glow">
-  <div class="orb"></div>
-  <div class="orb"></div>
-  <div class="orb"></div>
-</div>
+        <div class="grid">
+            <!-- 2026-08 Research -->
+            <a href="./research-2026-08/market/us_market_risks_ai_collapse.html" class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="icon-box">📊</div>
+                        <div>
+                            <div class="card-title">2026年8月 最新研报智库</div>
+                            <div class="card-subtitle">research-2026-08</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        包含 NVDA, GOOG, TSLA, SPCX, MU, SNDK, LITE, COHR 及 PLTR 独立个股研报；美债风险、宏观熊市概率与 AI 泡沫评估；以及顶级投资者 (Serenity, Leopold, 谷歌投资帝国) 智库。
+                    </div>
+                </div>
+                <div class="btn">进入 2026-08 研报库 &rarr;</div>
+            </a>
 
-<div class="container">
-  <div class="hero">
-    <span class="label">February 2026 Edition</span>
-    <h1>Market Intelligence<br>Reports</h1>
-    <p>Comprehensive analysis of stock performance, forward outlook, AI exposure, ETF flows, and market rotation trends across the technology landscape and beyond.</p>
-  </div>
+            <!-- 2026-02 Research -->
+            <a href="./research-2026-02/index.html" class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="icon-box" style="background:rgba(157, 78, 221, 0.15); color:var(--accent-purple);">📈</div>
+                        <div>
+                            <div class="card-title">2026年2月 市场复盘研报</div>
+                            <div class="card-subtitle" style="color:var(--accent-purple);">research-2026-02</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        包含 2026 年 2 月美股 Magnificent 7 巨头分析、Nasdaq 100 剔除 Mag 7 表现分析及全美 Top 热门 ETF 回报对比归因。
+                    </div>
+                </div>
+                <div class="btn" style="color:var(--accent-purple);">进入 2026-02 研报库 &rarr;</div>
+            </a>
+        </div>
 
-  <div class="cards">
-
-    <a href="magnificent7.html" class="report-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#6c63ff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <h2>Magnificent 7</h2>
-      <p class="desc">Stock performance, earnings analysis, forward outlook, AI CapEx breakdown, and AI skepticism trends for AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA.</p>
-      <div class="tag-row">
-        <span class="tag">6-Mo Performance</span>
-        <span class="tag">Earnings</span>
-        <span class="tag">AI CapEx $660B</span>
-        <span class="tag">Analyst Targets</span>
-        <span class="tag">AI Skepticism</span>
-      </div>
-      <span class="card-link">
-        View Report
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </span>
-    </a>
-
-    <a href="nasdaq100-ex-mag7.html" class="report-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#e07c24" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      </div>
-      <h2>Nasdaq 100 ex-Mag 7</h2>
-      <p class="desc">Top 15 players deep dive, sector analysis, the SaaSpocalypse, semiconductor giga-cycle, AI exposure tiers, and forward outlook for AVGO, MU, PLTR, CRM, AMD, and more.</p>
-      <div class="tag-row">
-        <span class="tag">Top 15 + Remaining 78</span>
-        <span class="tag">$1T Semi Cycle</span>
-        <span class="tag">SaaSpocalypse</span>
-        <span class="tag">AI Exposure Map</span>
-        <span class="tag">Cybersecurity</span>
-      </div>
-      <span class="card-link">
-        View Report
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </span>
-    </a>
-
-    <a href="top-etfs.html" class="report-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-      </div>
-      <h2>Top ETF Funds</h2>
-      <p class="desc">36 key ETFs across all categories, record flows ($1.49T in 2025), The Great Rotation, analyst picks, income strategies, crypto ETFs, and buffer funds.</p>
-      <div class="tag-row">
-        <span class="tag">36 ETFs Ranked</span>
-        <span class="tag">Record Flows</span>
-        <span class="tag">GLD +69%</span>
-        <span class="tag">Income ETFs</span>
-        <span class="tag">Active vs Passive</span>
-        <span class="tag">S&amp;P Targets</span>
-      </div>
-      <span class="card-link">
-        View Report
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </span>
-    </a>
-
-  </div>
-</div>
-
-<div class="footer">
-  Market Intelligence Reports &bull; February 2026 &bull; For informational purposes only, not investment advice.
-  <br>Data sourced from public filings, analyst reports, and financial news.
-</div>
-
+        <footer>
+            <p>© Financial Research Repository. Created and maintained at /Users/hfgong/github/financial_research.</p>
+        </footer>
+    </div>
 </body>
 </html>

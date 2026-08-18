@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 红利分配与中小企业公司治理风险研报：散户如何避免被剥离？ - 2026年8月</title>
+    <meta name="description" content="深度剖析 AI 时代生产力红利的流向：AI 巨头 vs 不透明中小企业。为什么企业利润暴增，散户股票价值却可能缩水？揭秘高管通过 SBC 稀释、关联交易与天价奖金瓜分利益的四大财技手段及避坑指南。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --gov-red: #ef4444;
+            --gov-purple: #7928ca;
+            --gov-cyan: #00f2fe;
+            --gov-amber: #f59e0b;
+            --bg-dark: #070815;
+            --bg-card: rgba(18, 22, 40, 0.78);
+            --bg-card-hover: rgba(26, 32, 58, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(239, 68, 68, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(239, 68, 68, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(121, 40, 202, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 24px 20px 80px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 30px;
+            background: rgba(13, 19, 31, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .gov-badge {
+            background: linear-gradient(135deg, var(--gov-red), var(--gov-purple));
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #fca5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-active {
+            border-color: var(--gov-red);
+            color: var(--gov-red);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--gov-red);
+            opacity: 0.8;
+        }
+
+        .metric-card.safe::before {
+            background: var(--gov-cyan);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(239, 68, 68, 0.25);
+            background: var(--bg-card-hover);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .metric-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--gov-red);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+        }
+
+        .metric-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .metric-sub {
+            font-size: 0.8rem;
+            color: var(--gov-red);
+            display: flex; align-items: center; gap: 4px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs-nav::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05));
+            border-color: var(--gov-red);
+            color: var(--gov-red);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        .content-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 14px;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-header .icon-box {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--gov-red);
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+        }
+
+        p { color: #d1d5db; font-size: 0.95rem; margin-bottom: 14px; line-height: 1.7; }
+
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+
+        ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: #d1d5db;
+            font-size: 0.93rem;
+        }
+
+        ul li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0; top: 2px;
+            font-size: 0.85rem;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        .table-custom th, .table-custom td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .table-custom th {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin-top: 16px;
+        }
+
+        .calc-box {
+            background: rgba(10, 16, 26, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .calc-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .control-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .control-group span {
+            font-family: var(--font-mono);
+            color: var(--gov-red);
+            font-weight: 700;
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--gov-red);
+            cursor: pointer;
+        }
+
+        .calc-result {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid var(--gov-red);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .res-item .res-title { font-size: 0.8rem; color: var(--text-secondary); }
+        .res-item .res-val { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: #fff; }
+
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-group">
+                <div class="gov-badge">GOVERNANCE</div>
+                <div class="header-title">
+                    <h1>AI 红利分配与中小企业公司治理风险研报</h1>
+                    <p>AI 生产力红利流向拆解 · 为什么利润暴增散户却被剥离？ · 高管瓜分利益四大财技与散户防守指南</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active">
+                    <span style="display:inline-block; width:8px; height:8px; background:var(--gov-red); border-radius:50%;"></span>
+                    2026年8月公司治理专题
+                </div>
+                <div class="tag">代理人风险 Agency Risk</div>
+            </div>
+        </header>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="metric-card safe">
+                <div class="metric-header">
+                    <span class="metric-title">AI 顶级巨头股东回报率</span>
+                    <div class="metric-icon">🛡️</div>
+                </div>
+                <div class="metric-value">回购销毁强</div>
+                <div class="metric-sub" style="color:var(--gov-cyan);">▲ Mag 7 / NVDA 机构持股 >75% 保护散户</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">不透明中小企业剥离风险</span>
+                    <div class="metric-icon">⚠️</div>
+                </div>
+                <div class="metric-value">极高 (&gt;80%)</div>
+                <div class="metric-sub">▲ 利润暴增但散户 EPS 惨遭稀释</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">主要瓜分渠道</span>
+                    <div class="metric-icon">💸</div>
+                </div>
+                <div class="metric-value">SBC + 关联交易</div>
+                <div class="metric-sub">▲ 股票期权增发与关联采购掏空</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">散户避坑黄金法则</span>
+                    <div class="metric-icon">🔍</div>
+                </div>
+                <div class="metric-value">关注每股 FCF</div>
+                <div class="metric-sub">▲ 拒绝看总利润，看净股数是否减少</div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('summary')">📌 核心摘要</button>
+            <button class="tab-btn" onclick="switchTab('tricks')">⚠️ 高管瓜分利益四大财技</button>
+            <button class="tab-btn" onclick="switchTab('comparison')">⚖️ 巨头 vs 不透明中小企业对比</button>
+            <button class="tab-btn" onclick="switchTab('chinaExample')">🇨🇳 A股/中概股与全球中小盘例证</button>
+            <button class="tab-btn" onclick="switchTab('playbook')">🛡️ 散户防剥离四避坑法则</button>
+            <button class="tab-btn" onclick="switchTab('calculator')">🧮 稀释与剥离风险模拟器</button>
+        </div>
+
+        <!-- Tab 1: 核心摘要 -->
+        <div id="summary" class="tab-content active">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📌</div>
+                        <h2>AI 时代散户财富分化与治理陷阱</h2>
+                    </div>
+                    <p>AI 带来了历史性的生产力暴增，但**生产力提升 $\neq$ 散户持股价值提升**。散户能否分享红利完全取决于**公司治理机制 (Corporate Governance)**：</p>
+
+                    <!-- SVG Architecture Diagram for Expropriation Loop -->
+                    <div style="width:100%; margin:16px 0; background:rgba(5, 8, 17, 0.9); padding:16px; border-radius:14px; border:1px solid rgba(239,68,68,0.2);">
+                        <svg viewBox="0 0 760 180" style="width:100%; height:auto;" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ef4444" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#991b1b" stop-opacity="0.8"/>
+                                </linearGradient>
+                                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#0072ff" stop-opacity="0.8"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Node 1: AI Productivity -->
+                            <rect x="20" y="45" width="200" height="90" rx="12" fill="url(#cyanGrad)" stroke="#00f2fe" stroke-width="1.5"/>
+                            <text x="120" y="80" fill="#000000" font-size="13" font-weight="bold" text-anchor="middle">AI 生产力大爆发</text>
+                            <text x="120" y="102" fill="#001d3d" font-size="11" text-anchor="middle">企业营收/利润暴增 X 倍</text>
+
+                            <!-- Line 1-2 Split -->
+                            <path d="M 220 90 L 290 60" stroke="#00f2fe" stroke-width="2"/>
+                            <path d="M 220 90 L 290 120" stroke="#ef4444" stroke-width="2"/>
+
+                            <!-- Top Path: Megacaps -->
+                            <rect x="295" y="25" width="210" height="70" rx="12" fill="rgba(255,255,255,0.05)" stroke="#00f2fe" stroke-width="1.5"/>
+                            <text x="400" y="52" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">透明巨头 (Mag 7 / NVDA)</text>
+                            <text x="400" y="72" fill="#a5f3fc" font-size="10" text-anchor="middle">强回购销毁 + 散户分享红利</text>
+
+                            <!-- Bottom Path: Low-transparency SMEs -->
+                            <rect x="295" y="105" width="210" height="70" rx="12" fill="url(#redGrad)" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="400" y="132" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">不透明中小企业 (SMEs)</text>
+                            <text x="400" y="152" fill="#fca5a5" font-size="10" text-anchor="middle">高管通过财技/关联交易拦截利润</text>
+
+                            <!-- Final End -->
+                            <rect x="580" y="105" width="160" height="70" rx="12" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="660" y="132" fill="#ef4444" font-size="13" font-weight="bold" text-anchor="middle">散户价值惨遭剥离</text>
+                            <text x="660" y="152" fill="#d1d5db" font-size="10" text-anchor="middle">股价暴跌 / EPS 被稀释</text>
+                        </svg>
+                    </div>
+
+                    <ul>
+                        <li><strong>巨头公司 (Mag 7)：</strong> 机构持股 >75%，受 SEC、美股法务与做空机构严密监督。拥有巨额股票回购 (Buybacks)，散户能分到红利。</li>
+                        <li><strong>不透明中小企业：</strong> 控制人通过增发期权 (SBC)、关联采购与天价奖金把利润化为私存，**形成“企业大赚、散户大赔”的奇观**。</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="icon-box">📊</div>
+                        <h2>净利润增长 vs 每股收益 (EPS) 剥离演进</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="epsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: 高管瓜分利益四大财技 -->
+        <div id="tricks" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚠️</div>
+                    <h2>高管诚信度缺失下的五大隐蔽掏空与利益剥离手段</h2>
+                </div>
+                <p style="color:var(--gov-red); font-weight:700;">关键认知：高管诚信度（Executive Integrity）是投资乘法公式中的那个“1”。如果诚信度为零，公司 AI 生产力提升 100 倍乘以零仍然等于零。</p>
+
+                <div class="grid-2" style="margin-top:16px;">
+                    <div style="background:rgba(239,68,68,0.05); padding:18px; border-radius:14px; border:1px solid var(--gov-red);">
+                        <h4 style="color:var(--gov-red); margin-bottom:6px;">1. 高价收购控制人关联空壳公司 (Self-Dealing M&A)</h4>
+                        <p style="font-size:0.88rem; margin-bottom:0;">上市公司出资 $5 亿现金高价收购控制人通过离岸公司私下设立的所谓“AI 初创空壳”，现金直接流进控制人私口袋，数年后宣布 $4.5 亿商誉减值抹平账面。</p>
+                    </div>
+
+                    <div style="background:rgba(239,68,68,0.05); padding:18px; border-radius:14px; border:1px solid var(--gov-red);">
+                        <h4 style="color:var(--gov-red); margin-bottom:6px;">2. 狂暴基于股份的补偿 (SBC) 稀释</h4>
+                        <p style="font-size:0.88rem; margin-bottom:0;">AI 导致业绩暴增，高管通过薪酬委员会向自己发放数亿美元期权（SBC），每年使总股本增加 5%-15%，使**每股收益 (EPS) 惨遭稀释归零**。</p>
+                    </div>
+
+                    <div style="background:rgba(239,68,68,0.05); padding:18px; border-radius:14px; border:1px solid var(--gov-red);">
+                        <h4 style="color:var(--gov-red); margin-bottom:6px;">3. 关联交易与第三方利润转移 (Tunneling)</h4>
+                        <p style="font-size:0.88rem; margin-bottom:0;">将最赚钱的 AI 核心算法、专利或算力采购外包给控制人私下设立的“外围子公司 / VIE”，把高额利润留在私口袋，把高成本留在上市公司。</p>
+                    </div>
+
+                    <div style="background:rgba(239,68,68,0.05); padding:18px; border-radius:14px; border:1px solid var(--gov-red);">
+                        <h4 style="color:var(--gov-red); margin-bottom:6px;">4. 违约担保与预付款资金占用</h4>
+                        <p style="font-size:0.88rem; margin-bottom:0;">上市公司以自身资产为控制人的私有企业提供违规债务担保，或通过“AI 采购预付款”形式将巨额现金长期无息借给控制人私人公司。</p>
+                    </div>
+                </div>
+
+                <div style="background:rgba(239,68,68,0.05); padding:18px; border-radius:14px; border:1px solid var(--gov-red); margin-top:16px;">
+                    <h4 style="color:var(--gov-red); margin-bottom:6px;">5. 低谷期激进私有化 (MBO) 剔除散户</h4>
+                    <p style="font-size:0.88rem; margin-bottom:0;">在行业阶段性低谷或刻意做低财报时，高管以极低溢价将公司私有化退市，踢走散户；待 AI 盈利爆发后再高估值重新上市。</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tab 3: 巨头 vs 不透明中小企业对比 -->
+        <div id="comparison" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">⚖️</div>
+                    <h2>AI 巨头 vs 不透明中小企业治理结构对比</h2>
+                </div>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>顶级 AI 巨头 (Mag 7 / NVDA / LITE)</th>
+                            <th>治理不透明的中小企业 (SMEs)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700;">股东回报机制</td>
+                            <td style="color:#10b981; font-weight:700;">每年数百亿美金股票回购销毁 (Share Count 缩减)</td>
+                            <td style="color:var(--gov-red); font-weight:700;">无分红、无回购，不断增发 (Share Count 暴涨)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">机构持股比例</td>
+                            <td style="color:#10b981; font-weight:700;">&gt; 75% (贝莱德/先锋领航等顶尖机构严密监督)</td>
+                            <td style="color:var(--gov-red); font-weight:700;">&lt; 20% (散户占比高，缺乏机构安保力量)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">财务审计与透明度</td>
+                            <td style="color:#10b981; font-weight:700;">四大会计师事务所严审，SEC 10-K/10-Q 极度透明</td>
+                            <td style="color:var(--gov-red); font-weight:700;">财报频繁修正、关联方杂乱、审计意见存疑</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">散户获益可能性</td>
+                            <td style="color:#10b981; font-weight:700;">高 (分享股价上涨与 EPS 提升)</td>
+                            <td style="color:var(--gov-red); font-weight:700;">极低 (遭遇利润暴增但股价暴跌剥离)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab 4: A股/中概股与全球中小盘例证 -->
+        <div id="chinaExample" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🇨🇳</div>
+                    <h2>A股、中概股及全球微盘股的典型“隧道行为 (Tunneling)”</h2>
+                </div>
+                <p>在缺乏强力小股东保护法案（如美国 Class Action 集体诉讼）的市场中，大股东侵占少数股东利益（Agency Problem）尤为严重：</p>
+                <ul>
+                    <li><strong>“造血给母公司，亏损留上市公司”：</strong> 许多公司主营 AI 业务爆发，但控股股东通过将核心 IP 授权给私有公司，收取巨额授权费（Royalty Fees），把上市公司的利润掏空。</li>
+                    <li><strong>AB 股双重股权结构的滥用：</strong> 管理层仅持有 1% 的经济股权，却握有 80% 的投票权。在利益分配时，通过天价薪酬将现金流划归管理层，而散户由于没有投票权无能为力。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab 5: 散户防剥离四避坑法则 -->
+        <div id="playbook" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🛡️</div>
+                    <h2>散户防范被剥离的“四大黄金避坑法则”</h2>
+                </div>
+                <ul>
+                    <li><strong>法则 1：看“净股数变动率 (Share Count Velocity)”而非总净利润：</strong> 坚决避开总股本每年增长 >3% 的公司。如果一家公司利润大增，但总股本每年增发 10%，果断卖出。</li>
+                    <li><strong>法则 2：拥抱机构持股 >70% 的顶级透明龙头：</strong> 华尔街大型机构（BlackRock/Vanguard）是散户免费的“公司治理保镖”，机构持股占比高意味着管理层不敢明目张胆掏空。</li>
+                    <li><strong>法则 3：关注“每股自由现金流 (FCF / Share)”：</strong> 利润可以靠会计技巧捏造，但真实流进公司账户并可用于回购的每股现金流无法假造。</li>
+                    <li><strong>法则 4：远离内部人持股极低但投票权极高的中小盘：</strong> 避开关联交易密集、审计机构资质较弱的小盘股。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab 6: 稀释与剥离风险模拟器 -->
+        <div id="calculator" class="tab-content">
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="icon-box">🧮</div>
+                    <h2>SBC 稀释与散户实际 EPS 剥离模拟器</h2>
+                </div>
+                <p>滑动调节公司利润增速与管理层股权稀释比例，推演散户实际每股收益 (EPS) 的变化：</p>
+
+                <div class="calc-box">
+                    <div class="calc-controls">
+                        <div class="control-group">
+                            <label>公司总净利润增速 (%): <span id="profVal">50</span></label>
+                            <input type="range" id="profInput" min="0" max="200" step="10" value="50" oninput="updateCalc()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>管理层每年增发/SBC 稀释率 (%): <span id="sbcVal">15</span></label>
+                            <input type="range" id="sbcInput" min="0" max="30" step="1" value="15" oninput="updateCalc()">
+                        </div>
+                    </div>
+
+                    <div class="calc-result">
+                        <div class="res-item">
+                            <div class="res-title">散户实际每股 EPS 增速</div>
+                            <div class="res-val" style="color:var(--gov-cyan);" id="epsRes">+30.4%</div>
+                        </div>
+                        <div class="res-item">
+                            <div class="res-title">5年散户权益被剥离比例</div>
+                            <div class="res-val" style="color:var(--gov-red);" id="diluteRes">49.7%</div>
+                        </div>
+                        <div class="res-item">
+                            <div class="res-title">治理风险评级</div>
+                            <div class="res-val" style="color:var(--gov-amber);" id="riskRes">高度剥离风险 (Avoid)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 AI Era Corporate Governance & Shareholder Protection Report. Generated on 2026-08-17.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+
+            if(tabId === 'summary' && window.epsChart) window.epsChart.update();
+        }
+
+        function updateCalc() {
+            const prof = parseFloat(document.getElementById('profInput').value);
+            const sbc = parseFloat(document.getElementById('sbcInput').value);
+
+            document.getElementById('profVal').innerText = prof + '%';
+            document.getElementById('sbcVal').innerText = sbc + '%';
+
+            // Real EPS growth = (1 + prof) / (1 + sbc) - 1
+            const realEps = ((1 + prof/100) / (1 + sbc/100) - 1) * 100;
+            const dilute5yr = (1 - (1 / Math.pow(1 + sbc/100, 5))) * 100;
+
+            document.getElementById('epsRes').innerText = (realEps >= 0 ? '+' : '') + realEps.toFixed(1) + '%';
+            document.getElementById('diluteRes').innerText = dilute5yr.toFixed(1) + '%';
+
+            let risk = "治理健康 (Healthy)";
+            if(sbc > 5) risk = "中度稀释风险 (Caution)";
+            if(sbc > 12) risk = "高度剥离风险 (Avoid)";
+
+            document.getElementById('riskRes').innerText = risk;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctxEps = document.getElementById('epsChart').getContext('2d');
+            window.epsChart = new Chart(ctxEps, {
+                type: 'line',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                    datasets: [
+                        {
+                            label: '公司总账面净利润 (暴增 300%)',
+                            data: [100, 150, 220, 310, 400],
+                            borderColor: '#00f2fe',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3
+                        },
+                        {
+                            label: '散户实际每股收益 EPS (受高管 SBC 暴抽稀释)',
+                            data: [100, 105, 110, 108, 95],
+                            borderColor: '#ef4444',
+                            borderDash: [5, 5],
+                            borderWidth: 3,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#9ca3af' } } },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+
+            updateCalc();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLTR 现金流折现(DCF)估值框架</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --ink:#e8eaed; --muted:#9aa3b2;
+    --line:#2a2f3a; --accent:#4c9be8; --good:#3fb950; --warn:#e3b341; --bad:#f0616d;
+    --chip:#232833;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7f9; --panel:#ffffff; --panel2:#f0f2f5; --ink:#1a1d23; --muted:#5c6470;
+      --line:#e2e5ea; --accent:#2673c4; --good:#1a7f37; --warn:#9a6700; --bad:#cf222e; --chip:#eef1f5;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+  h2{font-size:19px;margin:38px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:15px;margin:22px 0 8px;color:var(--accent)}
+  p{margin:10px 0}
+  .sub{color:var(--muted);font-size:13.5px;margin-top:0}
+  .lead{font-size:15.5px}
+  code{background:var(--chip);padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .kpi .v{font-size:22px;font-weight:650;margin-top:4px}
+  .kpi .n{font-size:12px;color:var(--muted);margin-top:2px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 20px 14px;margin:14px 0}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  .scroll{overflow-x:auto}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  tbody tr:last-child td{border-bottom:none}
+  .heat td{color:#0b0d10;font-weight:600;border:2px solid var(--bg)}
+  .note{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+    padding:12px 16px;margin:16px 0;font-size:14px}
+  .warn{border-left-color:var(--warn)}
+  .bad{border-left-color:var(--bad)}
+  ul{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  .tag{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:20px;
+    padding:2px 10px;font-size:12px;color:var(--muted);margin:2px 4px 2px 0}
+  .big{font-size:15px}
+  .disc{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+  .center{text-align:center}
+  .price-line{color:var(--bad);font-weight:600}
+  .formula{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;overflow-x:auto;margin:12px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Palantir (PLTR) — 现金流折现(DCF)估值框架</h1>
+  <p class="sub">基于 FY2026 最新财报与指引 · 报告日期 2026-08-08 · 现价约 $172 / 市值约 $410B · 仅供研究,非投资建议</p>
+
+  <div class="note">
+    <b>为什么用 DCF 而不是 P/E?</b> PLTR 的 GAAP 利润仍受大额股权激励(SBC)与早期费用结构扭曲,
+    滚动 P/E ~133、前瞻 P/E ~83,乘数法难以给出稳定锚点。DCF 直接对"公司未来能产生的现金"折现,
+    更适合高增长 + 强现金流的公司——<b>前提是把假设摊在阳光下</b>。这份报告的价值不在于那个"目标价",
+    而在于它逼你写清楚:要让今天的 $172 成立,你必须相信什么。
+  </div>
+
+  <h2>1 · 最新财务基础(建模输入)</h2>
+  <div class="grid">
+    <div class="kpi"><div class="l">FY2026 营收指引</div><div class="v">$8.15B</div><div class="n">同比 +82%</div></div>
+    <div class="kpi"><div class="l">调整后 FCF 指引</div><div class="v">$4.5–4.7B</div><div class="n">调整后利润率 ~56%</div></div>
+    <div class="kpi"><div class="l">GAAP 经营利润率</div><div class="v">~47%</div><div class="n">Q2'26</div></div>
+    <div class="kpi"><div class="l">毛利率</div><div class="v">~85%</div><div class="n">软件级</div></div>
+    <div class="kpi"><div class="l">净现金</div><div class="v">+$9.2B</div><div class="n">现金$9.4B / 负债$0.2B</div></div>
+    <div class="kpi"><div class="l">摊薄股本</div><div class="v">~2.57B</div><div class="n">每年稀释 ~2%</div></div>
+    <div class="kpi"><div class="l">股权激励 SBC</div><div class="v">~$1.0B/yr</div><div class="n">Q2 同比 +66%</div></div>
+    <div class="kpi"><div class="l">现价 / 市值</div><div class="v">$172</div><div class="n">市值 ~$410B</div></div>
+  </div>
+
+  <div class="note bad">
+    <b>⚠ 最关键的一处调整:SBC 陷阱。</b> Palantir 官方口径的"调整后自由现金流"利润率高达 ~56%,
+    但它<b>排除了股权激励</b>。SBC 是真实的经济成本——公司用股票替代现金付薪,代价是每年 ~2% 的股东稀释。
+    一个严谨的 DCF <b>必须二选一</b>:(a) 从 FCF 中<b>扣除 SBC</b>(把现金流打回真实水平,本报告采用),
+    或 (b) 在未来<b>放大股本数</b>。若两者都不做、直接用 56% 的利润率除以当前股本,会系统性高估 25–35%。
+    本报告据此把稳态 FCF 利润率设为 <b>~38%</b>(而非 56%)。
+  </div>
+
+  <h2>2 · DCF 计算框架</h2>
+  <p>PLTR 处于高增长期,近端现金流占比小、终值占比大,需用 <b>多阶段(10 年)显性预测 + 终值</b>:</p>
+  <div class="formula">
+企业价值 EV = Σ [ FCFₜ / (1+WACC)ᵗ ]  (t = 1…10)  +  终值现值<br>
+终值 TV = FCF₁₀ × (1+g) / (WACC − g)     ← 永续增长法(Gordon)<br>
+   或 TV = FCF₁₀ × 退出倍数              ← 退出倍数法(交叉验证)<br><br>
+股权价值 = EV + 净现金($9.2B)<br>
+每股内在价值 = 股权价值 / 摊薄股本(已把 SBC 计为成本 → 用当前 ~2.57B 股)
+  </div>
+
+  <h3>五大关键假设(以及本报告取值)</h3>
+  <div class="scroll"><div class="panel"><table>
+    <thead><tr><th>假设项</th><th>熊市</th><th>基准</th><th>牛市</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>营收 CAGR(未来 5 年)</td><td>~22%</td><td>~30%</td><td>~38%</td><td>从 2027 的 40%+ 逐年递减(大数定律)</td></tr>
+      <tr><td>稳态 FCF 利润率(含 SBC 成本)</td><td>32%</td><td>38%</td><td>45%</td><td>官方"调整后"56%,扣 SBC 后回落</td></tr>
+      <tr><td>折现率 WACC</td><td>13%</td><td>11%</td><td>9%</td><td>β≈1.5–1.7,无债,高波动</td></tr>
+      <tr><td>永续增长率 g</td><td>3%</td><td>4%</td><td>5%</td><td>接近长期名义 GDP</td></tr>
+      <tr><td>终值退出倍数(EV/FCF)</td><td>~18x</td><td>~25x</td><td>~30x</td><td>用于交叉验证 Gordon 结果</td></tr>
+    </tbody>
+  </table></div></div>
+
+  <h2>3 · 基准情景:10 年现金流预测</h2>
+  <p class="sub">营收从 $8.15B(2026)按 42%→8% 逐年递减增长;FCF 利润率 38%;WACC 11%;g 4%。单位:十亿美元。</p>
+  <div class="scroll"><div class="panel"><table>
+    <thead><tr><th>年份</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2032</th><th>2033</th><th>2034</th><th>2035</th><th>2036</th></tr></thead>
+    <tbody>
+      <tr><td>营收增速</td><td>42%</td><td>35%</td><td>30%</td><td>25%</td><td>22%</td><td>18%</td><td>15%</td><td>12%</td><td>10%</td><td>8%</td></tr>
+      <tr><td>营收</td><td>11.6</td><td>15.6</td><td>20.3</td><td>25.4</td><td>31.0</td><td>36.6</td><td>42.1</td><td>47.1</td><td>51.9</td><td>56.0</td></tr>
+      <tr><td>FCF(38%)</td><td>4.4</td><td>5.9</td><td>7.7</td><td>9.7</td><td>11.8</td><td>13.9</td><td>16.0</td><td>17.9</td><td>19.7</td><td>21.3</td></tr>
+      <tr><td>现值 PV</td><td>4.0</td><td>4.8</td><td>5.6</td><td>6.4</td><td>7.0</td><td>7.4</td><td>7.7</td><td>7.8</td><td>7.7</td><td>7.5</td></tr>
+    </tbody>
+  </table></div></div>
+  <div class="grid">
+    <div class="kpi"><div class="l">PV(10 年 FCF)</div><div class="v">~$66B</div></div>
+    <div class="kpi"><div class="l">PV(终值)</div><div class="v">~$111B</div><div class="n">占 EV 约 63%</div></div>
+    <div class="kpi"><div class="l">企业价值 EV</div><div class="v">~$177B</div></div>
+    <div class="kpi"><div class="l">每股内在价值</div><div class="v">~$72</div><div class="n">vs 现价 $172</div></div>
+  </div>
+
+  <h2>4 · 敏感性分析(每股内在价值,美元)</h2>
+  <p class="sub">固定基准运营假设(30% 五年 CAGR、38% FCF 利润率),变动 WACC × 永续增长率 g。颜色越绿越接近/超过现价 <span class="price-line">$172</span>。</p>
+  <div class="scroll"><div class="panel"><table class="heat">
+    <thead><tr><th style="color:var(--muted)">WACC ＼ g</th><th>g = 3%</th><th>g = 4%</th><th>g = 5%</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--ink)">9%</td>  <td style="background:#f6d488">$91</td> <td style="background:#f2c877">$104</td><td style="background:#e9b866">$123</td></tr>
+      <tr><td style="color:var(--ink)">11%</td> <td style="background:#f7a58c">$66</td> <td style="background:#f6ad8f">$72</td> <td style="background:#f5b58f">$79</td></tr>
+      <tr><td style="color:var(--ink)">13%</td> <td style="background:#f0616d">$51</td> <td style="background:#f26a72">$54</td> <td style="background:#f47478">$58</td></tr>
+    </tbody>
+  </table></div></div>
+  <div class="note">
+    在"合理但已偏乐观"的假设区间内(30% 递减增长、38% FCF 利润率),DCF 给出的内在价值区间为
+    <b>约 $51–$123</b>,中枢约 <b>$70–$90</b>。<b>整张表没有一格触及现价 $172。</b>
+    也就是说,当前市值并不能被"温和乐观"的现金流假设支撑。
+  </div>
+
+  <h2>5 · 反推 DCF:$172 需要相信什么?</h2>
+  <p>与其问"值多少",不如问"市场已经定价了什么"。要让内在价值达到现价 $172(股权价值 ~$447B),
+     必须<b>同时叠加</b>以下几乎全部乐观条件:</p>
+  <ul>
+    <li><b>增长</b>:未来十年维持 ~35–40% 的营收复合增速(相当于 2035 年营收超 $80B,约为今天的 10 倍);</li>
+    <li><b>利润率</b>:稳态 FCF 利润率维持在 ~50%+ —— 实质上等于<b>假设 SBC 稀释可以忽略</b>;</li>
+    <li><b>折现率</b>:WACC 压到 ~9%(即市场认为 PLTR 风险接近成熟蓝筹);</li>
+    <li><b>永续增长</b>:g ≈ 5%(高于长期名义 GDP)。</li>
+  </ul>
+  <div class="note warn">
+    这四项<b>各自</b>都算激进;要求它们<b>同时</b>成立,是典型的"完美未来定价"。
+    DCF 的结论不是"PLTR 一定会跌",而是:<b>现价几乎没有为执行失误、增速回落或利率上行留任何安全边际</b>。
+    风险收益不对称——上行需要奇迹叠加,下行只需一次增速 miss。
+  </div>
+
+  <h2>6 · 模型的局限(诚实声明)</h2>
+  <ul>
+    <li><b>终值主导</b>:EV 的 ~63% 来自 10 年后的终值,对 WACC/g 的微小变动极其敏感(见敏感表)。</li>
+    <li><b>10 年增长路径是主观的</b>:AI/政府/Sovereign 需求若持续超预期,基准增速可能过于保守;反之亦然。</li>
+    <li><b>DCF 不预测时机</b>:它给"内在价值",不给"何时回归"。市场可以在高于内在价值的位置停留数年(见上一份"高价能维持多久"分析)。</li>
+    <li><b>SBC 的处理方式会显著改变结论</b>:本报告扣 SBC → 用当前股本;若改用官方 56% 利润率并放大股本,结果需重算。</li>
+    <li>建议用<b>退出倍数法</b>(25x EV/FCF)对终值做交叉验证,并做蒙特卡洛看分布而非单点。</li>
+  </ul>
+
+  <h2>6.5 · 高管诚信度与公司治理评估 (Executive Integrity & Governance)</h2>
+  <div class="note">
+    <p><b>根据“高管诚信度是投资乘法公式中那个1”的治理模型，对 PLTR 领导层及治理进行量化透视：</b></p>
+    <ul>
+      <li><b>管理层战略诚信度极高 (Alex Karp)</b>: CEO <b>Alex Karp</b> 与联合创始人 <b>Peter Thiel</b> 对西方与美国国防安全极度忠诚，战略言行一致，坚决拒绝与不良政治势力苟合，绝无离岸关联空壳套现或欺诈前科。</li>
+      <li><b>AB 股双重股权结构 (F-Class Voting Control) 需关注</b>: 创始人通过 F-Class 股票握有终身控制投票权。虽然确保了公司战略长远不被短期季度报表绑架，但小股东几乎没有投票权反制管理层。</li>
+      <li><b>SBC 股权稀释关注度</b>: 早期发放了规模庞大的股票期权 (SBC)。随着入选标的 S&P 500 与 GAAP 净利润大增，SBC 占营收比例显著下降，但仍需持续监控净股数变动。</li>
+      <li><b>诚信度与治理综合评分</b>: <b>7.8 / 10.0</b> (战略诚信极高，但创始人投票权控制力极强，需注意 SBC 稀释比率)。</li>
+    </ul>
+  </div>
+
+  <h2>7 · 结论</h2>
+
+  <div class="note">
+    <p class="big" style="margin-top:4px"><b>DCF 内在价值中枢 ≈ $70–$90/股,合理区间 $51–$123;现价 $172。</b></p>
+    <p>用现金流折现,PLTR 的基本面(85% 毛利、47% GAAP 经营利润率、$4.5B+ 现金流、净现金 $9B)是<b>真实且优秀</b>的——
+       它绝非泡沫空壳。但即便如此,<b>把最新财报数据代入 DCF,也很难在温和乐观假设下证明当前股价合理。</b>
+       市场给的溢价,买的是"十年 35%+ 增长 + SBC 免费 + 蓝筹级折现率"这一组同时成立的叙事。</p>
+    <p style="margin-bottom:6px">对你的实际决策:关注每季度的<b>营收增速拐点</b>与<b>SBC/股本稀释速度</b>——
+       这两个变量一旦恶化,DCF 的下行空间(相对现价 40%+)会迅速兑现。</p>
+  </div>
+
+  <p><span class="tag">FY2026 营收 $8.15B</span><span class="tag">调整后 FCF $4.5–4.7B</span><span class="tag">净现金 $9.2B</span><span class="tag">摊薄股本 2.57B</span><span class="tag">DCF 中枢 ~$72</span><span class="tag">现价 $172</span></p>
+
+  <div class="disc">
+    <b>免责声明:</b> 本报告为基于公开财务数据的估值方法演示,所有假设(增速、利润率、WACC、永续增长)均为演示性质,
+    并非精确预测,亦不构成任何买卖建议。DCF 结果对假设高度敏感,请自行核对最新财报并做独立判断。<br>
+    数据来源:Palantir Q2 2026 财报与指引(Businesswire / CNBC)、stockanalysis.com、MacroTrends、financecharts.com(截至 2026-08-09)。
+  </div>
+
+</div>
+</body>
+</html>
