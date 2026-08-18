@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年8月 金融研报与投资智库全景导航 (Research August 2026)</title>
+    <meta name="description" content="2026年8月最新金融研报与投资智库导航：涵盖 NVDA, GOOG, TSLA, SPCX, MU, SNDK, LITE, COHR, PLTR 独立研报；美债与熊市宏观评估；及 Serenity, Leopold, 谷歌投资帝国与公司治理智库。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070914;
+            --bg-card: rgba(18, 22, 40, 0.78);
+            --bg-card-hover: rgba(26, 32, 58, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2fe;
+            --accent-purple: #9d4edd;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(157, 78, 221, 0.06) 0%, transparent 40%);
+            padding: 30px 20px 80px 20px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 30px;
+            background: rgba(13, 19, 31, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 36px;
+        }
+
+        .header-title h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: var(--accent-cyan);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .badge {
+            background: rgba(0, 242, 254, 0.12);
+            color: var(--accent-cyan);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--accent-cyan);
+        }
+
+        .card.purple::before { background: var(--accent-purple); }
+        .card.green::before { background: var(--accent-green); }
+        .card.yellow::before { background: var(--accent-yellow); }
+        .card.blue::before { background: var(--accent-blue); }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 15px rgba(0, 242, 254, 0.15);
+            background: var(--bg-card-hover);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .stock-avatar {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .card-meta .name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-meta .sub {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+            line-height: 1.55;
+        }
+
+        .card-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            display: flex; align-items: center; gap: 6px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-title">
+                <h1>2026年8月 金融研报与投资智库全景导航</h1>
+                <p>Research August 2026 Hub · 9大核心标的深度研报 · 3大宏观熊市评估 · 4大投资人智库</p>
+            </div>
+            <a href="../index.html" class="back-btn">&larr; 返回仓库总门户</a>
+        </header>
+
+        <!-- Section 1: 核心标的深度研报 -->
+        <div class="section-header">
+            <div class="section-title">⚡ 核心标的单股深度研报</div>
+            <div class="badge">9 核心标的</div>
+        </div>
+
+        <div class="grid">
+            <!-- NVDA -->
+            <a href="./nvda/index.html" class="card green">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#10b981; border-color:#10b981;">NVDA</div>
+                        <div class="card-meta">
+                            <div class="name">NVIDIA (英伟达)</div>
+                            <div class="sub">AI 算力霸主 · Blackwell/Rubin 架构</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        市盈率与市销率分析、Blackwell NVL72 供需缺口推演、CoWoS-L 封装壁垒及高管诚信度 9.8 分评估。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#10b981;">查看 NVDA 研报 &rarr;</div>
+            </a>
+
+            <!-- GOOG -->
+            <a href="./goog/index.html" class="card blue">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#4285f4; border-color:#4285f4;">GOOG</div>
+                        <div class="card-meta">
+                            <div class="name">Alphabet / Google</div>
+                            <div class="sub">Gemini 全栈 AI · TPU v6 & Cloud</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        搜索广告流量护城河、Google Cloud 盈利暴增、TPU 自研芯片降低 CapEx 及投资帝国价值重估。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#4285f4;">查看 GOOG 研报 &rarr;</div>
+            </a>
+
+            <!-- TSLA -->
+            <a href="./tsla/index.html" class="card red">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#ea4335; border-color:#ea4335;">TSLA</div>
+                        <div class="card-meta">
+                            <div class="name">Tesla (特斯拉)</div>
+                            <div class="sub">FSD V13 · Robotaxi & Optimus</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        无监督 FSD 商业化拐点、Robotaxi 运营成本推演、Optimus 人形机器人量产及物理 AI 估值重塑。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#ea4335;">查看 TSLA 研报 &rarr;</div>
+            </a>
+
+            <!-- SPCX -->
+            <a href="./spcx/index.html" class="card yellow">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#f59e0b; border-color:#f59e0b;">SPCX</div>
+                        <div class="card-meta">
+                            <div class="name">SpaceX (Space Exploration)</div>
+                            <div class="sub">Starlink · Starship 商业化</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        星链 (Starlink) 现金流转正、星舰 (Starship) 运载成本降至 $10/kg、天基算力与二级市场重估。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#f59e0b;">查看 SPCX 研报 &rarr;</div>
+            </a>
+
+            <!-- MU -->
+            <a href="./mu/index.html" class="card blue">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#3b82f6; border-color:#3b82f6;">MU</div>
+                        <div class="card-meta">
+                            <div class="name">Micron Technology (美光)</div>
+                            <div class="sub">HBM4 & 1-beta DRAM 超级周期</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        HBM4 产能售罄至 2027、1-beta 低功耗卡点、Sanjay Mehrotra CEO 9.5 分顶尖诚信度与回购纪律。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#3b82f6;">查看 MU 研报 &rarr;</div>
+            </a>
+
+            <!-- SNDK -->
+            <a href="./sndk/index.html" class="card yellow">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#fbbc05; border-color:#fbbc05;">SNDK</div>
+                        <div class="card-meta">
+                            <div class="name">SanDisk (闪迪)</div>
+                            <div class="sub">纯 Flash 龙头 · 企业级 eSSD</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        WDC 拆分后独立上市、数据中心 eSSD 需求暴增 +437%、NBM 长期长协锁价及 David Goeckeler 治理。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#fbbc05;">查看 SNDK 研报 &rarr;</div>
+            </a>
+
+            <!-- LITE -->
+            <a href="./lite/index.html" class="card cyan">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#00f2fe; border-color:#00f2fe;">LITE</div>
+                        <div class="card-meta">
+                            <div class="name">Lumentum Holdings</div>
+                            <div class="sub">200G EML 激光芯片 · 1.6T 光模块</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        Q4 营收突破 $1.01B (+109%)、毛利率 50.4%、全球 EML 激光芯片 55% 垄断、CPO 光源及 Alan Lowe 治理。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#00f2fe;">查看 LITE 研报 &rarr;</div>
+            </a>
+
+            <!-- COHR -->
+            <a href="./cohr/index.html" class="card purple">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#9d4edd; border-color:#9d4edd;">COHR</div>
+                        <div class="card-meta">
+                            <div class="name">Coherent Corp.</div>
+                            <div class="sub">800G/1.6T 光模块 · SiC 碳化硅</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        Q4 营收 $2.05B 创纪录、Jim Anderson 提质增效改革、10kV 厚外延 SiC 电力变压材料与竞品格局。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#9d4edd;">查看 COHR 研报 &rarr;</div>
+            </a>
+
+            <!-- PLTR -->
+            <a href="./pltr/pltr_dcf_report.html" class="card green">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#10b981; border-color:#10b981;">PLTR</div>
+                        <div class="card-meta">
+                            <div class="name">Palantir Technologies</div>
+                            <div class="sub">AIP 商业化 · 10年 DCF 估值模型</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        AIP 客户暴增、47% GAAP 经营利润率、DCF 模型价值中枢推演及 Alex Karp F-Class 投票权与 SBC 评估。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#10b981;">查看 PLTR 研报 &rarr;</div>
+            </a>
+        </div>
+
+        <!-- Section 2: 美债与宏观 Bear Market 评估 -->
+        <div class="section-header">
+            <div class="section-title">📉 宏观风控、美债风险与熊市概率</div>
+            <div class="badge" style="background:rgba(239, 68, 68, 0.12); color:#ef4444;">3 宏观专题</div>
+        </div>
+
+        <div class="grid">
+            <!-- Debt Risk -->
+            <a href="./market/us_debt_risk.html" class="card red">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#ef4444; border-color:#ef4444;">DEBT</div>
+                        <div class="card-meta">
+                            <div class="name">美债 $35.8万亿 风险专题</div>
+                            <div class="sub">学术文献综述与百年国债可行性</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        Cochrane FTPL 物价财政理论、Calomiris 财政主导与金融压制、Blanchard r<g 条件及特朗普百年国债方案可行性评估。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#ef4444;">查看美债风险报告 &rarr;</div>
+            </a>
+
+            <!-- Policy Shocks -->
+            <a href="./market/us_policy_shocks_bear_market.html" class="card yellow">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#f59e0b; border-color:#f59e0b;">BEAR</div>
+                        <div class="card-meta">
+                            <div class="name">政策冲击与熊市概率评估</div>
+                            <div class="sub">关税/战争/内幕交易与长期熊市概率</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        中短期 V/W 波动概率 (85%-90%)、长期熊市概率 (20%-25%)、Political Economy 循环与美股三大真正熊市触点。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#f59e0b;">查看政策冲击与熊市报告 &rarr;</div>
+            </a>
+
+            <!-- Market Macro & AI Collapse -->
+            <a href="./market/us_market_risks_ai_collapse.html" class="card purple">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#9d4edd; border-color:#9d4edd;">AI BUBBLE</div>
+                        <div class="card-meta">
+                            <div class="name">美股宏观风险与 AI 叙事崩盘概率</div>
+                            <div class="sub">互联网泡沫对比与 4 大隐患</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        AI 叙事彻底崩盘概率 (15%-20%)、CapEx 消化与估值压缩 (65%-75%)、与 2000 年 Dot-com 泡沫 5 维量化对比。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#9d4edd;">查看 AI 泡沫与宏观风险报告 &rarr;</div>
+            </a>
+        </div>
+
+        <!-- Section 3: 投资人与公司治理智库 -->
+        <div class="section-header">
+            <div class="section-title">🧠 顶级投资人智库与公司治理</div>
+            <div class="badge" style="background:rgba(16, 185, 129, 0.12); color:#10b981;">4 智库专题</div>
+        </div>
+
+        <div class="grid">
+            <!-- Serenity -->
+            <a href="./investors/serenity/index.html" class="card green">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#10b981; border-color:#10b981;">SERENITY</div>
+                        <div class="card-meta">
+                            <div class="name">Serenity 紫苏叶战法</div>
+                            <div class="sub">@aleabitoreddit · AI 物理卡点专家</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        避开金枪鱼大腹（NVDA/MSFT），倒推 BOM 表挖掘 AXTI (InP 衬底)、Sivers (CPO 激光器) 等小盘暴涨股选股模型。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#10b981;">查看 Serenity 专栏 &rarr;</div>
+            </a>
+
+            <!-- Leopold -->
+            <a href="./investors/leopold/index.html" class="card yellow">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#f59e0b; border-color:#f59e0b;">LEOPOLD</div>
+                        <div class="card-meta">
+                            <div class="name">Leopold Aschenbrenner</div>
+                            <div class="sub">Situational Awareness LP 创始人</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        前 OpenAI 超级对齐研究员。165页轰动长文《Situational Awareness》作者，预言 2027 AGI 与万亿集群 10GW 电力瓶颈。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#f59e0b;">查看 Leopold 专栏 &rarr;</div>
+            </a>
+
+            <!-- Google Invest -->
+            <a href="./investors/google_invest.html" class="card blue">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#4285f4; border-color:#4285f4;">GOOG INVEST</div>
+                        <div class="card-meta">
+                            <div class="name">谷歌“五位一体”投资帝国</div>
+                            <div class="sub">Gradient · Series X · GV · CapitalG · Corp Dev</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        深度拆解谷歌投资兵团、Android/YouTube/DeepMind 最高 ROI 并购案，以及散户 13F 抄作业与物理卡点倒推法。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#4285f4;">查看谷歌投资帝国报告 &rarr;</div>
+            </a>
+
+            <!-- Governance & Integrity -->
+            <a href="./investors/ai_sme_governance_risk.html" class="card red">
+                <div>
+                    <div class="card-top">
+                        <div class="stock-avatar" style="color:#ef4444; border-color:#ef4444;">GOVERNANCE</div>
+                        <div class="card-meta">
+                            <div class="name">高管诚信度与散户防剥离</div>
+                            <div class="sub">Executive Integrity & Tunneling Risk</div>
+                        </div>
+                    </div>
+                    <div class="card-desc">
+                        解析高管诚信度“1”乘法效应、高价收购控制人空壳公司套现、SBC 狂暴稀释以及散户 4 大黄金避坑与防掏空法则。
+                    </div>
+                </div>
+                <div class="card-link" style="color:#ef4444;">查看公司治理防剥离报告 &rarr;</div>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2026 Financial Research Repository (August 2026 Edition). Maintained at /Users/hfgong/github/financial_research/research-2026-08.</p>
+        </footer>
+    </div>
+</body>
+</html>
