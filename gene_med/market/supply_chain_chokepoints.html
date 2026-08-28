@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基因疗法供应链"卡脖子/紫苏叶"拆解：mRNA / siRNA / CAR-T 的隐形瓶颈（乙腈 · LNP脂质 · CleanCap · 病毒载体 · 核酸合成仪）</title>
+    <meta name="description" content="用 Serenity（白毛股神）的瓶颈卡脖子理论（Chokepoint Theory）与紫苏叶比喻，逆向拆解 mRNA、siRNA、CAR-T 三条基因疗法供应链的 BOM，锁定乙腈、亚磷酰胺、CleanCap 加帽试剂、PEG/可电离脂质、LNP 微流控设备、慢病毒载体等隐形瓶颈，并给出金枪鱼 vs 紫苏叶投资地图。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bio-green: #34e5a4;
+            --bio-teal: #22d3ee;
+            --shiso: #7dd3a0;
+            --toro: #fb7185;
+            --bio-purple: #a78bfa;
+            --bio-amber: #fbbf24;
+            --bg-dark: #060a09;
+            --bg-card: rgba(13, 24, 21, 0.78);
+            --bg-card-hover: rgba(18, 34, 30, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(52, 229, 164, 0.35);
+            --text-primary: #f1f5f4;
+            --text-secondary: #97a6a1;
+            --text-muted: #64726d;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans);
+            line-height: 1.6; min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 12% 12%, rgba(52, 229, 164, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 88% 88%, rgba(34, 211, 238, 0.07) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+        .container { max-width: 1320px; margin: 0 auto; padding: 24px 20px 80px 20px; }
+        header {
+            display: flex; justify-content: space-between; align-items: center; padding: 22px 30px;
+            background: rgba(10, 18, 16, 0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color);
+            border-radius: 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); flex-wrap: wrap; gap: 16px;
+        }
+        .logo-group { display: flex; align-items: center; gap: 16px; }
+        .bio-badge {
+            background: linear-gradient(135deg, var(--shiso), var(--bio-teal)); color: #04120d; font-weight: 800;
+            font-size: 1.05rem; padding: 8px 16px; border-radius: 12px; letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(52, 229, 164, 0.35);
+        }
+        .header-title h1 {
+            font-size: 1.32rem; font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-title p { font-size: 0.85rem; color: var(--text-secondary); }
+        .meta-tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .tag {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 6px 14px;
+            border-radius: 30px; font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;
+        }
+        .tag-active { border-color: var(--shiso); color: var(--shiso); background: rgba(52, 229, 164, 0.08); }
+        .crosslink { margin-bottom: 26px; font-size: 0.85rem; color: var(--text-secondary); }
+        .crosslink a { color: var(--bio-teal); text-decoration: none; }
+        .crosslink a:hover { text-decoration: underline; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 32px; }
+        .metric-card {
+            background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 22px; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .metric-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--shiso); opacity: 0.85; }
+        .metric-card:hover {
+            transform: translateY(-4px); border-color: var(--border-glow);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(52, 229, 164, 0.28); background: var(--bg-card-hover);
+        }
+        .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .metric-title { font-size: 0.82rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .metric-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(52, 229, 164, 0.15); color: var(--shiso); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .metric-sub { font-size: 0.78rem; color: var(--shiso); display: flex; align-items: center; gap: 4px; }
+        .tabs-nav { display: flex; gap: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 30px; overflow-x: auto; scrollbar-width: none; }
+        .tabs-nav::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-secondary);
+            padding: 12px 20px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; white-space: nowrap;
+        }
+        .tab-btn:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.08); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(52, 229, 164, 0.2), rgba(52, 229, 164, 0.05));
+            border-color: var(--shiso); color: var(--shiso); box-shadow: 0 0 15px rgba(52, 229, 164, 0.25);
+        }
+        .tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(48%, 1fr)); gap: 24px; margin-bottom: 24px; }
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+        .content-card {
+            background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 24px;
+        }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 14px; }
+        .card-header h2 { font-size: 1.18rem; font-weight: 700; color: #fff; }
+        .card-header .icon-box { background: rgba(52, 229, 164, 0.15); color: var(--shiso); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        h3.sub { color: var(--bio-teal); font-size: 1.02rem; margin: 18px 0 8px; }
+        p { color: #cdd8d4; font-size: 0.93rem; margin-bottom: 14px; line-height: 1.72; }
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+        ul li { position: relative; padding-left: 24px; margin-bottom: 12px; color: #cdd8d4; font-size: 0.92rem; }
+        ul li::before { content: '🌿'; position: absolute; left: 0; top: 2px; font-size: 0.8rem; }
+        ol.steps { counter-reset: step; list-style: none; padding-left: 0; }
+        ol.steps li { position: relative; padding-left: 42px; margin-bottom: 14px; color: #cdd8d4; font-size: 0.93rem; }
+        ol.steps li::before {
+            counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0;
+            width: 28px; height: 28px; border-radius: 8px; background: rgba(52, 229, 164, 0.15); color: var(--shiso);
+            font-family: var(--font-mono); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+        }
+        .bom { font-family: var(--font-mono); font-size: 0.82rem; line-height: 2.1; color: var(--text-secondary); background: rgba(10, 16, 14, 0.7); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 18px; overflow-x: auto; }
+        .bom .node { color: #cdd8d4; }
+        .bom .choke { color: var(--shiso); font-weight: 700; }
+        .bom .arr { color: var(--text-muted); }
+        .table-custom { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        .table-custom th, .table-custom td { padding: 11px 13px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        .table-custom th { color: var(--text-secondary); font-weight: 600; }
+        .table-wrap { overflow-x: auto; }
+        .chart-container { position: relative; width: 100%; height: 340px; margin-top: 16px; }
+        .pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; font-family: var(--font-mono); }
+        .pill-s { background: rgba(52, 229, 164, 0.18); color: var(--shiso); }
+        .pill-a { background: rgba(34, 211, 238, 0.16); color: var(--bio-teal); }
+        .pill-b { background: rgba(167, 139, 250, 0.16); color: var(--bio-purple); }
+        .pill-geo { background: rgba(251, 191, 36, 0.16); color: var(--bio-amber); }
+        .callout { background: rgba(52, 229, 164, 0.07); border: 1px solid var(--border-glow); border-radius: 14px; padding: 18px 20px; margin: 16px 0; }
+        .callout.warn { background: rgba(251, 191, 36, 0.07); border-color: rgba(251, 191, 36, 0.35); }
+        .callout.toro { background: rgba(251, 113, 133, 0.07); border-color: rgba(251, 113, 133, 0.3); }
+        footer { text-align: center; padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 50px; }
+        .ref-list { text-align: left; max-width: 1000px; margin: 20px auto 0; font-size: 0.76rem; line-height: 1.9; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+        strong { color: #eafff6; }
+        .shiso-tag { color: var(--shiso); font-weight: 700; }
+        .toro-tag { color: var(--toro); font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-group">
+                <div class="bio-badge">🌿 CHOKEPOINT</div>
+                <div class="header-title">
+                    <h1>基因疗法供应链"卡脖子/紫苏叶"拆解</h1>
+                    <p>用白毛股神 Serenity 的瓶颈理论 (Chokepoint Theory)，逆向拆 mRNA · siRNA · CAR-T 的 BOM，找隐形瓶颈</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active">
+                    <span style="display:inline-block; width:8px; height:8px; background:var(--shiso); border-radius:50%;"></span>
+                    2026年8月 · 联网核实版
+                </div>
+                <div class="tag">供应链专题</div>
+            </div>
+        </header>
+
+        <div class="crosslink">
+            🔗 配套阅读：<a href="./index.html">《基因疗法投资展望 2026–2035：五大赛道》</a> ·
+            方法论出处：<a href="../../research-2026-08/investors/serenity/index.html">《白毛股神 Serenity 卡脖子战法研究》</a>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">siRNA 最深卡点</span><div class="metric-icon">🧪</div></div>
+                <div class="metric-value">乙腈 (Acetonitrile)</div>
+                <div class="metric-sub">▲ 每公斤寡核苷酸吃掉 ~1000kg 溶剂</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">mRNA 隐形垄断</span><div class="metric-icon">🎩</div></div>
+                <div class="metric-value">CleanCap 加帽试剂</div>
+                <div class="metric-sub">▲ Maravai/TriLink 独家，多数获批 mRNA 都用</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">CAR-T 咽喉</span><div class="metric-icon">🦠</div></div>
+                <div class="metric-value">慢病毒载体</div>
+                <div class="metric-sub">▲ GMP 产能排队最长达 3 年</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">三线通吃的军火商</span><div class="metric-icon">⚙️</div></div>
+                <div class="metric-value">Danaher (质粒/酶/设备)</div>
+                <div class="metric-sub">▲ Aldevron + Cytiva 横跨三条链</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('method')">🌿 方法论：把紫苏叶套到基因链</button>
+            <button class="tab-btn" onclick="switchTab('mrna')">💉 mRNA 卡点</button>
+            <button class="tab-btn" onclick="switchTab('sirna')">🔇 siRNA / 寡核苷酸 卡点</button>
+            <button class="tab-btn" onclick="switchTab('cart')">🛡️ CAR-T 卡点</button>
+            <button class="tab-btn" onclick="switchTab('score')">📊 卡点总排名</button>
+            <button class="tab-btn" onclick="switchTab('invest')">💰 金枪鱼 vs 紫苏叶投资地图</button>
+        </div>
+
+        <!-- Tab: Method -->
+        <div id="method" class="tab-content active">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🌿</div><h2>Serenity 卡脖子四步法 → 基因疗法</h2></div>
+                    <p>Serenity（白毛股神）的核心方法:<strong>不买餐桌上最贵、人人盯着的金枪鱼大腹(如 Moderna、诺华),而去买垫在刺身底下、平时没人看、可一旦缺席整道菜就上不了桌的"紫苏叶"</strong>。套到基因疗法上就是——绕开药企主角,沿 BOM 逆向找那些扩产周期长、专利/产能高度集中、下游客户无法轻易更换的隐形环节。</p>
+                    <ol class="steps">
+                        <li><strong>锁定不可逆大趋势:</strong> mRNA/siRNA/CAR-T 三条基因疗法同时进入商业化放量期(见配套展望报告)。</li>
+                        <li><strong>自上而下倒推 BOM:</strong> 从"成药"往上拆:制剂 → 原料药 → 关键试剂/酶/脂质 → 大宗溶剂/耗材 → 生产设备。</li>
+                        <li><strong>找"最短的木板":</strong> 扩产周期长(建厂/认证 18–36 个月)、供应商屈指可数、切换需重新做 CMC/监管的环节。</li>
+                        <li><strong>低位埋伏预期差:</strong> 在卖方尚未充分覆盖的"卖铲人"里布局,静待三条链共振放量。</li>
+                    </ol>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🍣</div><h2>谁是金枪鱼,谁是紫苏叶?</h2></div>
+                    <p><span class="toro-tag">🍣 金枪鱼大腹(拥挤主角):</span></p>
+                    <p style="font-size:0.9rem; margin-top:-6px;">Moderna、BioNTech、Alnylam、诺华、吉利德/Kite、CRISPR Tx——终端药企,全市场紧盯,估值充分。</p>
+                    <p><span class="shiso-tag">🌿 紫苏叶(隐形瓶颈):</span></p>
+                    <ul>
+                        <li><strong>乙腈</strong>——寡核苷酸合成的"命脉溶剂",却是丙烯腈的副产物,无专门产线。</li>
+                        <li><strong>CleanCap 加帽试剂 / 修饰核苷酸 / IVT 酶</strong>——没有它,mRNA 无法翻译。</li>
+                        <li><strong>PEG 脂质 / 可电离脂质</strong>——LNP 的"皮",少数几家 GMP 供应。</li>
+                        <li><strong>慢病毒载体 / 质粒 DNA / 磁珠</strong>——CAR-T 的"生产资料",CDMO 排队。</li>
+                    </ul>
+                    <div class="callout" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.86rem;"><strong>一句话:</strong>药可能失败、可能被替代;但只要这三条链继续放量,"紫苏叶"就持续收过路费。这正是 Serenity 说的"卖铲人"逻辑。</p></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🗺️</div><h2>三条链 BOM 逆向拆解(卡点标绿)</h2></div>
+                <h3 class="sub">① mRNA 疗法</h3>
+                <div class="bom">
+                    <span class="node">成药 mRNA-LNP</span> <span class="arr">◄──</span> <span class="node">LNP 包裹</span> <span class="arr">◄──</span> <span class="choke">可电离脂质 + PEG脂质</span> <span class="arr">+</span> 胆固醇/DSPC <span class="arr">| 及 |</span> <span class="node">mRNA 原料药</span> <span class="arr">◄──</span> 体外转录(IVT) <span class="arr">◄──</span> <span class="choke">修饰核苷酸(NTP) + CleanCap 加帽 + T7/加帽酶</span> <span class="arr">◄──</span> <span class="choke">线性化质粒 DNA 模板</span>
+                    <br><span class="arr">设备层:</span> <span class="choke">LNP 微流控混合设备(NanoAssemblr/Cytiva)</span>
+                </div>
+                <h3 class="sub">② siRNA / 寡核苷酸疗法</h3>
+                <div class="bom">
+                    <span class="node">成药 siRNA(±LNP/±GalNAc)</span> <span class="arr">◄──</span> 纯化(层析) <span class="arr">◄──</span> <span class="node">固相合成</span> <span class="arr">◄──</span> <span class="choke">亚磷酰胺单体 + GalNAc 偶联 + CPG固相载体</span> <span class="arr">| 全程泡在 |</span> <span class="choke">乙腈(洗涤/溶剂)</span>
+                    <br><span class="arr">设备层:</span> <span class="choke">大规模寡核苷酸合成仪(Cytiva OligoProcess 等)</span>
+                </div>
+                <h3 class="sub">③ CAR-T 细胞疗法</h3>
+                <div class="bom">
+                    <span class="node">成药 CAR-T</span> <span class="arr">◄──</span> 扩增/培养 <span class="arr">◄──</span> <span class="choke">激活磁珠(Dynabeads)+ 重组细胞因子(IL-2/7/15)</span> <span class="arr">◄──</span> 基因转导 <span class="arr">◄──</span> <span class="choke">慢病毒/AAV 载体</span> <span class="arr">◄──</span> <span class="choke">质粒 DNA</span> <span class="arr">| 或 |</span> <span class="choke">电穿孔(MaxCyte)</span>
+                    <br><span class="arr">设备层:</span> <span class="choke">自动化生产平台(CliniMACS Prodigy)+ GMP CDMO 产能</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: mRNA -->
+        <div id="mrna" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💉</div><h2>mRNA 供应链:四个紫苏叶</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>卡点环节</th><th>为什么卡(物理/专利瓶颈)</th><th>供应商集中度</th><th>评级</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">CleanCap® 加帽试剂</td>
+                            <td>mRNA 5' 端"帽子"决定能否被翻译、不被免疫系统当异物;CleanCap 共转录加帽是行业事实标准,<strong>被多数已获批 mRNA/saRNA 疫苗采用</strong>。专利+know-how 双壁垒。</td>
+                            <td><strong>Maravai / TriLink</strong> 近乎独家,对外授权给 Lonza、Aldevron</td>
+                            <td><span class="pill pill-s">S 绝佳</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">PEG 脂质(如 ALC-0159)</td>
+                            <td>LNP 四组分里占比仅 ~1.5%,却决定颗粒稳定性与循环时间;高纯度 GMP PEG 脂质产线极少。典型"单价低、市值小、缺了整道菜上不了桌"。</td>
+                            <td><strong>NOF(日本)</strong> 领先 GMP 供应;Avanti(被 <strong>Croda</strong> 收购)</td>
+                            <td><span class="pill pill-s">S 绝佳</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">可电离脂质(SM-102 / ALC-0315 / MC3)</td>
+                            <td>LNP 的"灵魂",占比约 50%,直接决定递送效率;合成路线复杂、IP 受保护、GMP 认证难。</td>
+                            <td>Croda/Avanti、<strong>CordenPharma</strong>、Evonik 等少数 CDMO</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">LNP 微流控混合设备</td>
+                            <td>把 mRNA 和脂质"毫秒级"混成均一纳米颗粒,从 0.5L 到 400L 保持一致性(CQA)是规模化命门;混合器芯片是专利核心。</td>
+                            <td><strong>Precision NanoSystems(现属 Cytiva/Danaher)</strong> NxGen 混合器主导</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">修饰核苷酸/NTP、IVT 酶、线性化质粒</td>
+                            <td>N1-甲基假尿苷等修饰核苷、T7 RNA 聚合酶/加帽酶、模板质粒——上游"耗材+酶"。</td>
+                            <td>TriLink/Alphazyme、<strong>Aldevron(Danaher)</strong>、Hongene、Thermo</td>
+                            <td><span class="pill pill-b">B 重要</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout">
+                    <p style="margin-bottom:0;"><strong>最像"紫苏叶"的:CleanCap。</strong>它单价在整支疫苗成本里不起眼、公众完全不知道它存在,但"多数获批 mRNA 疫苗都靠它加帽"——一旦断供,几乎所有 mRNA 产线都要停机重验。对应的上市载体是 <strong>Maravai LifeSciences(MRVI)</strong>,典型小盘、机构认知度低。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: siRNA -->
+        <div id="sirna" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🧪</div><h2>siRNA / 寡核苷酸:被严重低估的"乙腈咽喉"</h2></div>
+                <p>寡核苷酸(siRNA/ASO)靠<strong>固相亚磷酰胺化学</strong>一个碱基一个碱基地"接龙"合成。这套工艺有一个几乎所有人都忽略、却结构性卡脖子的环节——<strong>乙腈(Acetonitrile, ACN)</strong>。</p>
+                <div class="callout warn">
+                    <p style="margin-bottom:6px;"><strong>🧪 乙腈:教科书级紫苏叶。</strong></p>
+                    <ul style="margin-bottom:0;">
+                        <li><strong>用量惊人:</strong>每合成 <strong>1 公斤</strong>寡核苷酸,要消耗约 <strong>1000 公斤乙腈</strong>(洗涤+层析),是最大的物料与成本项之一。</li>
+                        <li><strong>结构性单点依赖:</strong>乙腈<strong>没有专门产线</strong>——它是生产丙烯腈(汽车塑料原料)的<strong>副产物</strong>。汽车/丙烯腈一减产,乙腈立刻紧缺。</li>
+                        <li><strong>有前科:</strong>2008–2009 年那轮乙腈危机,价格一度<strong>暴涨 6–8 倍</strong>(飓风 + 中国大厂停产 + 车企减产共振),整个色谱/合成行业被迫改用丙酮替代。</li>
+                    </ul>
+                </div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>卡点环节</th><th>为什么卡</th><th>供应商 / 集中度</th><th>评级</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">乙腈 (ACN)</td>
+                            <td>丙烯腈副产物,无独立产能;吨级寡核苷酸放量会把乙腈需求推到极限,供给弹性极差。</td>
+                            <td>INEOS、Ascend 等石化厂(捆绑丙烯腈周期)</td>
+                            <td><span class="pill pill-s">S 绝佳</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">亚磷酰胺单体 (Phosphoramidites)</td>
+                            <td>合成的"字母积木",杂质控制是监管红线;吨级 GMP 产能稀缺,且<strong>产能高度集中在中国</strong>(地缘风险)。</td>
+                            <td><strong>Hongene(和元/华锐)</strong>:亚磷酰胺 58 吨/年、NTP 5.4 万升/年、2000+ SKU;LGC、Thermo</td>
+                            <td><span class="pill pill-geo">S 绝佳·含地缘</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">大规模寡核苷酸合成仪</td>
+                            <td>固相载体把单批限制在 <strong>&lt;10 公斤</strong>,吨级放量只能"堆机器";合成柱/设备是产能天花板。</td>
+                            <td><strong>Cytiva(Danaher)</strong> OligoProcess/ÄKTA oligopilot 等主导</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">GalNAc 偶联 / CPG 固相载体</td>
+                            <td>GalNAc 是肝靶向递送的"门票";CPG 载体质量决定合成良率。</td>
+                            <td>Hongene、Agilent(nittophase 等)、少数专业厂</td>
+                            <td><span class="pill pill-b">B 重要</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">纯化层析(树脂+溶剂)</td>
+                            <td>批式层析是下游产能瓶颈,又吃掉大量溶剂和时间。</td>
+                            <td>层析树脂/系统:Cytiva、<strong>Repligen</strong> 等</td>
+                            <td><span class="pill pill-b">B 重要</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:0;">补充:与 mRNA 共用的<strong>肝外递送(LNP/新偶联)</strong>一旦跑通,会把 siRNA 的合成量再抬一个台阶,进一步放大乙腈与亚磷酰胺的卡点属性。</p>
+            </div>
+        </div>
+
+        <!-- Tab: CAR-T -->
+        <div id="cart" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🛡️</div><h2>CAR-T 供应链:病毒载体这道"最长的排队"</h2></div>
+                <p>CAR-T 是"活药",生产比化学合成更难标准化,瓶颈集中在<strong>把 CAR 基因装进 T 细胞</strong>这一步,以及规模化 GMP 产能。</p>
+                <div class="callout warn">
+                    <p style="margin-bottom:0;"><strong>🦠 慢病毒载体(Lentiviral Vector):CAR-T 的咽喉。</strong>它是把 CAR 基因导入 T 细胞的主流工具,但制造极难、周期极长——业内公司<strong>为拿到 GMP 病毒载体排队最长达 3 年</strong>,GMP CDMO 名额稀缺、溢价高。这是 CAR-T 降本增效的头号"最短木板"。</p>
+                </div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>卡点环节</th><th>为什么卡</th><th>供应商 / 集中度</th><th>评级</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">慢病毒 / 病毒载体</td>
+                            <td>制造工艺复杂、批次差异大、扩产周期长;GMP 产能"三年排队",直接决定 CAR-T 的交付与成本。</td>
+                            <td>CDMO:<strong>Oxford Biomedica</strong>、Lonza、Catalent、WuXi;产能仍紧</td>
+                            <td><span class="pill pill-s">S 绝佳</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">质粒 DNA(做载体的原料)</td>
+                            <td>病毒载体的上游原料,GMP 质粒同样产能紧、周期长;横跨 mRNA/CAR-T 两条链。</td>
+                            <td><strong>Aldevron(Danaher)</strong>、Cytiva 等</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">T 细胞激活磁珠</td>
+                            <td>CD3/CD28 磁珠是激活/扩增 T 细胞的"发动机",专有耗材、切换需重验。</td>
+                            <td><strong>Thermo Fisher(Dynabeads)</strong>、Miltenyi</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">重组细胞因子(IL-2/7/15)</td>
+                            <td>T 细胞扩增必需的"营养",GMP 级供给曾出现<strong>短缺</strong>。</td>
+                            <td>少数 GMP 蛋白供应商</td>
+                            <td><span class="pill pill-b">B 重要</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--shiso);">电穿孔设备(非病毒路线)</td>
+                            <td>避开病毒载体的替代路线,做体内/非病毒 CAR-T 的关键设备与 IP。</td>
+                            <td><strong>MaxCyte(MXCT)</strong> 主导</td>
+                            <td><span class="pill pill-a">A 优质</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700;">自动化生产平台 / GMP 产能</td>
+                            <td>"一人一批"的个性化生产,自动化闭环设备与 GMP 洁净产能是规模瓶颈。</td>
+                            <td>Miltenyi(CliniMACS Prodigy)、Cytiva、Lonza</td>
+                            <td><span class="pill pill-b">B 重要</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout" style="margin-bottom:0;">
+                    <p style="margin-bottom:0; font-size:0.86rem;"><strong>范式变化提醒:</strong>体内 CAR-T(mRNA-LNP)若跑通,会把 CAR-T 的卡点<strong>从"病毒载体+磁珠"整体迁移到 mRNA/LNP 那条链</strong>(可电离脂质、靶向 LNP、CleanCap)——这会让 mRNA 侧的紫苏叶更值钱。见 <a href="./index.html" style="color:var(--bio-teal);">展望报告 CAR-T 章</a>。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Score -->
+        <div id="score" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📊</div><h2>卡点指数总排名(卡点越高 = 越像绝佳紫苏叶)</h2></div>
+                <p>按 Serenity 四要素给每个环节打分(示意性、非精确量化):<strong>供应集中度 + 扩产/认证周期 + 下游切换难度 + 隐形/冷门度</strong>,满分 100。</p>
+                <div class="chart-container"><canvas id="scoreChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:14px; margin-bottom:0;">评分为基于公开信息的定性判断,用于排序而非精确测算;地缘集中(如亚磷酰胺产能在中国)单独提示风险。</p>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🏆</div><h2>三条链共振的"跨赛道紫苏叶"</h2></div>
+                <ul>
+                    <li><strong>质粒 DNA + IVT 酶(Aldevron/Danaher):</strong> mRNA 要模板、CAR-T 载体要质粒、基因编辑也要——<strong>三条链都吃</strong>,最典型的"卖铲人"。</li>
+                    <li><strong>生产设备(Cytiva/Danaher):</strong> LNP 混合、寡核苷酸合成、层析纯化——设备层通吃。</li>
+                    <li><strong>乙腈:</strong> 只服务寡核苷酸一条链,但结构性无替代产能,是"深度单点"。</li>
+                    <li><strong>可电离/PEG 脂质:</strong> 同时服务 mRNA 疫苗、mRNA 疗法、体内 CAR-T、部分 siRNA——递送时代的"石油"。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab: Invest -->
+        <div id="invest" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">⚖️</div><h2>金枪鱼大腹 vs 紫苏叶:投资地图</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>维度</th><th class="toro-tag">🍣 金枪鱼大腹(拥挤主角)</th><th class="shiso-tag">🌿 紫苏叶(隐形瓶颈/卖铲人)</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700;">代表</td><td>Moderna、BioNTech、Alnylam、诺华、吉利德/Kite、CRISPR Tx</td><td class="shiso-tag">Maravai(MRVI)、Danaher(DHR)、NOF、Croda、CordenPharma、Thermo(TMO)、MaxCyte(MXCT)、Oxford Biomedica、Repligen(RGEN)、Hongene</td></tr>
+                        <tr><td style="font-weight:700;">下注对象</td><td>单个药物/适应症的临床成败(二元)</td><td class="shiso-tag">整条链放量的"过路费",不赌单药</td></tr>
+                        <tr><td style="font-weight:700;">关注度</td><td>极高,估值充分反映</td><td class="shiso-tag">低,机构认知预期差大</td></tr>
+                        <tr><td style="font-weight:700;">风险</td><td>临床失败、专利悬崖</td><td class="shiso-tag">技术路线替代、地缘集中、周期波动</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout toro">
+                    <p style="margin-bottom:0; font-size:0.87rem;"><strong>⚠️ 反向替代风险(Serenity 也强调):</strong>紫苏叶不是永远安全的。若下游改技术路线,卡点会瞬间转移——例如:①<strong>酶法/液相寡核苷酸合成</strong>成熟后,会削弱"乙腈+固相合成仪"的卡点;②<strong>体内 CAR-T(mRNA-LNP)</strong>替代传统 CAR-T,会削弱"慢病毒载体+磁珠",同时增强"脂质+CleanCap"。买紫苏叶要盯"下游会不会换菜谱"。</p>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🎯</div><h2>按卡点强度分层(框架,非建议)</h2></div>
+                    <ul>
+                        <li><strong>核心·三线通吃:</strong> Danaher(Aldevron 质粒+酶、Cytiva 设备)——最分散、最像"军火商"。</li>
+                        <li><strong>弹性·单点垄断:</strong> Maravai/MRVI(CleanCap)、MaxCyte/MXCT(电穿孔)——小盘、卡点纯、弹性大,但也更依赖单一环节景气。</li>
+                        <li><strong>稳健·材料寡头:</strong> NOF、Croda(脂质)、Thermo(磁珠/耗材)、Repligen(层析)。</li>
+                        <li><strong>高赔率·含地缘:</strong> Hongene 等亚磷酰胺产能(多未上市/在华),盯供应链回流与地缘。</li>
+                        <li><strong>难直接下注:</strong> 乙腈(藏在石化巨头周期里)、CDMO 病毒载体产能(部分未上市)。</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">👀</div><h2>该盯的"胜负手"事件</h2></div>
+                    <ul>
+                        <li><strong>寡核苷酸吨级放量</strong>是否把乙腈/亚磷酰胺推向紧缺(siRNA 心血管大药放量)。</li>
+                        <li><strong>CleanCap 专利/授权格局</strong>变化(有无第二加帽方案商业化)。</li>
+                        <li><strong>病毒载体 CDMO 产能</strong>缓解节奏 & 非病毒(电穿孔)渗透率。</li>
+                        <li><strong>体内 CAR-T 临床安全性</strong>——决定卡点是否向 LNP/脂质迁移。</li>
+                        <li><strong>脂质与质粒 GMP 产能</strong>扩建与地缘回流(美国本土化)。</li>
+                    </ul>
+                    <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.84rem;">本文仅为研究学习,不构成投资建议;所列公司为供应链卡位示意,部分为未上市/海外主体。生物科技波动极大,请独立尽调。</p></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Gene-Med Chokepoint Study · 方法论致敬 Serenity(@aleabitoreddit)· 联网核实综合 · 生成于 2026-08-27</p>
+            <p style="margin-top:6px;">卡点评级为基于公开来源的定性判断,用于排序而非精确测算;不构成投资建议。</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">主要来源(节选):</strong><br>
+                寡核苷酸/乙腈:<a href="https://ispe.org/pharmaceutical-engineering/november-december-2025/oligonucleotide-manufacturing-scaling-challenges">ISPE Pharmaceutical Engineering(扩产挑战/~1000kg 乙腈/&lt;10kg 批次)</a> · <a href="https://www.science.org/content/blog-post/great-acetonitrile-shortage">Science(乙腈危机)</a> · <a href="https://www.chromatographyonline.com/view/continuing-acetonitrile-shortage-how-combat-it-or-live-it">LCGC(乙腈短缺·丙烯腈副产物)</a> · <a href="https://www.science.org/doi/10.1126/science.adl4015">Science(寡核苷酸制造综述)</a><br>
+                亚磷酰胺/CDMO:<a href="https://www.hongene.com/about-us/facilities/">Hongene(58 吨亚磷酰胺/年产能)</a> · <a href="https://www.clinicalresearchnewsonline.com/news/2025/08/28/hongene-to-supply-exna-oligonucleotide-technology-under-new-licensing-deal">Clinical Research News</a><br>
+                mRNA 试剂/CleanCap:<a href="https://investors.maravai.com/news-events/press-releases/detail/128/trilink-opens-gmp-enzyme-manufacturing-facility-enabling-integrated-ivt-supply-from-rd-to-commercial-scale">Maravai/TriLink(CleanCap 用于多数获批 mRNA 疫苗·IVT 酶)</a> · <a href="https://www.trilinkbiotech.com/press-releases/trilink-biotechnologies-and-aldevron-enter-into-non-exclusive-license-and-supply-agreement-for-cleancap-mrna-capping-technology">TriLink×Aldevron 授权</a><br>
+                脂质/LNP:<a href="https://informaconnect.com/rna-leaders-usa/sponsors/nof-corporation/">NOF Corporation(GMP PEG/脂质领先供应)</a> · <a href="https://www.crodapharma.com/en-gb/drug-delivery-solutions/avanti-research">Croda/Avanti Polar Lipids</a> · <a href="https://www.biochempeg.com/article/362.html">LNP 四组分构成</a> · <a href="https://www.genengnews.com/topics/bioprocessing/lnp-formulation-system-scales-from-clinical-to-commercial-manufacturing/">GEN(NanoAssemblr/Cytiva 0.5–400L)</a><br>
+                CAR-T 制造:<a href="https://www.pharmaceutical-technology.com/features/a-perfect-storm-covid-19-viral-vector-manufacturing-adds-further-burden-to-car-t-development/">Pharmaceutical Technology(病毒载体 3 年排队)</a> · <a href="https://www.labiotech.eu/resource/robust-lentiviral-manufacturing-platforms-in-the-age-of-accessible-cell-therapy/">Labiotech(慢病毒载体瓶颈)</a> · <a href="https://www.drugdiscoverynews.com/scaling-the-unscalable-manufacturing-cell-gene-and-mrna-therapies-17300">Drug Discovery News(细胞因子短缺/瓶颈)</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            if (tabId === 'score' && window.scoreChart) window.scoreChart.update();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            const labels = ['乙腈 (siRNA)', 'CleanCap 加帽 (mRNA)', '慢病毒载体 (CAR-T)', '亚磷酰胺 (siRNA·含地缘)', 'PEG脂质 (mRNA)', '可电离脂质 (mRNA)', '质粒DNA+酶 (三线)', 'LNP混合设备 (mRNA)', '寡核苷酸合成仪 (siRNA)', 'T细胞磁珠 (CAR-T)', '电穿孔 (CAR-T)'];
+            const scores = [92, 90, 88, 87, 85, 80, 84, 78, 76, 74, 70];
+            const colors = scores.map(s => s >= 86 ? 'rgba(52, 229, 164, 0.95)' : (s >= 78 ? 'rgba(34, 211, 238, 0.85)' : 'rgba(167, 139, 250, 0.8)'));
+            window.scoreChart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: labels, datasets: [{ label: '卡点指数 (满分100)', data: scores, backgroundColor: colors, borderRadius: 6 }] },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#97a6a1' } } },
+                    scales: {
+                        x: { min: 50, max: 100, ticks: { color: '#97a6a1' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#cdd8d4', font: { size: 11 } }, grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

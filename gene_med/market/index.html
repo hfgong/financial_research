@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基因疗法投资展望 2026–2035：mRNA / siRNA / CAR-T / 基因编辑 / 长寿重编程五大赛道</title>
+    <meta name="description" content="基因编辑与基因疗法投资机会深度展望：拆解 Moderna 个性化 mRNA 黑色素瘤疫苗突破、Alnylam siRNA 心血管浪潮、CAR-T 自免转向与体内 CAR-T、CRISPR/碱基/先导编辑、以及表观遗传重编程长寿疗法，展望未来 5–10 年的重大突破与爆发应用场景。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bio-green: #34e5a4;
+            --bio-teal: #22d3ee;
+            --bio-purple: #a78bfa;
+            --bio-amber: #fbbf24;
+            --bg-dark: #060a09;
+            --bg-card: rgba(13, 24, 21, 0.78);
+            --bg-card-hover: rgba(18, 34, 30, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(52, 229, 164, 0.35);
+            --text-primary: #f1f5f4;
+            --text-secondary: #97a6a1;
+            --text-muted: #64726d;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 12% 12%, rgba(52, 229, 164, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 88% 88%, rgba(167, 139, 250, 0.07) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+        .container { max-width: 1320px; margin: 0 auto; padding: 24px 20px 80px 20px; }
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 22px 30px; background: rgba(10, 18, 16, 0.85);
+            backdrop-filter: blur(16px); border: 1px solid var(--border-color);
+            border-radius: 20px; margin-bottom: 28px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            flex-wrap: wrap; gap: 16px;
+        }
+        .logo-group { display: flex; align-items: center; gap: 16px; }
+        .bio-badge {
+            background: linear-gradient(135deg, var(--bio-green), var(--bio-teal));
+            color: #04120d; font-weight: 800; font-size: 1.05rem; padding: 8px 16px;
+            border-radius: 12px; letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(52, 229, 164, 0.35);
+        }
+        .header-title h1 {
+            font-size: 1.4rem; font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #a7f3d0);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-title p { font-size: 0.86rem; color: var(--text-secondary); }
+        .meta-tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .tag {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+            padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; color: var(--text-secondary);
+            display: flex; align-items: center; gap: 6px;
+        }
+        .tag-active { border-color: var(--bio-green); color: var(--bio-green); background: rgba(52, 229, 164, 0.08); }
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; margin-bottom: 32px;
+        }
+        .metric-card {
+            background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 22px; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .metric-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--bio-green); opacity: 0.85;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px); border-color: var(--border-glow);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(52, 229, 164, 0.28);
+            background: var(--bg-card-hover);
+        }
+        .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .metric-title { font-size: 0.82rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .metric-icon {
+            width: 32px; height: 32px; border-radius: 8px; background: rgba(52, 229, 164, 0.15);
+            color: var(--bio-green); display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
+        .metric-value { font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .metric-sub { font-size: 0.78rem; color: var(--bio-green); display: flex; align-items: center; gap: 4px; }
+        .tabs-nav {
+            display: flex; gap: 12px; border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px; margin-bottom: 30px; overflow-x: auto; scrollbar-width: none;
+        }
+        .tabs-nav::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+            color: var(--text-secondary); padding: 12px 20px; border-radius: 12px;
+            font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; white-space: nowrap;
+        }
+        .tab-btn:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.08); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(52, 229, 164, 0.2), rgba(52, 229, 164, 0.05));
+            border-color: var(--bio-green); color: var(--bio-green); box-shadow: 0 0 15px rgba(52, 229, 164, 0.25);
+        }
+        .tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(48%, 1fr)); gap: 24px; margin-bottom: 24px; }
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+        .content-card {
+            background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 24px;
+        }
+        .card-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 14px;
+        }
+        .card-header h2 { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .card-header .icon-box {
+            background: rgba(52, 229, 164, 0.15); color: var(--bio-green); width: 36px; height: 36px;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
+        h3.sub { color: var(--bio-teal); font-size: 1.02rem; margin: 18px 0 8px; }
+        p { color: #cdd8d4; font-size: 0.93rem; margin-bottom: 14px; line-height: 1.72; }
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+        ul li { position: relative; padding-left: 24px; margin-bottom: 12px; color: #cdd8d4; font-size: 0.92rem; }
+        ul li::before { content: '🧬'; position: absolute; left: 0; top: 2px; font-size: 0.8rem; }
+        .table-custom { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        .table-custom th, .table-custom td { padding: 11px 13px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        .table-custom th { color: var(--text-secondary); font-weight: 600; }
+        .table-wrap { overflow-x: auto; }
+        .chart-container { position: relative; width: 100%; height: 320px; margin-top: 16px; }
+        .pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; font-family: var(--font-mono); }
+        .pill-now { background: rgba(52, 229, 164, 0.15); color: var(--bio-green); }
+        .pill-mid { background: rgba(34, 211, 238, 0.15); color: var(--bio-teal); }
+        .pill-far { background: rgba(167, 139, 250, 0.15); color: var(--bio-purple); }
+        .pill-risk { background: rgba(251, 191, 36, 0.15); color: var(--bio-amber); }
+        .callout {
+            background: rgba(52, 229, 164, 0.07); border: 1px solid var(--border-glow);
+            border-radius: 14px; padding: 18px 20px; margin: 16px 0;
+        }
+        .callout.warn { background: rgba(251, 191, 36, 0.07); border-color: rgba(251, 191, 36, 0.35); }
+        .timeline { position: relative; padding-left: 26px; }
+        .timeline::before { content: ''; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(var(--bio-green), var(--bio-purple)); }
+        .tl-item { position: relative; margin-bottom: 22px; }
+        .tl-item::before { content: ''; position: absolute; left: -23px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--bio-green); box-shadow: 0 0 10px var(--bio-green); }
+        .tl-item h4 { color: #fff; font-size: 1rem; margin-bottom: 4px; }
+        footer { text-align: center; padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 50px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--bio-green); }
+        .ref-list { text-align: left; max-width: 1000px; margin: 20px auto 0; font-size: 0.76rem; line-height: 1.9; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+        strong { color: #eafff6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-group">
+                <div class="bio-badge">GENE·MED</div>
+                <div class="header-title">
+                    <h1>基因疗法投资展望 2026–2035：五大赛道重大突破与爆发场景</h1>
+                    <p>mRNA · siRNA/RNAi · CAR-T 细胞疗法 · CRISPR 基因编辑 · 表观遗传长寿重编程</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active">
+                    <span style="display:inline-block; width:8px; height:8px; background:var(--bio-green); border-radius:50%;"></span>
+                    2026年8月 · 联网核实版
+                </div>
+                <div class="tag">市场趋势研究</div>
+            </div>
+        </header>
+
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">里程碑事件</span><div class="metric-icon">💉</div></div>
+                <div class="metric-value">mRNA 癌症疫苗</div>
+                <div class="metric-sub">▲ Moderna/Merck 首个个性化疫苗 III 期成功</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">基因疗法市场</span><div class="metric-icon">📈</div></div>
+                <div class="metric-value">$8.8B → $18.2B</div>
+                <div class="metric-sub">▲ 2026→2030，CAGR ~18.9%</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">范式转移</span><div class="metric-icon">🎯</div></div>
+                <div class="metric-value">从"体外"到"体内"</div>
+                <div class="metric-sub">▲ 一针编辑 / 体内 CAR-T 成为主战场</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">最大瓶颈</span><div class="metric-icon">🚚</div></div>
+                <div class="metric-value">肝外递送</div>
+                <div class="metric-sub">▲ 谁先突破，谁翻倍打开市场</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('overview')">📌 核心判断与市场</button>
+            <button class="tab-btn" onclick="switchTab('mrna')">💉 mRNA</button>
+            <button class="tab-btn" onclick="switchTab('sirna')">🔇 siRNA / RNAi</button>
+            <button class="tab-btn" onclick="switchTab('cart')">🛡️ CAR-T 细胞疗法</button>
+            <button class="tab-btn" onclick="switchTab('editing')">✂️ 基因编辑</button>
+            <button class="tab-btn" onclick="switchTab('longevity')">⏳ 长寿 / 重编程</button>
+            <button class="tab-btn" onclick="switchTab('timeline')">🗓️ 爆发时间线</button>
+            <button class="tab-btn" onclick="switchTab('invest')">💰 投资标的与风险</button>
+        </div>
+
+        <!-- Tab: Overview -->
+        <div id="overview" class="tab-content active">
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🧭</div><h2>五个核心判断</h2></div>
+                    <ul>
+                        <li><strong>拐点已至：</strong> 2026 年 8 月,Moderna/Merck 的个性化 mRNA 黑色素瘤疫苗成为<strong>史上首个 III 期成功的 mRNA 癌症疗法 & 新抗原疗法</strong>——这是"平台可用性"被证明的分水岭事件。</li>
+                        <li><strong>主战场从体外搬进体内:</strong> Verve 一针碱基编辑降胆固醇、体内 CAR-T(AbbVie 21 亿美元收购 Capstan)正把"住院 + 定制细胞"的重资产模式,变成"一支针剂"的可规模化药物。</li>
+                        <li><strong>CAR-T 最大增量不在肿瘤,在自身免疫病:</strong> 狼疮、类风关等患者用 CD19/BCMA CAR-T 实现"无需长期免疫抑制的持久缓解",打开比血液瘤大一个量级的市场。</li>
+                        <li><strong>siRNA 从罕见病走向慢病大病:</strong> Alnylam 的 Amvuttra 拿下 ATTR 心肌病、PCSK9/Lp(a)/高血压 siRNA 排队,把 RNAi 推向心血管这个最大适应症池。</li>
+                        <li><strong>递送(delivery)决定一切:</strong> 肝脏之外(CNS/眼/肺/肌肉/肿瘤)的递送仍是尚未在临床规模上解决的问题——它既是最大风险,也是下一个十倍机会。</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">📊</div><h2>市场规模测算(可查证口径)</h2></div>
+                    <div class="chart-container"><canvas id="marketChart"></canvas></div>
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:14px; margin-bottom:0;">数据为公开研究机构口径,不同机构统计范围差异较大,仅示意增长量级。mRNA 癌症疫苗 2026 年约 12 亿美元,2030 年有望达 50–70 亿美元(CAGR &gt;30%);广义 mRNA 疗法 2030 年约 313 亿美元。</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🗺️</div><h2>五大赛道一图速览</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>赛道</th><th>机制一句话</th><th>2026 已发生的关键事件</th><th>未来 5–10 年爆发方向</th><th>成熟度</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--bio-green);">mRNA</td>
+                            <td>给细胞发"蛋白生产指令"</td>
+                            <td>个性化癌症疫苗 III 期成功(Moderna/Merck)</td>
+                            <td>个性化肿瘤疫苗、体内蛋白替代、体内 CAR 生成</td>
+                            <td><span class="pill pill-now">已验证</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--bio-teal);">siRNA/RNAi</td>
+                            <td>精准"关掉"一个致病基因</td>
+                            <td>Amvuttra 拿下 ATTR 心肌病(HELIOS-B)</td>
+                            <td>心血管慢病(PCSK9/Lp(a)/高血压)、肝外递送</td>
+                            <td><span class="pill pill-now">已商业化</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--bio-purple);">CAR-T</td>
+                            <td>改造 T 细胞去精准清除靶细胞</td>
+                            <td>自免病持久缓解 + 首个实体瘤 CAR-T 获批</td>
+                            <td>自身免疫病、体内 CAR-T、现货型(异体)</td>
+                            <td><span class="pill pill-mid">快速扩张</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--bio-amber);">基因编辑</td>
+                            <td>直接改写 DNA 碱基/序列</td>
+                            <td>Verve 一针碱基编辑降 LDL 62%(NEJM)</td>
+                            <td>体内一次性根治慢病、碱基/先导编辑</td>
+                            <td><span class="pill pill-mid">临床验证中</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:#f0abfc;">长寿/重编程</td>
+                            <td>把老细胞"部分回春"</td>
+                            <td>Life Bio ER-100 首次人体给药(表观重编程)</td>
+                            <td>眼病/器官局部回春,验证"衰老可逆"</td>
+                            <td><span class="pill pill-far">早期/高风险</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: mRNA -->
+        <div id="mrna" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💉</div><h2>里程碑:个性化 mRNA 癌症疫苗的"III 期时刻"</h2></div>
+                <p>2026 年 8 月 19 日,Merck 与 Moderna 宣布 <strong>III 期 INTerpath-001</strong> 试验达到主要终点。药物 <strong>intismeran autogene(即 mRNA-4157 / V940)</strong> 联合 KEYTRUDA(帕博利珠单抗),用于完全切除的 IIB–IV 期黑色素瘤辅助治疗,<strong>无复发生存期(RFS)与远处转移无复发生存期(DMFS)双达标</strong>。</p>
+                <div class="callout">
+                    <p style="margin-bottom:6px;"><strong>为什么这是分水岭:</strong>这是<strong>史上首个 III 期成功的 mRNA 癌症疗法,也是首个成功的"个性化新抗原疗法"</strong>,并且首次在辅助黑色素瘤中做到显著优于 KEYTRUDA 单药。它证明的不只是一款药,而是"给每个病人现制一款疫苗"这套平台在最严格的 III 期里能跑通。</p>
+                    <p style="margin-bottom:0; font-size:0.85rem; color:var(--text-secondary);">支持性数据:1,137 例患者 2:1 随机;II 期 5 年随访显示联合方案将复发或死亡风险降低 <strong>49%</strong>、远处转移或死亡风险降低 <strong>59%</strong>。</p>
+                </div>
+                <h3 class="sub">机制:一款"教育免疫系统"的定制疫苗</h3>
+                <p>先对患者肿瘤测序,用算法预测出该肿瘤独有的"新抗原"(neoantigen),把编码这些新抗原的 mRNA 装进脂质纳米颗粒(LNP)打进体内,让免疫系统学会识别并追杀带有这些标记的癌细胞。与 PD-1 抑制剂联用,相当于"松开刹车(PD-1)+ 精准指路(疫苗)"。</p>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🔮</div><h2>未来 5–10 年:mRNA 的三条爆发线</h2></div>
+                    <ul>
+                        <li><strong>个性化肿瘤疫苗全面铺开:</strong> 从黑色素瘤扩到<strong>非小细胞肺癌(NSCLC)</strong>、肾癌、膀胱癌;BioNTech 的 autogene cevumeran(BNT122)已在<strong>胰腺癌、ctDNA 阳性结直肠癌、尿路上皮癌</strong> II 期。肺癌被视为下一个数十亿美元级机会。</li>
+                        <li><strong>体内蛋白替代 / 罕见病:</strong> 用 mRNA 让肝脏等器官临时"代工"缺失的蛋白或酶,治疗代谢罕见病,免去一次性基因整合的安全顾虑。</li>
+                        <li><strong>mRNA × 细胞疗法:</strong> 用 mRNA-LNP 在<strong>体内直接生成 CAR-T</strong>(见 CAR-T 页),把细胞疗法变成"打一针"。</li>
+                    </ul>
+                    <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0;">技术驱动:自扩增 mRNA(saRNA,更低剂量、更持久)、更优的 LNP 靶向递送、更快更准的新抗原预测算法。首批个性化癌症疫苗的正式获批预计在 2026 年底–2027 年。</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">⚖️</div><h2>关键约束</h2></div>
+                    <ul>
+                        <li><strong>制造与周期:</strong> "为每个病人现制一款药"需要几周的测序+生产链条,规模化与冷链是硬约束。</li>
+                        <li><strong>定价与支付:</strong> 个性化疫苗单价预计 <strong>10 万–30 万美元/人</strong>,在"高复发风险的辅助治疗"场景更易证明性价比。</li>
+                        <li><strong>递送仍限于易达组织:</strong> LNP 天然偏好肝脏与注射局部,靶向其他器官仍在攻关。</li>
+                    </ul>
+                    <div class="callout warn" style="margin-bottom:0;">
+                        <p style="margin-bottom:0; font-size:0.86rem;"><strong>投资含义:</strong>平台被证明后,价值会从"单一药物"转向"能规模化现制 + 精准递送 + 新抗原预测"的<strong>制造与算法基础设施</strong>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: siRNA -->
+        <div id="sirna" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🔇</div><h2>siRNA / RNAi:从罕见病走进心血管大病</h2></div>
+                <p>RNAi(RNA 干扰)用一段小干扰 RNA(siRNA)在源头"关掉"某个致病基因的翻译。领头羊 <strong>Alnylam</strong> 已有 <strong>5 款获批</strong>:patisiran(2018)、givosiran(2019)、lumasiran(2020)、vutrisiran(2022)、fitusiran(2025)——这是 RNAi 从概念走向成熟药物类别的证据。</p>
+                <div class="callout">
+                    <p style="margin-bottom:0;"><strong>标志性突破:Amvuttra(vutrisiran)拿下 ATTR 心肌病。</strong> III 期 <strong>HELIOS-B</strong> 显示,在整体 ATTR-CM 人群中(含叠加 Pfizer tafamidis 背景治疗),将<strong>死亡或复发性心血管事件风险降低 28%</strong>、全因死亡最多降低约 <strong>36%</strong>;一年仅需 4 次皮下注射,TTR 敲低可达 87%。分析师视其为潜在<strong>重磅炸弹(blockbuster)</strong>。这意味着 RNAi 正式从"超罕见病"迈入患者数量庞大的心血管适应症。</p>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">❤️</div><h2>下一波:心血管慢病"打两三针管半年"</h2></div>
+                    <p>siRNA 的杀手锏是<strong>给药频率极低</strong>(数月一次),天然契合需要终身用药的慢病。一批心血管 siRNA 正排队:</p>
+                    <ul>
+                        <li><strong>inclisiran(PCSK9):</strong> 一年两针降 LDL 胆固醇。</li>
+                        <li><strong>olpasiran(Lp(a)):</strong> 瞄准他汀无法解决的脂蛋白(a)残余风险。</li>
+                        <li><strong>zilebesiran(AGT):</strong> 一针管数月的"降压针",高血压这个数亿人市场。</li>
+                        <li><strong>zodasiran(ANGPTL3):</strong> 甘油三酯/血脂异常。</li>
+                    </ul>
+                    <p style="margin-bottom:0; font-size:0.85rem; color:var(--text-secondary);">这几个靶点合计构成 RNAi 历史上最大的可及市场。</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🚚</div><h2>技术拐点:肝外递送 = 市场翻倍</h2></div>
+                    <p>目前<strong>所有获批的 siRNA 都靶向肝脏</strong>(靠 GalNAc 偶联被肝细胞高效摄取)。要进入 CNS、眼、肺、肌肉,需要新的偶联或 LNP 平台。</p>
+                    <ul>
+                        <li><strong>C16(2-O-十六烷基)亲脂偶联:</strong> Alnylam 已发表数据,把 siRNA 送到肝外——<strong>CNS(中枢神经)、眼、肺</strong>的早期证据。</li>
+                        <li><strong>行业共识:</strong> 肝外递送一旦跑通,<strong>siRNA 平台可及市场有望直接翻倍</strong>——神经退行(阿尔茨海默/帕金森)、眼底病、呼吸系统都将打开。</li>
+                    </ul>
+                    <div class="callout" style="margin-bottom:0;">
+                        <p style="margin-bottom:0; font-size:0.85rem;"><strong>关注点:</strong>Alnylam 的"2-2-5"管线扩张目标,以及 2026 年医学会议上肝外递送的读出。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: CAR-T -->
+        <div id="cart" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🛡️</div><h2>CAR-T 的三个方向转折</h2></div>
+                <p>CAR-T 通过改造患者自身 T 细胞、装上"嵌合抗原受体"去精准清除靶细胞,已在血液瘤中确立地位。未来 5–10 年的三大拐点是:<strong>①转向自身免疫病 ②攻入实体瘤 ③从"体外定制"变成"体内一针"</strong>。</p>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🦋</div><h2>① 最大增量:自身免疫病</h2></div>
+                    <p>这可能是 CAR-T 最被低估、也最大的市场。ACR 2025 年会上多项数据显示:用 <strong>CD19/BCMA CAR-T "清零"致病 B 细胞</strong>,在难治性<strong>系统性红斑狼疮(SLE)、类风湿关节炎</strong>中实现<strong>无需持续免疫抑制的持久缓解</strong>——相当于"重启免疫系统"。</p>
+                    <ul>
+                        <li><strong>CTA313</strong>(通用型 CD19/BCMA CAR-T)在难治性狼疮中显示安全性与强应答。</li>
+                        <li>自免病患者基数远大于血液瘤,若安全性/成本可控,是数量级更大的机会。</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🧱</div><h2>② 最难啃:实体瘤</h2></div>
+                    <p>2026 年 6 月,<strong>CARsgen(科济药业)宣布全球首个实体瘤 CAR-T 获批</strong>——一个象征性突破。但实体瘤依旧是硬骨头:</p>
+                    <ul>
+                        <li>肿瘤异质性、抗原丢失/逃逸;</li>
+                        <li>免疫抑制性肿瘤微环境(TME);</li>
+                        <li>T 细胞耗竭、难以浸润实体瘤。</li>
+                    </ul>
+                    <p style="margin-bottom:0; font-size:0.85rem; color:var(--text-secondary);">解法方向:双靶点/多靶点 CAR、CRISPR 增强抗耗竭、装甲 CAR-T。5–10 年内会是渐进式而非一夜之间。</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💉</div><h2>③ 范式革命:体内 CAR-T(in vivo CAR-T)——"打一针,体内造 CAR-T"</h2></div>
+                <p>传统 CAR-T 要抽血、送厂改造、化疗清淋巴、再回输,周期长、成本高(单疗程数十万美元)、要住院。<strong>体内 CAR-T</strong> 用<strong>靶向脂质纳米颗粒(tLNP)携带 mRNA</strong>,直接在患者体内把 T 细胞改造成 CAR-T——变成一支可规模化、可重复给药的针剂。大药企已重金押注:</p>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>玩家 / 交易</th><th>平台</th><th>进展</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700; color:var(--bio-green);">AbbVie 收购 Capstan(21 亿美元)</td><td>mRNA + 靶向 LNP(tLNP)</td><td>主打 CPTX2309(现 ABBV-619),抗 CD19 体内 CAR-T 治自免病,已进 I 期</td></tr>
+                        <tr><td style="font-weight:700;">AstraZeneca 收购 EsoBiotec(≥4.25 亿美元)</td><td>体内 CAR 递送</td><td>2025 年 3 月完成</td></tr>
+                        <tr><td style="font-weight:700;">Umoja(与 BMS)</td><td>VivoVec 慢病毒</td><td>UB-VV-100 I 期</td></tr>
+                        <tr><td style="font-weight:700;">Orna(与 Merck,最高 35 亿美元)</td><td>环状 RNA + LNP</td><td>合作开发</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout warn">
+                    <p style="margin-bottom:0; font-size:0.87rem;"><strong>优点:</strong>mRNA 表达是瞬时的(数天–数周),有望规避长期安全隐患(二次 T 细胞恶性肿瘤、慢性 B 细胞缺失),且可重复给药、药理可控。<strong>但安全性仍是最大门槛</strong>——Lilly、AbbVie 高调入场,监管与安全信号是 5–10 年内的核心看点。截至 2026 年,7 家主要玩家约 10 项在研临床。</p>
+                </div>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0;">补充:现货型(异体/off-the-shelf)CAR-T 截至 2026 年<strong>尚无获批产品</strong>,但用 CRISPR 敲除以避免排斥的通用型 CAR-T 仍在推进,是降低成本、即取即用的另一条路。</p>
+            </div>
+        </div>
+
+        <!-- Tab: Gene Editing -->
+        <div id="editing" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">✂️</div><h2>基因编辑:从"体外治血液病"到"体内一针治慢病"</h2></div>
+                <p>2023 年 <strong>Casgevy</strong>(CRISPR Therapeutics/Vertex)获批,用 CRISPR 编辑造血干细胞的 BCL11A 增强子、重启胎儿血红蛋白,治疗<strong>镰状细胞病与β地中海贫血</strong>——让 CRISPR 首次成为获批疗法。但它是"体外编辑再回输"的重资产模式(2026 年销售约 4000 万美元,预计次年翻倍)。真正的范式跃迁,是<strong>体内(in vivo)一次性编辑</strong>。</p>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">❤️</div><h2>标杆案例:Verve 一针"永久降胆固醇"</h2></div>
+                    <p>2026 年 5 月,《新英格兰医学杂志(NEJM)》发表 <strong>VERVE-102</strong>(Verve Therapeutics,现属礼来)Heart-2 I 期结果:一次体内<strong>碱基编辑</strong>关闭肝脏 PCSK9 基因——</p>
+                    <ul>
+                        <li>单次给药使 PCSK9 最多降 <strong>88%</strong>、LDL 胆固醇最多降 <strong>62%</strong>(最高剂量绝对降幅 78 mg/dL);</li>
+                        <li>效果持续达 <strong>18 个月</strong>,无剂量限制性毒性;</li>
+                        <li>面向家族性高胆固醇血症/早发冠心病人群,指向<strong>"一次治疗、终身获益"</strong>。</li>
+                    </ul>
+                    <p style="margin-bottom:0; font-size:0.85rem; color:var(--bio-teal);">意义:把基因编辑从"罕见病一次性根治",推向<strong>心血管这种数亿人慢病</strong>的想象空间。</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🔬</div><h2>更精准的下一代:碱基编辑 & 先导编辑</h2></div>
+                    <p>第一代 CRISPR 靠切断双链 DNA,存在脱靶与断裂风险。新一代更精细:</p>
+                    <ul>
+                        <li><strong>碱基编辑(Base Editing):</strong> 不断链,直接把一个碱基"改写"成另一个,安全性更好,已进 I 期(如 Verve、Beam)。</li>
+                        <li><strong>先导编辑(Prime Editing):</strong> 像"文字搜索替换",可做各类替换/小插入删除。<strong>Prime Medicine</strong> 的威尔逊病项目在小鼠中精准纠正达 80%、NHP 达 51%,IND/CTA 预计 2026 上半年;RNA-LNP 先导编辑已在瓜氨酸血症、苯丙酮尿症(PKU)小鼠模型中纠正表型。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🧫</div><h2>体内 CRISPR 的战局与瓶颈</h2></div>
+                <ul>
+                    <li><strong>Intellia:</strong> 体内 CRISPR 编辑的先驱,lonvo-z(nex-z)治疗<strong>遗传性血管性水肿(HAE)</strong>的 III 期数据预计 2026 年 4 月读出;另有 ATTR 项目。</li>
+                    <li><strong>规模:</strong> 2026 年年中全球有 <strong>50+ 项 CRISPR 临床试验</strong>在招募,覆盖镰状细胞、ATTR 淀粉样变、杜氏肌营养不良(DMD)、HIV、癌症等。</li>
+                    <li><strong>个性化"定制编辑":</strong> 已出现为单个患儿量身设计的体内碱基编辑疗法(CRISPR 2.0),预示"N=1 定制基因药"的未来。</li>
+                </ul>
+                <div class="callout warn" style="margin-bottom:0;">
+                    <p style="margin-bottom:0; font-size:0.87rem;"><strong>核心瓶颈仍是递送:</strong>肝脏之外的每一个体内 CRISPR 项目,都还在解决"如何把编辑器精准送达"这个尚未在临床规模上解决的问题。AAV 载体有装载量与免疫原性限制,LNP 偏好肝脏——<strong>器官靶向递送是决定成败的胜负手</strong>。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Longevity -->
+        <div id="longevity" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">⏳</div><h2>基因长寿:表观遗传"部分重编程"走进人体</h2></div>
+                <p>与前面"治病"不同,这条线的野心是<strong>直接干预衰老本身</strong>。核心思路是<strong>部分表观遗传重编程(partial epigenetic reprogramming)</strong>:用山中伸弥因子(<strong>OCT4/SOX2/KLF4</strong> 等)短暂、部分地重置细胞的表观遗传"年龄时钟",让老化细胞"回春",但不抹去其身份、不变成干细胞。2024 年 Altos 等的论文已在小鼠上显示可延长寿命、逆转年龄相关改变。2026 年,它<strong>第一次走进人体</strong>。</p>
+                <div class="callout">
+                    <p style="margin-bottom:0;"><strong>里程碑:</strong>2026 年 6 月,<strong>Life Biosciences</strong> 宣布其基因疗法 <strong>ER-100</strong>(表达 OCT4/SOX2/KLF4 诱导部分重编程)完成<strong>首例人体给药</strong>——这是<strong>全球首个进入人体临床的部分表观遗传重编程"细胞回春"疗法</strong>(FDA 已批 IND),首发适应症聚焦眼科(视神经病变)。</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🏢</div><h2>三大玩家格局</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>公司</th><th>背景 / 资金</th><th>进展</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700; color:#f0abfc;">Life Biosciences</td><td>—</td><td><strong>ER-100 已首例人体给药(2026-06)</strong>,领跑临床</td></tr>
+                        <tr><td style="font-weight:700;">Retro Biosciences</td><td>Sam Altman 支持,拟按 50 亿美元估值融 10 亿</td><td>与 OpenAI 合作,AI 模型使重编程效率提升 <strong>50 倍</strong>;RTR242(促自噬口服药)进入人体,靶向阿尔茨海默</td></tr>
+                        <tr><td style="font-weight:700;">Altos Labs</td><td>Bezos 等支持,约 50 亿美元</td><td>传闻正准备临床;2024 年小鼠部分重编程延寿论文</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <h3 class="sub">未来 5–10 年:从"局部器官"到"验证衰老可逆"</h3>
+                <ul>
+                    <li><strong>先局部、后全身:</strong> 早期会锁定<strong>眼睛、局部器官</strong>等风险可控、可直接给药的部位——因为全身重编程有致瘤(细胞失去身份、变成畸胎瘤)风险。</li>
+                    <li><strong>AI × 长寿:</strong> 用 AI 设计更安全高效的重编程因子组合与递送,是 Retro/OpenAI 路线的核心杠杆。</li>
+                    <li><strong>关键验证问题:</strong> 5–10 年内最该盯的不是"延寿几年",而是<strong>人体上首次拿到"衰老相关功能可被逆转"的硬证据</strong>——一旦证实,将重估整个领域。</li>
+                </ul>
+                <div class="callout warn" style="margin-bottom:0;">
+                    <p style="margin-bottom:0; font-size:0.87rem;"><strong>风险最高的一条线:</strong>科学早期、致瘤风险、终点难定义(衰老不是 FDA 认可的"适应症")、监管路径不清。适合作为高风险高赔率的"期权型"配置,而非核心仓。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Timeline -->
+        <div id="timeline" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🗓️</div><h2>应用场景爆发时间线(2026 → 2035)</h2></div>
+                <p style="margin-bottom:22px;">下述为基于当前临床进度的<strong>情景推演</strong>(非确定性预测),标注乐观区间。<span class="pill pill-now">近期</span> = 1–3 年即将兑现;<span class="pill pill-mid">中期</span> = 3–6 年;<span class="pill pill-far">远期</span> = 6–10 年。</p>
+                <div class="timeline">
+                    <div class="tl-item">
+                        <h4><span class="pill pill-now">近期 2026–2028</span></h4>
+                        <p style="margin-bottom:0;">① <strong>首批个性化 mRNA 癌症疫苗获批</strong>(黑色素瘤辅助治疗,2026 末–2027);② <strong>siRNA 攻占心血管</strong>(Amvuttra ATTR-CM 放量、PCSK9/Lp(a) siRNA 商业化);③ <strong>CAR-T 治自身免疫病</strong>数据成熟,狼疮/类风关进入注册试验;④ Intellia 体内 CRISPR(HAE)III 期读出;⑤ 体内 CAR-T 早期临床数据(安全性是焦点)。</p>
+                    </div>
+                    <div class="tl-item">
+                        <h4><span class="pill pill-mid">中期 2029–2031</span></h4>
+                        <p style="margin-bottom:0;">① <strong>个性化肿瘤疫苗扩到肺癌/肾癌/膀胱癌</strong>,成为辅助治疗标配之一;② <strong>体内一针基因编辑降胆固醇</strong>(Verve/PCSK9)迈向后期临床/获批,开启"慢病一次性治疗";③ <strong>体内 CAR-T 治自免病</strong>若安全性过关,可能颠覆现有生物制剂市场;④ <strong>siRNA 肝外递送</strong>(CNS/眼/肺)首批概念验证转化为临床项目。</p>
+                    </div>
+                    <div class="tl-item">
+                        <h4><span class="pill pill-far">远期 2032–2035</span></h4>
+                        <p style="margin-bottom:0;">① <strong>先导编辑(Prime Editing)进入临床收获期</strong>,面向大量点突变遗传病"精准纠错";② <strong>实体瘤 CAR-T</strong> 在部分瘤种取得实质疗效突破;③ <strong>现货型(异体)CAR-T</strong> 有望首获批,大幅降本;④ <strong>表观重编程</strong>在眼科/局部器官拿到人体功能逆转证据,长寿从"科幻"变"临床假说验证";⑤ 器官靶向递送若跑通,基因药物适应症全面扩容。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💥</div><h2>最可能"爆发"的六个应用场景</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>爆发场景</th><th>驱动疗法</th><th>为什么会爆发</th><th>时点</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700; color:var(--bio-green);">个性化癌症疫苗成辅助治疗标配</td><td>mRNA + PD-1</td><td>III 期已证明;先黑色素瘤,后肺癌等大瘤种</td><td><span class="pill pill-now">近</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-teal);">心血管"打针管半年"</td><td>siRNA(PCSK9/Lp(a)/AGT)</td><td>慢病 + 极低给药频率 = 依从性革命,市场最大</td><td><span class="pill pill-now">近</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-purple);">自身免疫病"免疫重启"</td><td>CAR-T / 体内 CAR-T</td><td>持久缓解、停免疫抑制;患者基数远超血液瘤</td><td><span class="pill pill-mid">中</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-amber);">慢病一次性根治(高胆固醇等)</td><td>体内碱基编辑</td><td>一针永久降 LDL,已 NEJM 验证</td><td><span class="pill pill-mid">中</span></td></tr>
+                        <tr><td style="font-weight:700;">遗传病精准纠错</td><td>先导/碱基编辑</td><td>可改写绝大多数致病点突变</td><td><span class="pill pill-far">远</span></td></tr>
+                        <tr><td style="font-weight:700; color:#f0abfc;">器官/组织局部"回春"</td><td>表观重编程</td><td>首证衰老可逆,先眼科等局部</td><td><span class="pill pill-far">远</span></td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Invest -->
+        <div id="invest" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💰</div><h2>投资地图:公司与卡位(仅研究,非投资建议)</h2></div>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>赛道</th><th>代表公司 / 大药企卡位</th><th>看点</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700; color:var(--bio-green);">mRNA</td><td>Moderna、BioNTech;Merck(KEYTRUDA 联用)</td><td>个性化疫苗获批节奏;肺癌等大适应症扩张</td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-teal);">siRNA/RNAi</td><td>Alnylam(平台龙头);Novartis(inclisiran)、Arrowhead</td><td>心血管放量、"2-2-5"管线、肝外递送读出</td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-purple);">CAR-T / 体内 CAR-T</td><td>传统:诺华、吉利德/Kite、BMS、传奇生物、科济;体内:AbbVie(Capstan)、AstraZeneca(EsoBiotec)、礼来、Umoja、Orna</td><td>自免病拓展;体内 CAR-T 安全性数据;异体化降本</td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-amber);">基因编辑</td><td>CRISPR Therapeutics/Vertex(Casgevy)、Intellia、Beam、Prime Medicine、Verve/礼来</td><td>体内编辑临床读出(Intellia HAE、Verve PCSK9);碱基/先导编辑推进</td></tr>
+                        <tr><td style="font-weight:700; color:#f0abfc;">长寿/重编程</td><td>Life Biosciences、Retro Biosciences、Altos Labs(多为未上市)</td><td>首个人体重编程数据;AI × 长寿;致瘤安全性</td></tr>
+                        <tr><td style="font-weight:700;">"卖铲人"(基础设施)</td><td>LNP/递送、载体 CDMO、测序与新抗原算法、编辑器 IP</td><td>不赌单药成败,押注平台放量的确定性受益者</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">公司仅为赛道卡位示意,非推荐;部分为未上市公司。生物科技个股波动极大、临床成败二元,请独立尽调。</p>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">⚠️</div><h2>五大系统性风险</h2></div>
+                    <ul>
+                        <li><strong>递送未解:</strong> 肝外递送尚未在临床规模上解决——最大的技术不确定性。</li>
+                        <li><strong>实体瘤仍难:</strong> CAR-T 在实体瘤(占癌症绝大多数)进展缓慢。</li>
+                        <li><strong>制造与成本:</strong> 载体产能有限、批次差异大、个性化生产贵,限制可及性;现货型 CAR-T 尚无获批。</li>
+                        <li><strong>安全性:</strong> 体内 CAR-T 安全信号、基因编辑脱靶、重编程致瘤风险都可能中止项目。</li>
+                        <li><strong>支付与监管:</strong> 单疗程数十万美元的定价、长寿类疗法缺乏 FDA 认可终点,报销与审批路径不清。</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🎯</div><h2>配置思路(框架,非建议)</h2></div>
+                    <ul>
+                        <li><strong>确定性核心:</strong> 已商业化、现金流可见的平台(siRNA 龙头、已获批 CAR-T/编辑),以及"卖铲人"(递送/CDMO/算法)。</li>
+                        <li><strong>成长弹性:</strong> 个性化 mRNA 疫苗、体内基因编辑——平台已被验证,看适应症扩张兑现。</li>
+                        <li><strong>期权型高赔率:</strong> 体内 CAR-T、先导编辑、表观重编程长寿——早期、二元、赔率大,小仓位。</li>
+                        <li><strong>盯"胜负手"事件:</strong> 关键 III 期读出、首个肝外递送人体数据、首个人体功能逆转证据、体内 CAR-T 安全性。</li>
+                    </ul>
+                    <div class="callout warn" style="margin-bottom:0;">
+                        <p style="margin-bottom:0; font-size:0.85rem;">本报告仅供研究学习,不构成任何投资建议。生物科技投资风险极高,请独立判断。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Gene-Med Investment Outlook · 联网核实综合报告 · 生成于 2026-08-27</p>
+            <p style="margin-top:6px;">本报告为面向未来 5–10 年的情景推演,基于截至 2026 年 8 月的公开来源;市场规模为第三方机构口径,统计范围各异;不构成投资建议。</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">主要来源(节选):</strong><br>
+                mRNA 癌症疫苗:<a href="https://www.merck.com/news/merck-and-moderna-announce-phase-3-interpath-001-trial-of-intismeran-autogene-plus-keytruda-met-endpoints-of-recurrence-free-survival-rfs-and-distant-metastasis-free-survival-dmfs-in-patient/">Merck 官方新闻稿(INTerpath-001)</a> · <a href="https://www.statnews.com/2026/08/19/mrna-cancer-vaccine-trial-melanoma-merck-moderna/">STAT News</a> · <a href="https://www.biopharmadive.com/news/moderna-merck-cancer-vaccine-landmark-result-melanoma/828238/">BioPharma Dive</a> · <a href="https://cen.acs.org/pharmaceuticals/vaccines/mrna-cancer-vaccine-succeeds-clinical-trial/104/web/2026/08">C&amp;EN</a><br>
+                siRNA/RNAi:<a href="https://investors.alnylam.com/press-release?id=28906">Alnylam HELIOS-B 数据</a> · <a href="https://www.biopharmadive.com/news/alnylam-helios-b-results-vutrisiran-ttr-cardiomyopathy/719580/">BioPharma Dive(HELIOS-B)</a> · <a href="https://www.nature.com/articles/s41587-022-01334-x">Nature Biotechnology(肝外亲脂偶联递送)</a> · <a href="https://www.cas.org/resources/cas-insights/sirna-therapeutics">CAS Insights</a><br>
+                CAR-T:<a href="https://rheumatology.org/press-releases/car-t-cell-therapies-show-promise-for-autoimmune-disease-at-acr-convergence-2025">ACR Convergence 2025</a> · <a href="https://news.abbvie.com/2025-06-30-AbbVie-to-Acquire-Capstan-Therapeutics,-Further-Strengthening-Commitment-to-Transforming-Patient-Care-in-Immunology">AbbVie 收购 Capstan</a> · <a href="https://www.nature.com/articles/d41573-025-00131-w">Nature Reviews Drug Discovery(体内 CAR-T)</a> · <a href="https://www.biospace.com/drug-development/lilly-abbvie-climb-aboard-in-vivo-car-t-train-but-safety-remains-a-hurdle">BioSpace</a><br>
+                基因编辑:<a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2601283">NEJM(VERVE-102 Heart-2)</a> · <a href="https://investor.lilly.com/news-releases/news-release-details/single-dose-lillys-pcsk9-base-editor-verve-102-reduced-pcsk9-88">Eli Lilly / Verve</a> · <a href="https://clinicalmetric.com/insights/crispr-gene-editing-clinical-trials-2026">CRISPR 临床试验 2026</a> · <a href="https://investors.primemedicine.com/news-releases/news-release-details/prime-medicine-presents-vivo-proof-concept-data-highlighting">Prime Medicine</a> · <a href="https://erictopol.substack.com/p/the-first-human-to-undergo-in-vivo">Eric Topol(个性化体内编辑)</a><br>
+                长寿/重编程:<a href="https://www.washingtontimes.com/news/2026/jun/16/first-human-dosed-cellular-reprogramming-drug-longevity-trial/">Washington Times(Life Bio ER-100 首例给药)</a> · <a href="https://www.labiotech.eu/best-biotech/anti-aging-biotech-companies/">Labiotech(抗衰老公司)</a> · <a href="https://thelongevityinitiative.org/2026/01/business-2025-bets-biotech-bust/">The Longevity Initiative</a><br>
+                市场规模:<a href="https://www.grandviewresearch.com/industry-analysis/gene-therapy-market">Grand View Research(基因疗法市场)</a> · <a href="https://www.globenewswire.com/news-release/2026/07/01/3320427/0/en/mrna-cancer-vaccine-market-to-surpass-1-20-billion-in-2026-as-personalized-oncology-immunotherapies-advance-new-report-finds.html">mRNA 癌症疫苗市场</a> · <a href="https://money.usnews.com/investing/articles/best-crispr-stocks-to-buy">U.S. News(基因编辑标的)</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            if (tabId === 'overview' && window.marketChart) window.marketChart.update();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('marketChart').getContext('2d');
+            window.marketChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['广义 mRNA 疗法', '基因疗法(整体)', 'mRNA 癌症疫苗', '基因疗法平台'],
+                    datasets: [
+                        {
+                            label: '较早年份 (十亿美元)',
+                            data: [11.7, 8.8, 1.2, 2.8],
+                            backgroundColor: 'rgba(148, 163, 184, 0.55)',
+                            borderRadius: 6
+                        },
+                        {
+                            label: '2030 预测 (十亿美元)',
+                            data: [31.3, 18.2, 6.0, 4.9],
+                            backgroundColor: 'rgba(52, 229, 164, 0.9)',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#97a6a1' } },
+                        tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y + 'B' } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#97a6a1', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { ticks: { color: '#97a6a1', callback: v => '$' + v + 'B' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
