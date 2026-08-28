@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alnylam (ALNY) 深度研报 - 2026年8月：Amvuttra 单季破十亿、RNAi 龙头转盈利的"低二元风险"成长股</title>
+    <meta name="description" content="Alnylam (ALNY) 2026年8月深度研报：Amvuttra 单季收入首破 $1B、TTR 心血管特许经营放量、公司转入盈利、2026 指引下调背后的需求正常化、siRNA 心血管管线与估值多空。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --brand: #14b8a6; --brand-glow: rgba(20,184,166,0.35); --brand-soft: rgba(20,184,166,0.12);
+            --bg-dark: #060d0c; --bg-card: rgba(14,26,25,0.74); --bg-card-hover: rgba(18,34,32,0.86);
+            --border-color: rgba(255,255,255,0.08); --border-glow: rgba(20,184,166,0.3);
+            --text-primary: #f1f5f4; --text-secondary: #97a6a3; --text-muted: #64726f;
+            --green: #34d399; --red: #fb7185; --amber: #fbbf24;
+            --font-sans: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; --font-mono: 'JetBrains Mono',monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; background-image: radial-gradient(circle at 15% 12%, rgba(20,184,166,0.08) 0%, transparent 45%), radial-gradient(circle at 85% 88%, rgba(20,184,166,0.05) 0%, transparent 45%); background-attachment: fixed; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back-btn { display: inline-block; margin-bottom: 18px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .back-btn:hover { color: var(--brand); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px; background: rgba(12,20,19,0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); flex-wrap: wrap; gap: 16px; }
+        .logo-group { display: flex; align-items: center; gap: 18px; }
+        .avatar { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--brand); color: var(--brand); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-mono); font-size: 1.05rem; box-shadow: 0 0 20px var(--brand-glow); background: var(--brand-soft); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg,#fff,#a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.87rem; color: var(--text-secondary); margin-top: 2px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; color: var(--text-secondary); }
+        .tag-active { border-color: var(--brand); color: #5eead4; background: var(--brand-soft); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all .3s; }
+        .metric-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--brand); opacity:.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); background: var(--bg-card-hover); }
+        .metric-title { font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing:.5px; font-weight:600; margin-bottom:10px; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.32rem; font-weight:700; color:#fff; margin-bottom:5px; }
+        .metric-sub { font-size: 0.76rem; color: var(--text-secondary); }
+        .up { color: var(--green); } .down { color: var(--red); }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 18px; padding: 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 22px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(46%,1fr)); gap: 22px; margin-bottom: 22px; }
+        @media (max-width: 880px){ .grid-2 { grid-template-columns: 1fr; } }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .card-header h2 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .icon-box { width: 34px; height: 34px; border-radius: 9px; background: var(--brand-soft); color: var(--brand); display:flex; align-items:center; justify-content:center; }
+        p { color: #cdd8d5; font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        ul { list-style: none; padding-left: 0; } ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #cdd8d5; font-size: 0.9rem; }
+        ul li::before { content:'▸'; position:absolute; left:0; color: var(--brand); font-weight:700; }
+        .bull li::before { content:'▲'; color: var(--green); } .bear li::before { content:'▼'; color: var(--red); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 300px; margin-top: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:var(--font-mono); }
+        .pill-c { background: var(--brand-soft); color:#5eead4; } .pill-g { background: rgba(52,211,153,0.16); color: var(--green); } .pill-a { background: rgba(251,191,36,0.16); color: var(--amber); }
+        .callout { background: var(--brand-soft); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+        .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+        strong { color: #fff; }
+        footer { text-align: center; padding-top: 34px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 44px; }
+        .ref-list { text-align:left; max-width: 980px; margin: 16px auto 0; font-size: 0.74rem; line-height: 1.85; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">&larr; 返回 2026-08 研报库</a>
+        <header>
+            <div class="logo-group">
+                <div class="avatar">ALNY</div>
+                <div class="header-title">
+                    <h1>Alnylam 深度研报</h1>
+                    <p>RNAi 龙头 · Amvuttra 单季破十亿 · 从"烧钱平台"转入盈利 · NASDAQ: ALNY</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="tag tag-active">2026年8月</div>
+                <div class="tag">生物科技 · siRNA 平台</div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-title">股价 (8/14)</div><div class="metric-value">$228.65</div><div class="metric-sub">市值 ~$29–31B</div></div>
+            <div class="metric-card"><div class="metric-title">Q2'26 总产品收入</div><div class="metric-value">~$1.2B</div><div class="metric-sub"><span class="up">+74% YoY</span></div></div>
+            <div class="metric-card"><div class="metric-title">Amvuttra 单季</div><div class="metric-value">&gt;$1.0B</div><div class="metric-sub">首破十亿 · 年化 run-rate &gt;$4B</div></div>
+            <div class="metric-card"><div class="metric-title">估值</div><div class="metric-value">Fwd P/E ~27.5</div><div class="metric-sub">已盈利 · 净利率 ~16.8%</div></div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🧬</div><h2>一句话投资逻辑:四条腿的 RNAi 平台,靠 TTR 特许经营完成"从烧钱到盈利"的惊险一跃</h2></div>
+            <p>Alnylam 是 <strong>siRNA/RNAi 的绝对龙头</strong>,已有 5 款获批药物。2026 年它完成了生物科技最难的一跃——<strong>靠 TTR(甲状腺素运载蛋白)特许经营放量转入盈利</strong>:核心药 <strong>Amvuttra(vutrisiran)</strong> 拿下 ATTR 心肌病(HELIOS-B)后放量迅猛,Q2 单季收入首破 $10 亿,上市仅约 15 个月年化 run-rate 已 >$40 亿。Non-GAAP 经营利润<strong>三倍增至 $318M</strong>。</p>
+            <div class="callout"><p style="margin-bottom:0;"><strong>为什么与临床期 biotech 不同:</strong>ALNY 已是<strong>有收入、已盈利、低二元风险</strong>的成长股——不再靠单个 III 期赌命,而靠已获批产品的商业化放量 + 深厚管线。这让它更接近"成长/价值混合",而非彩票。</p></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">❤️</div><h2>TTR 特许经营:放量的引擎</h2></div>
+                <div class="chart-container"><canvas id="ttrChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">TTR 净收入 Q2 达 $1.03B(<span class="up">+89% YoY</span>、+13% QoQ),ATTR 心肌病 + hATTR 多发性神经病双轮驱动。一年 4 针皮下、TTR 敲低约 87%,是它相较竞品的依从性优势。示意量级。</p>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">⚠️</div><h2>指引下调:值得警惕的信号</h2></div>
+                <p>尽管 Q2 亮眼,管理层却把 <strong>2026 全年 TTR 收入指引下调至 $4.2–4.5B</strong>(中值降约 $2 亿):</p>
+                <ul>
+                    <li>原因:2025 年"二线换药潮"后需求<strong>正常化(normalization)</strong>——前期一次性换药红利消退。</li>
+                    <li>合作/特许收入指引 $575–625M。</li>
+                    <li>启示:高增长里出现<strong>增速回归常态</strong>的迹象,估值(Fwd P/E ~27.5)已包含较高预期,增速换挡需重新定价。</li>
+                </ul>
+                <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">"业绩创纪录 + 指引下调"是成长股的典型分歧点:基本盘很强,但边际增速在放缓,买点取决于你给正常化后的稳态增长什么估值。</p></div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🗓️</div><h2>增长驱动与催化剂</h2></div>
+            <div class="table-wrap">
+            <table>
+                <thead><tr><th>驱动 / 催化剂</th><th>内容</th><th>性质</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700; color:#5eead4;">Amvuttra ATTR-CM 放量</td><td>心血管大适应症持续渗透,是当前现金牛与盈利来源</td><td><span class="pill pill-g">核心</span></td></tr>
+                    <tr><td style="font-weight:700;">siRNA 心血管管线</td><td>zilebesiran(高血压,一针管数月的"降压针")等,瞄准数亿人市场</td><td><span class="pill pill-c">下一波</span></td></tr>
+                    <tr><td style="font-weight:700;">"2-2-5" 平台扩张</td><td>肝外递送(CNS/眼/肺)、阿尔茨海默等——打开肝脏之外的新适应症池</td><td><span class="pill pill-c">中长期</span></td></tr>
+                    <tr><td style="font-weight:700;">中国商业化</td><td>与 BeOne 合作 Amvuttra 在中国大陆/澳门的独家商业化(待审批)</td><td><span class="pill pill-g">增量</span></td></tr>
+                    <tr><td style="font-weight:700;">TTR 需求正常化</td><td>二线换药红利消退,增速换挡</td><td><span class="pill pill-a">逆风</span></td></tr>
+                    <tr><td style="font-weight:700;">竞争</td><td>BridgeBio 的 acoramidis(Attruby)、Pfizer 的 tafamidis 在 ATTR-CM 争夺</td><td><span class="pill pill-a">竞争</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card" style="border-top:3px solid var(--green);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(52,211,153,0.15); color:var(--green);">🐂</div><h2>看多 (Bull)</h2></div>
+                <ul class="bull">
+                    <li><strong>已转盈利</strong>,现金流自我造血,摆脱稀释螺旋——biotech 里稀缺的"质量成长"。</li>
+                    <li><strong>TTR 重磅炸弹特许经营</strong>,run-rate >$40 亿且仍在渗透。</li>
+                    <li><strong>RNAi 平台最深</strong>:5 款获批 + 心血管/CNS 管线,给药频率低=依从性护城河。</li>
+                    <li>心血管 siRNA(降压/降脂)是 RNAi 史上最大市场,长期天花板高。</li>
+                    <li>低二元风险(已商业化),波动性小于临床期同行。</li>
+                </ul>
+            </div>
+            <div class="content-card" style="border-top:3px solid var(--red);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(251,113,133,0.15); color:var(--red);">🐻</div><h2>看空 / 隐患 (Bear)</h2></div>
+                <ul class="bear">
+                    <li><strong>指引下调</strong>暴露 TTR 需求正常化,高增长叙事边际走弱。</li>
+                    <li><strong>估值不便宜</strong>(Fwd P/E ~27.5、TTM P/E ~39),对增速放缓敏感。</li>
+                    <li><strong>TTR 集中度</strong>:收入高度依赖单一特许经营,竞品(acoramidis/tafamidis)分流风险。</li>
+                    <li>下一代管线(心血管/肝外)兑现前,增长接力存在空窗。</li>
+                    <li>利率/生物科技情绪波动仍会压制估值。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🎯</div><h2>估值视角与结论</h2></div>
+            <p>ALNY 是本组四只里<strong>基本面质量最高、二元风险最低</strong>的一只——它已用 TTR 证明了 RNAi 平台的商业化能力并转盈利。核心问题不是"能不能活",而是"<strong>为正常化后的稳态增长(而非换药红利期的爆发增速)付多少估值</strong>",以及心血管管线能否接棒。</p>
+            <ul>
+                <li><strong>牛市情景:</strong>TTR 稳态渗透 + zilebesiran 等心血管管线成功 → 长期复利,估值可维持溢价。</li>
+                <li><strong>基准情景:</strong>TTR 增速换挡至常态,靠管线逐步接力,股价随盈利增长。</li>
+                <li><strong>熊市情景:</strong>竞品分流 TTR + 管线延迟 → 高估值杀多。</li>
+            </ul>
+            <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">一句话:<strong>把它当"RNAi 平台型质量成长股"而非临床期彩票;买点在于给正常化增速的合理估值,而非追换药红利的峰值增速。</strong>本报告仅供研究,不构成投资建议。</p></div>
+        </div>
+
+        <footer>
+            <p>© 2026 研报库 · Alnylam (ALNY) 个股研究 · 联网核实 · 生成于 2026-08-27 · 仅供研究学习,不构成投资建议</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">来源:</strong>
+                <a href="https://www.gurufocus.com/news/8992311/alnylam-pharmaceuticals-inc-alny-q2-2026-earnings-call-highlights-amvuttra-surpasses-1-billion-quarterly-revenue-but-guidance-revised-down-on-normalizing-demand">GuruFocus(Q2'26 · Amvuttra 破十亿/指引下调)</a> ·
+                <a href="https://www.investing.com/news/company-news/alnylam-q2-2026-slides-amvuttra-tops-1b-amid-guidance-cut-93CH-4825197">Investing.com</a> ·
+                <a href="https://investors.alnylam.com/press-release?id=28906">Alnylam(HELIOS-B)</a> ·
+                <a href="https://www.wallstreetzen.com/stocks/us/nasdaq/alny">WallStreetZen(估值)</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chart(document.getElementById('ttrChart').getContext('2d'), {
+                type: 'line',
+                data: { labels: ['Q2 25','Q3 25','Q4 25','Q1 26','Q2 26'],
+                    datasets: [{ label: 'TTR 净收入 (十亿美元, 示意)', data: [0.545, 0.68, 0.82, 0.91, 1.03], borderColor: '#14b8a6', backgroundColor: 'rgba(20,184,166,0.15)', fill: true, tension: 0.3, pointBackgroundColor: '#14b8a6' }] },
+                options: { responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#97a6a3' } }, tooltip: { callbacks: { label: c => '$' + c.parsed.y + 'B (示意)' } } },
+                    scales: { x: { ticks: { color: '#97a6a3' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#97a6a3', callback: v => '$'+v+'B' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+            });
+        });
+    </script>
+</body>
+</html>

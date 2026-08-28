@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danaher (DHR) 深度研报 - 2026年8月：生物工艺去库存见底、"卖铲人"质量复利股的周期拐点</title>
+    <meta name="description" content="Danaher (DHR) 2026年8月深度研报：Q2 核心增长回到 +3%、生物工艺订单 +mid-teens 预示复苏、Cytiva/生命科学修复、DBS 质量复利模式、估值与周期拐点多空分析。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --brand: #0084d1; --brand-glow: rgba(0,132,209,0.35); --brand-soft: rgba(0,132,209,0.14);
+            --bg-dark: #05090d; --bg-card: rgba(14,22,32,0.74); --bg-card-hover: rgba(18,30,44,0.86);
+            --border-color: rgba(255,255,255,0.08); --border-glow: rgba(0,132,209,0.3);
+            --text-primary: #f1f4f7; --text-secondary: #94a2b0; --text-muted: #616e7c;
+            --green: #34d399; --red: #fb7185; --amber: #fbbf24;
+            --font-sans: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; --font-mono: 'JetBrains Mono',monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; background-image: radial-gradient(circle at 15% 12%, rgba(0,132,209,0.08) 0%, transparent 45%), radial-gradient(circle at 85% 88%, rgba(0,132,209,0.05) 0%, transparent 45%); background-attachment: fixed; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back-btn { display: inline-block; margin-bottom: 18px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .back-btn:hover { color: var(--brand); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px; background: rgba(11,17,25,0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); flex-wrap: wrap; gap: 16px; }
+        .logo-group { display: flex; align-items: center; gap: 18px; }
+        .avatar { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--brand); color: var(--brand); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-mono); font-size: 1.15rem; box-shadow: 0 0 20px var(--brand-glow); background: var(--brand-soft); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg,#fff,#8fd3ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.87rem; color: var(--text-secondary); margin-top: 2px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; color: var(--text-secondary); }
+        .tag-active { border-color: var(--brand); color: #7cc7f5; background: var(--brand-soft); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all .3s; }
+        .metric-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--brand); opacity:.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); background: var(--bg-card-hover); }
+        .metric-title { font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing:.5px; font-weight:600; margin-bottom:10px; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.32rem; font-weight:700; color:#fff; margin-bottom:5px; }
+        .metric-sub { font-size: 0.76rem; color: var(--text-secondary); }
+        .up { color: var(--green); } .down { color: var(--red); }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 18px; padding: 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 22px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(46%,1fr)); gap: 22px; margin-bottom: 22px; }
+        @media (max-width: 880px){ .grid-2 { grid-template-columns: 1fr; } }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .card-header h2 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .icon-box { width: 34px; height: 34px; border-radius: 9px; background: var(--brand-soft); color: var(--brand); display:flex; align-items:center; justify-content:center; }
+        p { color: #cdd6df; font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        ul { list-style: none; padding-left: 0; } ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #cdd6df; font-size: 0.9rem; }
+        ul li::before { content:'▸'; position:absolute; left:0; color: var(--brand); font-weight:700; }
+        .bull li::before { content:'▲'; color: var(--green); } .bear li::before { content:'▼'; color: var(--red); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 300px; margin-top: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:var(--font-mono); }
+        .pill-c { background: var(--brand-soft); color:#7cc7f5; } .pill-g { background: rgba(52,211,153,0.16); color: var(--green); } .pill-a { background: rgba(251,191,36,0.16); color: var(--amber); }
+        .callout { background: var(--brand-soft); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+        .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+        strong { color: #fff; }
+        footer { text-align: center; padding-top: 34px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 44px; }
+        .ref-list { text-align:left; max-width: 980px; margin: 16px auto 0; font-size: 0.74rem; line-height: 1.85; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">&larr; 返回 2026-08 研报库</a>
+        <header>
+            <div class="logo-group">
+                <div class="avatar">DHR</div>
+                <div class="header-title">
+                    <h1>Danaher 深度研报</h1>
+                    <p>生物医药"卖铲人" · 生物工艺去库存见底 · DBS 质量复利 · NYSE: DHR</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="tag tag-active">2026年8月</div>
+                <div class="tag">生命科学工具 · 大盘蓝筹</div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-title">股价 (8/19)</div><div class="metric-value">$211.48</div><div class="metric-sub">市值 ~$149B · 分析师均"买入" PT $228</div></div>
+            <div class="metric-card"><div class="metric-title">Q2'26 营收</div><div class="metric-value">$6.3B</div><div class="metric-sub">核心增长 <span class="up">+3%</span> · 调整EPS $1.94(+8%)</div></div>
+            <div class="metric-card"><div class="metric-title">生物工艺订单</div><div class="metric-value">+mid-teens</div><div class="metric-sub">复苏领先指标(收入滞后)</div></div>
+            <div class="metric-card"><div class="metric-title">估值</div><div class="metric-value">Fwd P/E ~22.5</div><div class="metric-sub">股息率 ~0.83%</div></div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">⚙️</div><h2>一句话投资逻辑:优质"卖铲人"在生物工艺周期底部重置,等复苏兑现</h2></div>
+            <p>Danaher 是生物医药产业的<strong>"军火商 / 卖铲人"</strong>——通过 <strong>Cytiva + Pall</strong>(生物工艺)、Aldevron(质粒/酶)、诊断与生命科学工具,横跨 mRNA、siRNA、CAR-T、抗体药等所有链条,不赌单一药物成败,收整个行业放量的"过路费";靠 <strong>DBS(Danaher Business System)</strong>持续并购+精益运营复利。</p>
+            <div class="callout"><p style="margin-bottom:0;"><strong>它过去几年"阴跌"的真相:</strong>从 2021 新冠+零利率的估值巅峰回落,叠加<strong>生物工艺去库存周期("bioprocessing winter")</strong>——疫情期客户恐慌性囤货,2022 起消化过剩库存,Cytiva 所在板块核心收入一度 -21%。再叠加中国疲软、拆分 Veralto/Envista(股价图非同口径)。<strong>本质是"好公司 + 坏周期 + 贵估值"三杀,而非franchise受损。</strong></p></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🌊</div><h2>周期拐点:订单先行,收入滞后</h2></div>
+                <div class="chart-container"><canvas id="cyChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">生物技术板块从 2023–24 的深度负增长,到 Q2'26 核心恢复低个位数正增长,<strong>订单已 +mid-teens</strong>——订单是收入的领先指标,预示复苏正在路上。示意趋势。</p>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📋</div><h2>Q2'26 要点</h2></div>
+                <ul>
+                    <li>营收 <strong>$6.3B</strong>,核心增长 <span class="up">+3%</span>,调整 EPS <strong>$1.94</strong>(+8% YoY),盈利超预期。</li>
+                    <li>全年调整 EPS 指引<strong>上调至 $8.45–8.60</strong>;全年核心增长指引 <strong>3–4%</strong>。</li>
+                    <li>生物工艺:核心 +低个位数,<strong>订单 +mid-teens</strong>(复苏信号);但约 <strong>$1 亿层析树脂收入</strong>因客户场地/排产原因<strong>递延到 2027</strong>。</li>
+                    <li>生命科学:<strong>数年来最强季度</strong>,非呼吸增长提速。</li>
+                </ul>
+                <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">看点:订单领先复苏是真的,但"收入兑现"被树脂递延等打了折扣——复苏斜率仍偏温和,不是 V 形。</p></div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🗺️</div><h2>业务版图与驱动</h2></div>
+            <div class="table-wrap">
+            <table>
+                <thead><tr><th>板块</th><th>卡位</th><th>状态</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700; color:#7cc7f5;">生物工艺(Cytiva/Pall)</td><td>抗体药/疫苗/细胞基因疗法的上游耗材与设备(层析树脂、过滤、一次性系统)</td><td><span class="pill pill-g">去库存见底,订单回暖</span></td></tr>
+                    <tr><td style="font-weight:700;">Aldevron</td><td>GMP 质粒 DNA、酶、mRNA——横跨 mRNA/CAR-T/基因编辑三链的"卖铲人"</td><td><span class="pill pill-c">结构性成长</span></td></tr>
+                    <tr><td style="font-weight:700;">诊断(Diagnostics)</td><td>分子诊断、临床检验(Cepheid 等)</td><td><span class="pill pill-c">稳健</span></td></tr>
+                    <tr><td style="font-weight:700;">生命科学工具</td><td>质谱、基因组学、试剂等</td><td><span class="pill pill-g">多年最强季度</span></td></tr>
+                    <tr><td style="font-weight:700;">中国 / 宏观</td><td>中国需求与政策</td><td><span class="pill pill-a">仍疲软</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card" style="border-top:3px solid var(--green);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(52,211,153,0.15); color:var(--green);">🐂</div><h2>看多 (Bull)</h2></div>
+                <ul class="bull">
+                    <li><strong>周期底部重置</strong>:订单 +mid-teens 领先,复苏兑现将驱动收入/EPS 加速。</li>
+                    <li><strong>质量复利机器</strong>:DBS + 持续并购,长期 ROIC 与自由现金流优秀。</li>
+                    <li><strong>横跨所有基因/生物药链条的"军火商"</strong>:不赌单药,吃行业放量。</li>
+                    <li><strong>生物药长期顺风</strong>:抗体、mRNA、细胞基因疗法产能扩张的确定性受益者。</li>
+                    <li>大盘蓝筹、分红、资产负债表稳健,防守性优于纯 biotech。</li>
+                </ul>
+            </div>
+            <div class="content-card" style="border-top:3px solid var(--red);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(251,113,133,0.15); color:var(--red);">🐻</div><h2>看空 / 隐患 (Bear)</h2></div>
+                <ul class="bear">
+                    <li><strong>复苏偏温和</strong>:核心增长仅 3–4%,树脂收入递延,V 形反转落空。</li>
+                    <li><strong>估值不算便宜</strong>:Fwd P/E ~22.5 对应个位数增长,溢价需复苏加速支撑。</li>
+                    <li><strong>中国 + 宏观逆风</strong>与 biotech 融资环境仍是拖累。</li>
+                    <li><strong>工具层有周期</strong>:去库存证明它并非"无周期复利",择时仍重要。</li>
+                    <li>并购驱动模式需持续找到好标的,资本配置是长期变量。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🎯</div><h2>估值视角与结论</h2></div>
+            <p>DHR 是本组里<strong>防守性最强、二元风险最低</strong>的"卖铲人质量股",但请记住它给我们的教训:<strong>即使是卖铲人,工具层也有库存周期,择时(周期位置)和入场估值比垄断地位更重要。</strong>当前处在"去库存见底、订单先行、收入待兑现"的阶段。</p>
+            <ul>
+                <li><strong>牛市情景:</strong>生物工艺复苏加速,核心增长回到中高个位数 → 估值+盈利双击。</li>
+                <li><strong>基准情景:</strong>温和复苏,EPS 稳步增长,股价随基本面爬坡。</li>
+                <li><strong>熊市情景:</strong>复苏延迟 + 中国拖累 + 估值收缩 → 继续磨底。</li>
+            </ul>
+            <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">一句话:<strong>想要基因/生物药成长敞口又不想承受单药二元风险,DHR 是风险收益特征最接近"优质复利股"的选择;但要在去库存尾声、估值合理时买,而非在囤货高峰追高。</strong>本报告仅供研究,不构成投资建议。</p></div>
+        </div>
+
+        <footer>
+            <p>© 2026 研报库 · Danaher (DHR) 个股研究 · 联网核实 · 生成于 2026-08-27 · 仅供研究学习,不构成投资建议</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">来源:</strong>
+                <a href="https://investors.danaher.com/2026-07-21-Danaher-Reports-Second-Quarter-2026-Results">Danaher 官方 Q2'26 财报</a> ·
+                <a href="https://finance.biggo.com/news/US_DHR_2026-07-21">Q2'26 要点(树脂递延/订单+mid-teens)</a> ·
+                <a href="https://www.morningstar.com/stocks/danaher-earnings-bioprocessing-unit-may-be-bottoming-amid-veralto-spinoff">Morningstar(生物工艺见底)</a> ·
+                <a href="https://stockanalysis.com/stocks/dhr/statistics/">StockAnalysis(估值)</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chart(document.getElementById('cyChart').getContext('2d'), {
+                type: 'bar',
+                data: { labels: ['2023','2024','2025','Q1 26','Q2 26'],
+                    datasets: [{ label: '生物技术板块核心增长 (%, 示意)', data: [-18, -8, 1, 2, 3],
+                        backgroundColor: c => c.raw < 0 ? 'rgba(251,113,133,0.75)' : 'rgba(0,132,209,0.85)', borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a2b0' } }, tooltip: { callbacks: { label: c => c.parsed.y + '% (示意)' } } },
+                    scales: { x: { ticks: { color: '#94a2b0' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#94a2b0', callback: v => v+'%' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+            });
+        });
+    </script>
+</body>
+</html>

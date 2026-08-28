@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maravai (MRVI) 深度研报 - 2026年8月：CleanCap "卖铲人"的去新冠化转身与高风险困境反转</title>
+    <meta name="description" content="Maravai LifeSciences (MRVI) 2026年8月深度研报：五年 -90% 后的困境反转、CleanCap/TriLink GMP 耗材放量、去新冠化、EBITDA 转正与债务减半、仍亏损的小盘困境反转风险多空拆解。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --brand: #34e5a4; --brand-glow: rgba(52,229,164,0.35); --brand-soft: rgba(52,229,164,0.12);
+            --bg-dark: #060a09; --bg-card: rgba(13,24,21,0.76); --bg-card-hover: rgba(18,34,30,0.88);
+            --border-color: rgba(255,255,255,0.08); --border-glow: rgba(52,229,164,0.3);
+            --text-primary: #f1f5f4; --text-secondary: #97a6a1; --text-muted: #64726d;
+            --green: #34d399; --red: #fb7185; --amber: #fbbf24;
+            --font-sans: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; --font-mono: 'JetBrains Mono',monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; background-image: radial-gradient(circle at 15% 12%, rgba(52,229,164,0.08) 0%, transparent 45%), radial-gradient(circle at 85% 88%, rgba(52,229,164,0.05) 0%, transparent 45%); background-attachment: fixed; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back-btn { display: inline-block; margin-bottom: 18px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .back-btn:hover { color: var(--brand); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px; background: rgba(10,18,16,0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); flex-wrap: wrap; gap: 16px; }
+        .logo-group { display: flex; align-items: center; gap: 18px; }
+        .avatar { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--brand); color: var(--brand); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-mono); font-size: 1.05rem; box-shadow: 0 0 20px var(--brand-glow); background: var(--brand-soft); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg,#fff,#a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.87rem; color: var(--text-secondary); margin-top: 2px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; color: var(--text-secondary); }
+        .tag-active { border-color: var(--brand); color: var(--brand); background: var(--brand-soft); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all .3s; }
+        .metric-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--brand); opacity:.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); background: var(--bg-card-hover); }
+        .metric-title { font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing:.5px; font-weight:600; margin-bottom:10px; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.32rem; font-weight:700; color:#fff; margin-bottom:5px; }
+        .metric-sub { font-size: 0.76rem; color: var(--text-secondary); }
+        .up { color: var(--green); } .down { color: var(--red); }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 18px; padding: 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 22px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(46%,1fr)); gap: 22px; margin-bottom: 22px; }
+        @media (max-width: 880px){ .grid-2 { grid-template-columns: 1fr; } }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .card-header h2 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .icon-box { width: 34px; height: 34px; border-radius: 9px; background: var(--brand-soft); color: var(--brand); display:flex; align-items:center; justify-content:center; }
+        p { color: #cdd8d4; font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        ul { list-style: none; padding-left: 0; } ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #cdd8d4; font-size: 0.9rem; }
+        ul li::before { content:'▸'; position:absolute; left:0; color: var(--brand); font-weight:700; }
+        .bull li::before { content:'▲'; color: var(--green); } .bear li::before { content:'▼'; color: var(--red); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 300px; margin-top: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:var(--font-mono); }
+        .pill-c { background: var(--brand-soft); color:var(--brand); } .pill-g { background: rgba(52,211,153,0.16); color: var(--green); } .pill-a { background: rgba(251,191,36,0.16); color: var(--amber); } .pill-r { background: rgba(251,113,133,0.16); color: var(--red); }
+        .callout { background: var(--brand-soft); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+        .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+        .callout.danger { background: rgba(251,113,133,0.07); border-color: rgba(251,113,133,0.3); }
+        strong { color: #fff; }
+        footer { text-align: center; padding-top: 34px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 44px; }
+        .ref-list { text-align:left; max-width: 980px; margin: 16px auto 0; font-size: 0.74rem; line-height: 1.85; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">&larr; 返回 2026-08 研报库</a>
+        <header>
+            <div class="logo-group">
+                <div class="avatar">MRVI</div>
+                <div class="header-title">
+                    <h1>Maravai 深度研报</h1>
+                    <p>CleanCap "卖铲人" · 去新冠化转身 · 高风险困境反转 · NASDAQ: MRVI</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="tag tag-active">2026年8月</div>
+                <div class="tag">生命科学工具 · 小盘</div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-title">股价 (8/27)</div><div class="metric-value">$8.78</div><div class="metric-sub">52周 $2.29–9.42 · <span class="down">五年 -90%</span></div></div>
+            <div class="metric-card"><div class="metric-title">市值</div><div class="metric-value">~$2.31B</div><div class="metric-sub">小盘 · 空头 ~3.58%</div></div>
+            <div class="metric-card"><div class="metric-title">Q2'26 营收</div><div class="metric-value">$51.4M</div><div class="metric-sub"><span class="up">+9% YoY</span> · 毛利率 58.9%(+1600bps)</div></div>
+            <div class="metric-card"><div class="metric-title">调整 EBITDA</div><div class="metric-value">$8.7M</div><div class="metric-sub">改善 +$19.1M · FY 指引上调 $33–35M</div></div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🔄</div><h2>一句话投资逻辑:一个"卖铲给新冠泡沫"的公司,正在艰难转型为"卖铲给 mRNA 长期趋势"</h2></div>
+            <p>Maravai 旗下 <strong>TriLink</strong> 拥有 <strong>CleanCap mRNA 加帽试剂</strong>近垄断地位(多数获批 mRNA 疫苗都用)。但它是本组四只里<strong>唯一的反面教材主角</strong>:因把铲子卖给了<strong>新冠疫苗这个一次性脉冲需求</strong>,新冠退潮后收入崩塌——<strong>五年 -90%</strong>、营收一度年均 -21%、2024 Q3 计提 $1.54 亿商誉减值。垄断地位还在,但"整道菜(新冠疫苗)不点了"。</p>
+            <div class="callout danger"><p style="margin-bottom:0;"><strong>它是"卖铲人三大幻觉"的活教材:</strong>①卖铲的是脉冲还是长青?②库存/需求周期在哪?③估值锚(ZIRP 泡沫)。2026 年的故事是——<strong>它能否靠"去新冠化 + GMP 耗材/CDMO 放量",把自己重塑成押注 mRNA 疗法长期趋势的卖铲人。</strong></p></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📈</div><h2>困境反转的证据(Q2'26)</h2></div>
+                <ul>
+                    <li>营收 <strong>$51.4M(+9% YoY)</strong>,调整 EBITDA <strong>$8.7M</strong>(同比改善 +$19.1M,转正)。</li>
+                    <li>调整毛利率 <strong>58.9%</strong>(+1600bps),盈利质量修复。</li>
+                    <li><strong>TriLink +12%</strong>:GMP 耗材 <span class="up">+55%</span>、discovery mRNA +17% —— 非新冠的真实需求。</li>
+                    <li><strong>去新冠化:</strong>新冠相关 CleanCap 仅占约 <strong>7%</strong> 收入(midpoint)——不再是脉冲依赖。</li>
+                    <li><strong>债务减半至 ~$150M</strong>,资产负债表修复。</li>
+                    <li>FY 指引:营收 $205–215M(+10–16%),调整 EBITDA 上调至 <strong>$33–35M</strong>。</li>
+                </ul>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📊</div><h2>营收:从新冠悬崖到再增长</h2></div>
+                <div class="chart-container"><canvas id="mrviRev"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">新冠 CleanCap 收入崩塌后,2025 触底,2026 靠 GMP 耗材/discovery mRNA 恢复正增长。但绝对体量仍远小于新冠峰值——<strong>切勿拿新冠峰值当基准</strong>。示意量级。</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card" style="border-top:3px solid var(--green);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(52,211,153,0.15); color:var(--green);">🐂</div><h2>看多 (Bull)</h2></div>
+                <ul class="bull">
+                    <li><strong>已去新冠化</strong>:新冠只剩 ~7%,脉冲风险基本出清,基数干净。</li>
+                    <li><strong>GMP 耗材 +55%</strong>:mRNA 疗法/临床管线放量的真实需求接棒。</li>
+                    <li><strong>EBITDA 转正 + 债务减半</strong>:困境反转的财务证据齐备。</li>
+                    <li><strong>CleanCap 近垄断</strong>仍在:若 mRNA 疗法(个性化疫苗等)兑现,它是直接卖铲人。</li>
+                    <li>估值从峰值 -90%,预期极低,任何超预期都有弹性(小盘高 beta)。</li>
+                </ul>
+            </div>
+            <div class="content-card" style="border-top:3px solid var(--red);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(251,113,133,0.15); color:var(--red);">🐻</div><h2>看空 / 隐患 (Bear)</h2></div>
+                <ul class="bear">
+                    <li><strong>仍在亏损:</strong>TTM 营收 $204.73M、净亏 $104.56M,EV/EBITDA 为负,GAAP 盈利遥远。</li>
+                    <li><strong>体量小、订单lumpy:</strong>GMP 耗材/CDMO 大单时点波动大,季度业绩不稳。</li>
+                    <li><strong>价值毁灭前科:</strong>五年 -90%、$1.54 亿商誉减值,管理层执行力待证明。</li>
+                    <li><strong>下游还很早:</strong>mRNA 疗法真正放量尚需数年,增长接力存不确定性。</li>
+                    <li>客户集中、竞争(第二加帽方案)与技术路线风险。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🎯</div><h2>估值视角与结论</h2></div>
+            <p>MRVI 是本组里<strong>风险最高、最投机</strong>的一只——典型的<strong>小盘困境反转(turnaround)</strong>:垄断资产 + 干净基数 + 财务修复,但仍亏损、体量小、下游需求尚早。它的命运取决于一个判断:<strong>"卖铲给 mRNA 疗法长期趋势"这条新需求曲线,能否在它烧完耐心之前放量。</strong></p>
+            <ul>
+                <li><strong>牛市情景:</strong>mRNA 疗法(个性化疫苗等)进入商业化,GMP 耗材持续高增 → 转正盈利,小盘弹性大。</li>
+                <li><strong>基准情景:</strong>缓慢修复,EBITDA 改善但 GAAP 仍亏,股价区间震荡。</li>
+                <li><strong>熊市情景:</strong>大单递延 + 下游不及预期 → 重回价值陷阱。</li>
+            </ul>
+            <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">一句话:<strong>把它当高风险高赔率的"期权型"仓位,而非核心持仓。</strong>它最能验证"卖铲人也要看需求是脉冲还是长青"这条铁律——买它就是赌它成功换了需求曲线。本报告仅供研究,不构成投资建议。</p></div>
+        </div>
+
+        <footer>
+            <p>© 2026 研报库 · Maravai (MRVI) 个股研究 · 联网核实 · 生成于 2026-08-27 · 仅供研究学习,不构成投资建议</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">来源:</strong>
+                <a href="https://investors.maravai.com/news-events/press-releases/detail/131/maravai-lifesciences-reports-second-quarter-2026-financial-results">Maravai 官方 Q2'26 财报</a> ·
+                <a href="https://www.stocktitan.net/news/MRVI/maravai-life-sciences-reports-second-quarter-2026-financial-tlpbf2zk3zil.html">StockTitan(营收/EBITDA)</a> ·
+                <a href="https://seekingalpha.com/news/4628981-maravai-outlines-33m-35m-2026-adjusted-ebitda-outlook-while-maintaining-205m-215m-revenue">Seeking Alpha(指引)</a> ·
+                <a href="https://simplywall.st/stocks/us/pharmaceuticals-biotech/nasdaq-mrvi/maravai-lifesciences-holdings/news/maravai-lifesciences-holdings-nasdaqmrvi-shareholders-incur">Simply Wall St(五年 -90%)</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chart(document.getElementById('mrviRev').getContext('2d'), {
+                type: 'bar',
+                data: { labels: ['2021','2022','2023','2024','2025','2026E'],
+                    datasets: [{ label: '年营收 (百万美元, 示意)', data: [800, 560, 290, 250, 186, 210],
+                        backgroundColor: ['rgba(151,166,161,0.5)','rgba(151,166,161,0.5)','rgba(151,166,161,0.5)','rgba(151,166,161,0.5)','rgba(251,113,133,0.6)','rgba(52,229,164,0.9)'], borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#97a6a1' } }, tooltip: { callbacks: { label: c => '$' + c.parsed.y + 'M (示意)' } } },
+                    scales: { x: { ticks: { color: '#97a6a1' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#97a6a1', callback: v => '$'+v+'M' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+            });
+        });
+    </script>
+</body>
+</html>

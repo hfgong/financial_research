@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医药 / 生物科技股投资逻辑：与科技股有何不同？子类别地图 · 关键风险 · 卖铲人的三大幻觉 · 尽调清单</title>
+    <meta name="description" content="医药与生物科技股投资逻辑框架：为什么它和科技股是两套语言（概率事件+专利租金 vs 复利增长）、医疗股六大子类别的风险收益地图、二元风险/成功率/现金跑道/专利悬崖/利率敏感度等关键注意事项，以及以 Maravai(MRVI) 与 Danaher(DHR) 为反面教材的"卖铲人三大幻觉"与尽调检查清单。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bio-green: #34e5a4; --bio-teal: #22d3ee; --bio-purple: #a78bfa; --bio-amber: #fbbf24; --danger: #fb7185;
+            --bg-dark: #060a09; --bg-card: rgba(13, 24, 21, 0.78); --bg-card-hover: rgba(18, 34, 30, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08); --border-glow: rgba(52, 229, 164, 0.35);
+            --text-primary: #f1f5f4; --text-secondary: #97a6a1; --text-muted: #64726d;
+            --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif; --font-mono: 'JetBrains Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh;
+            background-image: radial-gradient(circle at 12% 12%, rgba(52, 229, 164, 0.08) 0%, transparent 45%), radial-gradient(circle at 88% 88%, rgba(167, 139, 250, 0.07) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+        .container { max-width: 1320px; margin: 0 auto; padding: 24px 20px 80px 20px; }
+        header {
+            display: flex; justify-content: space-between; align-items: center; padding: 22px 30px; background: rgba(10, 18, 16, 0.85);
+            backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); flex-wrap: wrap; gap: 16px;
+        }
+        .logo-group { display: flex; align-items: center; gap: 16px; }
+        .bio-badge { background: linear-gradient(135deg, var(--bio-green), var(--bio-teal)); color: #04120d; font-weight: 800; font-size: 1.05rem; padding: 8px 16px; border-radius: 12px; letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(52, 229, 164, 0.35); }
+        .header-title h1 { font-size: 1.32rem; font-weight: 800; background: linear-gradient(90deg, #ffffff, #a7f3d0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.85rem; color: var(--text-secondary); }
+        .meta-tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .tag { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .tag-active { border-color: var(--bio-green); color: var(--bio-green); background: rgba(52, 229, 164, 0.08); }
+        .crosslink { margin-bottom: 26px; font-size: 0.85rem; color: var(--text-secondary); }
+        .crosslink a { color: var(--bio-teal); text-decoration: none; }
+        .crosslink a:hover { text-decoration: underline; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 32px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 18px; padding: 22px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .metric-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--bio-green); opacity: 0.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(52, 229, 164, 0.28); background: var(--bg-card-hover); }
+        .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .metric-title { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .metric-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(52, 229, 164, 0.15); color: var(--bio-green); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.22rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .metric-sub { font-size: 0.77rem; color: var(--bio-green); display: flex; align-items: center; gap: 4px; }
+        .tabs-nav { display: flex; gap: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 30px; overflow-x: auto; scrollbar-width: none; }
+        .tabs-nav::-webkit-scrollbar { display: none; }
+        .tab-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 12px 20px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; white-space: nowrap; }
+        .tab-btn:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.08); }
+        .tab-btn.active { background: linear-gradient(135deg, rgba(52, 229, 164, 0.2), rgba(52, 229, 164, 0.05)); border-color: var(--bio-green); color: var(--bio-green); box-shadow: 0 0 15px rgba(52, 229, 164, 0.25); }
+        .tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(48%, 1fr)); gap: 24px; margin-bottom: 24px; }
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; padding: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 24px; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 14px; }
+        .card-header h2 { font-size: 1.18rem; font-weight: 700; color: #fff; }
+        .card-header .icon-box { background: rgba(52, 229, 164, 0.15); color: var(--bio-green); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        h3.sub { color: var(--bio-teal); font-size: 1.02rem; margin: 18px 0 8px; }
+        p { color: #cdd8d4; font-size: 0.93rem; margin-bottom: 14px; line-height: 1.72; }
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+        ul li { position: relative; padding-left: 24px; margin-bottom: 12px; color: #cdd8d4; font-size: 0.92rem; }
+        ul li::before { content: '💊'; position: absolute; left: 0; top: 2px; font-size: 0.78rem; }
+        ol.chk { counter-reset: step; list-style: none; padding-left: 0; }
+        ol.chk li { position: relative; padding-left: 42px; margin-bottom: 14px; color: #cdd8d4; font-size: 0.93rem; }
+        ol.chk li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 8px; background: rgba(52, 229, 164, 0.15); color: var(--bio-green); font-family: var(--font-mono); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+        .table-custom { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        .table-custom th, .table-custom td { padding: 11px 13px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        .table-custom th { color: var(--text-secondary); font-weight: 600; }
+        .table-wrap { overflow-x: auto; }
+        .chart-container { position: relative; width: 100%; height: 380px; margin-top: 16px; }
+        .pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; font-family: var(--font-mono); }
+        .pill-hi { background: rgba(251, 113, 133, 0.16); color: var(--danger); }
+        .pill-mid { background: rgba(251, 191, 36, 0.16); color: var(--bio-amber); }
+        .pill-lo { background: rgba(52, 229, 164, 0.16); color: var(--bio-green); }
+        .callout { background: rgba(52, 229, 164, 0.07); border: 1px solid var(--border-glow); border-radius: 14px; padding: 18px 20px; margin: 16px 0; }
+        .callout.warn { background: rgba(251, 191, 36, 0.07); border-color: rgba(251, 191, 36, 0.35); }
+        .callout.danger { background: rgba(251, 113, 133, 0.07); border-color: rgba(251, 113, 133, 0.3); }
+        .yn { font-family: var(--font-mono); font-weight: 700; }
+        .yn.no { color: var(--danger); }
+        .yn.yes { color: var(--bio-green); }
+        footer { text-align: center; padding-top: 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 50px; }
+        .ref-list { text-align: left; max-width: 1000px; margin: 20px auto 0; font-size: 0.76rem; line-height: 1.9; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+        strong { color: #eafff6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-group">
+                <div class="bio-badge">💊 LOGIC</div>
+                <div class="header-title">
+                    <h1>医药 / 生物科技股投资逻辑</h1>
+                    <p>为什么它和科技股是两套语言 · 子类别地图 · 关键风险 · 卖铲人的三大幻觉 · 尽调清单</p>
+                </div>
+            </div>
+            <div class="meta-tags">
+                <div class="tag tag-active"><span style="display:inline-block; width:8px; height:8px; background:var(--bio-green); border-radius:50%;"></span>2026年8月</div>
+                <div class="tag">投资方法论</div>
+            </div>
+        </header>
+
+        <div class="crosslink">
+            🔗 配套阅读：<a href="./index.html">《基因疗法投资展望 2026–2035》</a> ·
+            <a href="./supply_chain_chokepoints.html">《供应链卡脖子/紫苏叶拆解》</a>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">科技股赚的钱</span><div class="metric-icon">📈</div></div>
+                <div class="metric-value">复利增长</div>
+                <div class="metric-sub">▲ 收入/用户复利 · 网络效应 · 经营杠杆</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">医药股赚的钱</span><div class="metric-icon">🎲</div></div>
+                <div class="metric-value">概率事件 + 专利租金</div>
+                <div class="metric-sub">▲ 临床/监管二元事件 · 有到期日</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">核心陷阱</span><div class="metric-icon">📉</div></div>
+                <div class="metric-value">专利悬崖 + 二元风险</div>
+                <div class="metric-sub">▲ 非平滑增长，阶跃式</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header"><span class="metric-title">反面教材</span><div class="metric-icon">⚠️</div></div>
+                <div class="metric-value">MRVI −90% · DHR 阴跌</div>
+                <div class="metric-sub">▲ "卖铲人"也躲不过的三种风险</div>
+            </div>
+        </div>
+
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab('core')">⚖️ 科技 vs 医药</button>
+            <button class="tab-btn" onclick="switchTab('map')">🗺️ 子类别地图</button>
+            <button class="tab-btn" onclick="switchTab('risks')">🚨 关键注意事项</button>
+            <button class="tab-btn" onclick="switchTab('illusion')">🪤 卖铲人的三大幻觉</button>
+            <button class="tab-btn" onclick="switchTab('checklist')">✅ 尽调检查清单</button>
+        </div>
+
+        <!-- Tab: Core -->
+        <div id="core" class="tab-content active">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">⚖️</div><h2>一句话:两套完全不同的赚钱逻辑</h2></div>
+                <p><strong>科技股赚的是"复利增长"的钱;医药/生物股很多时候赚的是"概率事件 + 专利期租金"的钱。</strong>这决定了它市值往往小很多(很多无收入,按管线定价)、增长不平滑(阶跃式)、也不像半导体那样有实体产能周期(单名是特异性风险)。</p>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>维度</th><th>科技股</th><th>医药 / 生物股</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700;">价值驱动</td><td>收入/用户复利、网络效应、经营杠杆</td><td>临床数据 + 监管审批这些<strong>二元事件</strong></td></tr>
+                        <tr><td style="font-weight:700;">估值方法</td><td>P/E、P/S、DCF</td><td>很多无收入 → <strong>风险调整 NPV(rNPV)</strong>给管线定价</td></tr>
+                        <tr><td style="font-weight:700;">涨跌形态</td><td>趋势性,随基本面爬坡</td><td><strong>阶跃式</strong>——一次 III 期读出/FDA 决定,单日 ±50~80%</td></tr>
+                        <tr><td style="font-weight:700;">护城河</td><td>技术/生态/规模,可长期</td><td>专利,<strong>有到期日</strong>;到期即断崖</td></tr>
+                        <tr><td style="font-weight:700;">风险性质</td><td>竞争、宏观、估值</td><td><strong>特异性二元风险</strong>(试验成败) + 监管 + 支付</td></tr>
+                        <tr><td style="font-weight:700;">"周期"来自</td><td>需求/资本开支周期</td><td>利率/融资窗口/情绪(长久期),部分子类含库存周期</td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout">
+                    <p style="margin-bottom:0;"><strong>对应你的三个直觉:</strong>①"市值小"——多为无收入小盘,按管线 rNPV 定价,分化极大;②"非长期增长"——阶跃 + 专利悬崖侵蚀,增长是块状的;③"不像半导体周期"——<strong>单名</strong>是特异性/二元,不随经济;但<strong>行业</strong>有自己的周期(利率、融资、情绪),部分子类(工具)甚至有库存周期。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Map -->
+        <div id="map" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🗺️</div><h2>"医疗股"不是铁板一块——先分清是哪一种</h2></div>
+                <p>这是最重要的一步:不同子类逻辑天差地别,用错框架必亏。</p>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>子类别</th><th>核心逻辑</th><th>像什么</th><th>二元风险</th></tr></thead>
+                    <tbody>
+                        <tr><td style="font-weight:700; color:var(--danger);">临床期 biotech</td><td>催化剂驱动、无收入烧钱,按管线定价</td><td>期权 / 彩票</td><td><span class="pill pill-hi">极高</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-amber);">已商业化 biopharma</td><td>有收入,看专利悬崖 + 管线接续</td><td>成长/价值混合</td><td><span class="pill pill-mid">中</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-amber);">大药企(Big Pharma)</td><td>多元化、分红,"填坑跑步机"</td><td>价值/红利股</td><td><span class="pill pill-mid">中低</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-teal);">医疗器械(medtech)</td><td>迭代改良、"剃须刀-刀片"耗材</td><td>优质工业股</td><td><span class="pill pill-lo">低</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-green);">工具/上游("卖铲人")</td><td>吃行业放量的"过路费",不赌单药</td><td>优质复利/周期股</td><td><span class="pill pill-lo">低(但有别的风险)</span></td></tr>
+                        <tr><td style="font-weight:700; color:var(--bio-purple);">诊断/服务/医保支付方</td><td>政策/报销风险为主</td><td>受监管的公用/金融</td><td><span class="pill pill-lo">低</span></td></tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="callout" style="margin-bottom:0;">
+                    <p style="margin-bottom:0;"><strong>关键洞察:</strong>如果你想要生物科技的成长敞口、又不想承受单药 III 期的二元风险,<strong>"卖铲人"(工具/试剂/CDMO)是风险收益特征最接近科技成长股的切入点</strong>。<span style="color:var(--bio-amber);">但注意——"低二元风险"不等于"低风险",见下一页三大幻觉。</span></p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📐</div><h2>子类别风险-收益象限(示意)</h2></div>
+                <div class="chart-container"><canvas id="quadChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:14px; margin-bottom:0;">横轴=二元/单事件风险,纵轴=潜在爆发弹性;气泡大小≈典型市值量级。示意性定位,非精确测算。</p>
+            </div>
+        </div>
+
+        <!-- Tab: Risks -->
+        <div id="risks" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🚨</div><h2>七个关键注意事项</h2></div>
+                <ul>
+                    <li><strong>① 单名是二元赌注,不是趋势。</strong> 命运由几个数据节点决定,和宏观基本无关——牛市里 III 期失败照样腰斩。应对:<strong>一篮子"shots on goal"或买指数(XBI/IBB)</strong>,别把身家压一个临床股。</li>
+                    <li><strong>② 成功率要有基准感(base rate)。</strong> 行业经验值:从 I 期到最终获批整体成功率<strong>约 10% 上下</strong>,II 期是"坟场"。要问的是"<strong>赔率 vs 隐含概率</strong>"对不对,不是"药好不好"。</li>
+                    <li><strong>③ 现金跑道 = 生死线。</strong> 无收入公司靠烧钱——"<strong>现金能撑到下一个催化剂之前吗?</strong>"撑不到就会在坏位置增发稀释你。警惕 going concern。</li>
+                    <li><strong>④ 专利悬崖(LOE)。</strong> 专利到期,仿制药/生物类似药进入,一款重磅药可能一两年内<strong>销售掉 80–90%</strong>。连大药企都是"<strong>不断用新药填补老药掉的坑</strong>"的跑步机;评估要看未来 5 年谁到期、管线接不接得上。</li>
+                    <li><strong>⑤ 监管 + 支付,两道闸门。</strong> <strong>获批 ≠ 卖得动</strong>——还要过医保/支付方报销,叠加药价谈判(如美国 IRA)等政治定价风险。</li>
+                    <li><strong>⑥ 利率敏感度极高。</strong> 未盈利生物科技是<strong>长久期资产</strong>,加息周期被杀最惨(2021–2023 XBI)。融资窗口/情绪就是它的"周期"。</li>
+                    <li><strong>⑦ M&A 期权。</strong> 大药企为填专利悬崖会收购小 biotech,<strong>收购溢价</strong>往往是持有小盘股的重要回报项。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab: Illusion -->
+        <div id="illusion" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🪤</div><h2>"卖铲人"的三大幻觉——为什么它也会腰斩</h2></div>
+                <p>"卖铲人能规避单药二元风险"只对了一半。它<strong>只挡住"某一个 III 期失败"</strong>,却完全挡不住另外三种风险——而下面两个真实案例,死的恰恰是这三种。</p>
+                <div class="table-wrap">
+                <table class="table-custom">
+                    <thead><tr><th>风险类型</th><th>卖铲人能挡?</th></tr></thead>
+                    <tbody>
+                        <tr><td>单个药物 III 期失败(二元)</td><td class="yn yes">✅ 能</td></tr>
+                        <tr><td><strong>终端需求是脉冲还是长青</strong>(新冠 vs 真·长期趋势)</td><td class="yn no">❌ 不能</td></tr>
+                        <tr><td><strong>库存 / 资本开支周期</strong>(去库存)</td><td class="yn no">❌ 不能——工具层照样周期</td></tr>
+                        <tr><td><strong>估值 / 利率重置</strong>(长久期,ZIRP 泡沫)</td><td class="yn no">❌ 反而更惨</td></tr>
+                        <tr><td><strong>客户 / 主题集中度</strong></td><td class="yn no">❌ 不能</td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">💥</div><h2>案例① MRVI:卖铲给一次性泡沫</h2></div>
+                    <p><strong>Maravai LifeSciences,五年 −90%。</strong></p>
+                    <ul>
+                        <li>收入过去 5 年<strong>年均 −21%</strong>、近 3 年 <strong>−39%</strong>;2024 Q3 计提 <strong>1.54 亿美元商誉减值</strong>。</li>
+                        <li>死因<strong>不是</strong> CleanCap 垄断丢了——<strong>近垄断仍在</strong>——而是它卖铲的"淘金热"是<strong>新冠疫苗这种一次性脉冲需求</strong>。新冠常态化后,疫苗厂订单蒸发,CleanCap 新冠相关收入直接掉 1.57 亿美元。</li>
+                        <li>叠加<strong>客户/主题高度集中</strong>(押在少数疫苗大厂),脆弱性拉满。</li>
+                    </ul>
+                    <div class="callout danger" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.86rem;"><strong>教训:在一个正在萎缩的市场里当垄断者,一文不值。</strong>整道菜(新冠疫苗)不点了,紫苏叶再不可替代也没用。</p></div>
+                </div>
+                <div class="content-card">
+                    <div class="card-header"><div class="icon-box">🌊</div><h2>案例② DHR:工具层其实有周期</h2></div>
+                    <p><strong>Danaher,五年阴跌(从 2021 峰值回落)。</strong></p>
+                    <ul>
+                        <li><strong>生物工艺去库存周期("bioprocessing winter"):</strong>疫情期客户恐慌性囤货 → 2022 起消化过剩库存 → Cytiva 所在生物技术板块<strong>核心收入一度 −21%</strong>。<strong>这就是库存周期,结构上和半导体一回事。</strong></li>
+                        <li>叠加中国需求疲软 + biotech 融资寒冬(加息)。</li>
+                        <li>拆分了 Veralto、Envista,<strong>股价图本身不是同口径</strong>。</li>
+                    </ul>
+                    <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.86rem;">但 DHR ≠ MRVI:它是<strong>优质特许经营在周期底部重置</strong>(2025 已指引核心收入回约 +3%,券商称生物工艺"可能见底");MRVI 更像<strong>结构性衰退的单品泡沫,有价值陷阱风险</strong>。</p></div>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🧭</div><h2>结论:即使买卖铲人,也要问三个问题</h2></div>
+                <ol class="chk">
+                    <li><strong>它卖铲的是"长青趋势"还是"一次性淘金热"?</strong> 新冠疫苗量是尖峰不是平台;真正长青的 mRNA 疗法/siRNA/细胞疗法还很早、体量远小于新冠峰值。<strong>别拿新冠峰值当基准。</strong></li>
+                    <li><strong>现在处在库存周期哪一段?</strong> 要在<strong>去库存尾声/见底</strong>买,而不是在囤货高峰追。</li>
+                    <li><strong>估值锚在哪?</strong> ZIRP 时代它们 30–40x,利率一变多杀多。<strong>入场估值决定生死</strong>,和买 SaaS 一个道理。</li>
+                </ol>
+                <div class="callout" style="margin-bottom:0;">
+                    <p style="margin-bottom:0;"><strong>一句话收敛:</strong>"卖铲人"降低的是"押错单一分子"的风险,却把风险换成了"<strong>押错一整条需求曲线 + 库存周期 + 估值周期</strong>"。所以——<strong>即使是卖铲人,周期位置和入场估值,比垄断地位更重要。</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Checklist -->
+        <div id="checklist" class="tab-content">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">✅</div><h2>看一只医药股前,先过这份清单</h2></div>
+                <ol class="chk">
+                    <li><strong>分类:</strong>这是哪一类(临床期 / 商业化 / 大药企 / 工具 / 器械 / 支付方)?我用的框架对不对号?</li>
+                    <li><strong>价值来源:</strong>靠什么涨——<strong>催化剂事件</strong>还是<strong>收入复利</strong>?</li>
+                    <li><strong>现金跑道:</strong>够不够撑到下一个催化剂?会不会稀释/going concern?</li>
+                    <li><strong>赔率:</strong>成功概率的 base rate vs 当前隐含概率——赔率划算吗?</li>
+                    <li><strong>专利悬崖:</strong>(商业化公司)未来 5 年谁到期?管线接不接得上?</li>
+                    <li><strong>监管+支付:</strong>审批风险 + 报销/定价/政策风险有多大?获批后卖得动吗?</li>
+                    <li><strong>(卖铲人专用)需求性质:</strong>终端是长青趋势还是一次性脉冲?客户集中吗?</li>
+                    <li><strong>(卖铲人专用)周期位置:</strong>在去库存的哪一段?</li>
+                    <li><strong>估值锚:</strong>当前估值 vs 历史/久期/利率环境——是不是在泡沫价追高?</li>
+                    <li><strong>仓位:</strong>单押还是一篮子/指数?仓位是否匹配二元风险?</li>
+                </ol>
+                <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">本文为投资方法论整理,不构成投资建议;所涉个股仅为案例说明。生物科技波动极大、临床成败二元,请独立尽调。</p></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Gene-Med · 医药股投资逻辑方法论 · 生成于 2026-08-27</p>
+            <p style="margin-top:6px;">成功率/专利悬崖跌幅等为行业经验值(rule of thumb),用于建立量级直觉而非精确数据;不构成投资建议。</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">案例来源:</strong><br>
+                MRVI:<a href="https://simplywall.st/stocks/us/pharmaceuticals-biotech/nasdaq-mrvi/maravai-lifesciences-holdings/news/maravai-lifesciences-holdings-nasdaqmrvi-shareholders-incur">Simply Wall St(五年 −90%、营收年均 −21%)</a> · <a href="https://seekingalpha.com/article/4644768-maravai-lifesciences-falling-victim-to-covid-boom-bust">Seeking Alpha（COVID boom & bust）</a><br>
+                DHR:<a href="https://www.morningstar.com/stocks/danaher-earnings-bioprocessing-unit-may-be-bottoming-amid-veralto-spinoff">Morningstar(生物工艺见底/Veralto 拆分)</a> · <a href="https://heavymoatinvestments.substack.com/p/danaher-from-star-performer-to-post">Heavy Moat（post-pandemic hangover）</a> · <a href="https://inpractise.com/articles/danaher-cytiva-and-bioprocessing-moats">In Practise（Cytiva 生物工艺护城河）</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            if (tabId === 'map' && window.quadChart) window.quadChart.update();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('quadChart').getContext('2d');
+            // x = 二元/单事件风险 (0-10), y = 潜在爆发弹性 (0-10), r = 市值量级
+            const pts = [
+                { label: '临床期 biotech', x: 9.2, y: 9.0, r: 10, c: 'rgba(251, 113, 133, 0.75)' },
+                { label: '已商业化 biopharma', x: 5.5, y: 5.5, r: 16, c: 'rgba(251, 191, 36, 0.75)' },
+                { label: '大药企', x: 3.0, y: 3.2, r: 26, c: 'rgba(251, 191, 36, 0.6)' },
+                { label: '医疗器械', x: 2.6, y: 4.2, r: 20, c: 'rgba(34, 211, 238, 0.75)' },
+                { label: '工具/卖铲人', x: 3.6, y: 6.2, r: 22, c: 'rgba(52, 229, 164, 0.85)' },
+                { label: '诊断/服务/支付方', x: 2.4, y: 3.6, r: 22, c: 'rgba(167, 139, 250, 0.75)' }
+            ];
+            window.quadChart = new Chart(ctx, {
+                type: 'bubble',
+                data: { datasets: pts.map(p => ({ label: p.label, data: [{ x: p.x, y: p.y, r: p.r }], backgroundColor: p.c, borderColor: 'rgba(255,255,255,0.25)', borderWidth: 1 })) },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#97a6a1', boxWidth: 12, font: { size: 11 } } },
+                        tooltip: { callbacks: { label: c => `${c.dataset.label}: 二元风险 ${c.raw.x}/10, 弹性 ${c.raw.y}/10` } }
+                    },
+                    scales: {
+                        x: { min: 0, max: 10, title: { display: true, text: '← 二元 / 单事件风险 →', color: '#97a6a1' }, ticks: { color: '#97a6a1' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { min: 0, max: 10, title: { display: true, text: '← 潜在爆发弹性 →', color: '#97a6a1' }, ticks: { color: '#97a6a1' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

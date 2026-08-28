@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderna (MRNA) 深度研报 - 2026年8月：个性化癌症疫苗 III 期突破后的重估与现金烧钱赛跑</title>
+    <meta name="description" content="Moderna (MRNA) 2026年8月深度研报：拆解 INTerpath-001 个性化 mRNA 黑色素瘤疫苗 III 期成功、股价单日 +177% 重估、Q2 财报与现金跑道、2028 盈亏平衡路径、催化剂日历与多空博弈。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --brand: #e4002b; --brand-glow: rgba(228, 0, 43, 0.35); --brand-soft: rgba(228, 0, 43, 0.12);
+            --bg-dark: #0c0709; --bg-card: rgba(30, 18, 22, 0.72); --bg-card-hover: rgba(42, 24, 30, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08); --border-glow: rgba(228, 0, 43, 0.3);
+            --text-primary: #f5f3f4; --text-secondary: #a99ca0; --text-muted: #6b6065;
+            --green: #34d399; --red: #fb7185; --amber: #fbbf24;
+            --font-sans: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; --font-mono: 'JetBrains Mono',monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; background-image: radial-gradient(circle at 15% 12%, rgba(228,0,43,0.08) 0%, transparent 45%), radial-gradient(circle at 85% 88%, rgba(228,0,43,0.05) 0%, transparent 45%); background-attachment: fixed; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back-btn { display: inline-block; margin-bottom: 18px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .back-btn:hover { color: var(--brand); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px; background: rgba(22,12,15,0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); flex-wrap: wrap; gap: 16px; }
+        .logo-group { display: flex; align-items: center; gap: 18px; }
+        .avatar { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--brand); color: var(--brand); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-mono); font-size: 1.05rem; box-shadow: 0 0 20px var(--brand-glow); background: var(--brand-soft); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg,#fff,#ffb3c0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.87rem; color: var(--text-secondary); margin-top: 2px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; color: var(--text-secondary); }
+        .tag-active { border-color: var(--brand); color: #ff9aab; background: var(--brand-soft); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all .3s; }
+        .metric-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--brand); opacity:.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); background: var(--bg-card-hover); }
+        .metric-title { font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing:.5px; font-weight:600; margin-bottom:10px; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.32rem; font-weight:700; color:#fff; margin-bottom:5px; }
+        .metric-sub { font-size: 0.76rem; color: var(--text-secondary); }
+        .up { color: var(--green); } .down { color: var(--red); }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 18px; padding: 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 22px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(46%,1fr)); gap: 22px; margin-bottom: 22px; }
+        @media (max-width: 880px){ .grid-2 { grid-template-columns: 1fr; } }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .card-header h2 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .icon-box { width: 34px; height: 34px; border-radius: 9px; background: var(--brand-soft); color: var(--brand); display:flex; align-items:center; justify-content:center; }
+        p { color: #d6cfd2; font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        ul { list-style: none; padding-left: 0; } ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #d6cfd2; font-size: 0.9rem; }
+        ul li::before { content:'▸'; position:absolute; left:0; color: var(--brand); font-weight:700; }
+        .bull li::before { content:'▲'; color: var(--green); } .bear li::before { content:'▼'; color: var(--red); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 300px; margin-top: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:var(--font-mono); }
+        .pill-c { background: var(--brand-soft); color:#ff9aab; } .pill-g { background: rgba(52,211,153,0.16); color: var(--green); } .pill-a { background: rgba(251,191,36,0.16); color: var(--amber); }
+        .callout { background: var(--brand-soft); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+        .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+        strong { color: #fff; }
+        footer { text-align: center; padding-top: 34px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 44px; }
+        .ref-list { text-align:left; max-width: 980px; margin: 16px auto 0; font-size: 0.74rem; line-height: 1.85; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">&larr; 返回 2026-08 研报库</a>
+        <header>
+            <div class="logo-group">
+                <div class="avatar">MRNA</div>
+                <div class="header-title">
+                    <h1>Moderna 深度研报</h1>
+                    <p>个性化癌症疫苗 III 期突破后的重估 · 与现金烧钱的赛跑 · NASDAQ: MRNA</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="tag tag-active">2026年8月</div>
+                <div class="tag">生物科技 · mRNA 平台</div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-title">股价 (8/25)</div><div class="metric-value">$156.75</div><div class="metric-sub"><span class="up">8/19 单日 +177%</span> ($62.96→$174.38)</div></div>
+            <div class="metric-card"><div class="metric-title">市值</div><div class="metric-value">~$69B</div><div class="metric-sub">III 期消息前约 $25B</div></div>
+            <div class="metric-card"><div class="metric-title">Q2'26 营收</div><div class="metric-value">$145M</div><div class="metric-sub">超指引上限(预期 $126.6M)</div></div>
+            <div class="metric-card"><div class="metric-title">现金 & 投资</div><div class="metric-value">$6.9B</div><div class="metric-sub">年末指引 $4.7–5.2B · 烧钱中</div></div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">💥</div><h2>一句话投资逻辑:平台被证明了,但故事从"疫苗公司"切换到"肿瘤管线期权 + 现金跑道"</h2></div>
+            <p>2026 年 8 月 19 日,Moderna/Merck 的个性化 mRNA 黑色素瘤疫苗 <strong>intismeran autogene(mRNA-4157/V940)</strong> 联合 KEYTRUDA 在 III 期 INTerpath-001 中双达标(RFS + DMFS)——这是<strong>史上首个 III 期成功的 mRNA 癌症疗法与个性化新抗原疗法</strong>。市场一天内把公司重估:股价 <span class="up">单日 +177%</span>,市值从约 $25B 跳到约 $69B。</p>
+            <div class="callout"><p style="margin-bottom:0;"><strong>核心矛盾:</strong>上行来自"个性化肿瘤疫苗平台"这个巨大期权(黑色素瘤→肺癌等);下行是<strong>现有呼吸道疫苗收入下滑 + 烧钱到 2028 才现金平衡</strong>。MRNA 现在是一只"平台期权 vs 现金消耗"的股票,而不再是简单的疫苗营收股。</p></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">📉</div><h2>营收轨迹:新冠脉冲退潮</h2></div>
+                <div class="chart-container"><canvas id="revChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">新冠疫苗峰值后营收大幅回落,当前季度营收已回到亿元级;2026 全年指引偏保守(假设无 mFLUSIVA/mCOMBRIAX 收入、且新冠接种率或继续下滑)。示意量级。</p>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💰</div><h2>财务纪律:削成本、延平衡</h2></div>
+                <ul>
+                    <li>Q2 现金成本 <span class="up">YoY -10%</span>;全年现金成本指引降至 <strong>~$40 亿</strong>。</li>
+                    <li>COS 指引 $1.8B→<strong>$1.7B</strong>;R&D $3.0B→<strong>$2.9B</strong>(累计削减约 $11 亿)。</li>
+                    <li>现金盈亏平衡目标<strong>推迟至 2028 年</strong>(较原计划延后约 2 年)——这是消息前压制股价的主因之一。</li>
+                    <li>现金 $6.9B(Q1 末 $7.5B),年末指引 $4.7–5.2B:<strong>跑道够,但在持续消耗</strong>。</li>
+                </ul>
+                <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">读法:管理层在"用削减 R&D 保现金"换"活到肿瘤管线兑现"。削太狠会伤长期管线,削太松会耗尽现金——平衡术是关键看点。</p></div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🗓️</div><h2>催化剂日历</h2></div>
+            <div class="table-wrap">
+            <table>
+                <thead><tr><th>催化剂</th><th>内容</th><th>性质</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700; color:#ff9aab;">INTerpath-001(已兑现)</td><td>个性化黑色素瘤疫苗 III 期成功,首批监管申报推进中;详细数据待国际会议公布</td><td><span class="pill pill-g">重大利好</span></td></tr>
+                    <tr><td style="font-weight:700;">个性化疫苗适应症扩张</td><td>向 <strong>非小细胞肺癌(NSCLC)</strong>、肾癌等大瘤种拓展——真正的市值想象空间</td><td><span class="pill pill-c">关键期权</span></td></tr>
+                    <tr><td style="font-weight:700;">流感疫苗 mRNA-1010</td><td>获 FDA VRBPAC 一致正面推荐,推进 PDUFA 审批</td><td><span class="pill pill-g">近期</span></td></tr>
+                    <tr><td style="font-weight:700;">新肿瘤项目开发</td><td>mRNA-4194(Lynch 综合征)、mRNA-4200(实体瘤)开始给药</td><td><span class="pill pill-c">早期管线</span></td></tr>
+                    <tr><td style="font-weight:700;">诺如疫苗</td><td>研发出现挫折(setback)——提示管线并非全线顺风</td><td><span class="pill pill-a">利空</span></td></tr>
+                    <tr><td style="font-weight:700;">呼吸道组合(COVID/RSV/Flu)</td><td>基本盘现金牛,但接种率与政策存下行压力</td><td><span class="pill pill-a">承压</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card" style="border-top:3px solid var(--green);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(52,211,153,0.15); color:var(--green);">🐂</div><h2>看多 (Bull)</h2></div>
+                <ul class="bull">
+                    <li><strong>平台首次被 III 期证明</strong>:个性化新抗原疫苗从"科学假设"变"临床事实",打开肿瘤大适应症。</li>
+                    <li><strong>Merck 背书 + KEYTRUDA 联用</strong>:大药企分担成本、渠道与商业化风险。</li>
+                    <li><strong>肺癌等扩张 = 数十亿美元级 TAM</strong>,当前市值可能只反映了黑色素瘤。</li>
+                    <li><strong>现金 $6.9B + 削减成本</strong>,有跑道等管线兑现。</li>
+                    <li>大摩目标价 $170→$209,卖方开始上调。</li>
+                </ul>
+            </div>
+            <div class="content-card" style="border-top:3px solid var(--red);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(251,113,133,0.15); color:var(--red);">🐻</div><h2>看空 / 隐患 (Bear)</h2></div>
+                <ul class="bear">
+                    <li><strong>估值已大幅重估</strong>:一天 +177% 后,黑色素瘤这一利好基本price in,后续需要更多兑现才撑得住。</li>
+                    <li><strong>现金烧到 2028</strong>才平衡,期间若管线不及预期,存在再融资/稀释风险。</li>
+                    <li><strong>基本盘下滑</strong>:新冠/RSV 接种率与政策逆风,营收基数仍在缩。</li>
+                    <li><strong>个性化生产规模化</strong>(测序+现制+冷链)与定价/支付仍待验证。</li>
+                    <li>诺如等项目挫折,提示管线波动性;单一大催化剂驱动的股票波动极大。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🎯</div><h2>估值视角与结论</h2></div>
+            <p>MRNA 无法用简单 P/E 估值——它是<strong>"现金牛(呼吸道疫苗,缩量)+ 期权(个性化肿瘤疫苗,放量)"</strong>的组合。当前 ~$69B 市值里,很大一块是市场给肿瘤疫苗平台的期权定价。买入 MRNA 本质是判断:<strong>肿瘤疫苗能否从黑色素瘤复制到肺癌等大瘤种,且在现金烧完前兑现。</strong></p>
+            <ul>
+                <li><strong>牛市情景:</strong>肺癌等 III 期陆续成功 → 平台估值再上台阶,现有市值显便宜。</li>
+                <li><strong>基准情景:</strong>黑色素瘤获批、适应症缓慢扩张,股价在高波动中消化预期。</li>
+                <li><strong>熊市情景:</strong>后续适应症受挫 + 基本盘下滑 + 现金消耗 → 回吐大部分重估涨幅。</li>
+            </ul>
+            <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">一句话:<strong>平台价值真实,但入场点位在 +177% 之后已不便宜;这是"高确信度长期主题 + 高波动短期博弈"的典型标的。</strong>仓位与波动匹配,别在单日暴涨后追高满仓。本报告仅供研究,不构成投资建议。</p></div>
+        </div>
+
+        <footer>
+            <p>© 2026 研报库 · Moderna (MRNA) 个股研究 · 联网核实 · 生成于 2026-08-27 · 仅供研究学习,不构成投资建议</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">来源:</strong>
+                <a href="https://www.fool.com/coverage/stock-market-today/2026/08/19/stock-market-today-aug-19-moderna-skyrockets-177-on-positive-phase-3-melanoma-data/">Motley Fool(股价 +177%)</a> ·
+                <a href="https://www.biospace.com/drug-development/moderna-stock-nearly-doubles-as-merck-partnered-mrna-cancer-vaccine-meets-phase-3-goal">BioSpace</a> ·
+                <a href="https://www.fool.com/earnings/call-transcripts/2026/08/07/moderna-mrna-q2-2026-earnings-call-transcript/">Q2'26 电话会记录</a> ·
+                <a href="https://www.genengnews.com/topics/drug-discovery/stockwatch-modernas-1-1b-rd-cut-profitability-delay-jolt-investors/">GEN(R&D 削减/盈利延后)</a> ·
+                <a href="https://www.merck.com/news/merck-and-moderna-announce-phase-3-interpath-001-trial-of-intismeran-autogene-plus-keytruda-met-endpoints-of-recurrence-free-survival-rfs-and-distant-metastasis-free-survival-dmfs-in-patient/">Merck(INTerpath-001)</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chart(document.getElementById('revChart').getContext('2d'), {
+                type: 'bar',
+                data: { labels: ['2021','2022','2023','2024','2025','2026E'],
+                    datasets: [{ label: '年营收 (十亿美元, 示意)', data: [17.7, 18.4, 6.7, 3.2, 2.2, 1.9],
+                        backgroundColor: ['rgba(169,156,160,0.5)','rgba(169,156,160,0.5)','rgba(169,156,160,0.5)','rgba(169,156,160,0.5)','rgba(228,0,43,0.6)','rgba(228,0,43,0.9)'], borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#a99ca0' } }, tooltip: { callbacks: { label: c => '$' + c.parsed.y + 'B (示意)' } } },
+                    scales: { x: { ticks: { color: '#a99ca0' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#a99ca0', callback: v => '$'+v+'B' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+            });
+        });
+    </script>
+</body>
+</html>
