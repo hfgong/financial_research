@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intellia (NTLA) 深度研报 - 2026年8月：体内 CRISPR 首个 III 期成功,从平台验证到商业化拐点</title>
+    <meta name="description" content="Intellia Therapeutics (NTLA) 2026年8月深度研报：lonvo-z 遗传性血管性水肿 HAELO III 期成功(发作 -87%)——全球首个体内 CRISPR III 期胜利、nex-z ATTR 的 HLA 安全信号、现金跑道、BLA 与 2027 上市催化剂及临床期估值多空。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --brand: #8b5cf6; --brand-glow: rgba(139,92,246,0.35); --brand-soft: rgba(139,92,246,0.14);
+            --bg-dark: #08060d; --bg-card: rgba(22,18,32,0.74); --bg-card-hover: rgba(30,24,44,0.86);
+            --border-color: rgba(255,255,255,0.08); --border-glow: rgba(139,92,246,0.3);
+            --text-primary: #f3f2f7; --text-secondary: #a29caf; --text-muted: #67617a;
+            --green: #34d399; --red: #fb7185; --amber: #fbbf24;
+            --font-sans: 'Plus Jakarta Sans','Inter',-apple-system,sans-serif; --font-mono: 'JetBrains Mono',monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; background-image: radial-gradient(circle at 15% 12%, rgba(139,92,246,0.09) 0%, transparent 45%), radial-gradient(circle at 85% 88%, rgba(139,92,246,0.05) 0%, transparent 45%); background-attachment: fixed; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back-btn { display: inline-block; margin-bottom: 18px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .back-btn:hover { color: var(--brand); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 24px 30px; background: rgba(18,14,26,0.85); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 20px; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); flex-wrap: wrap; gap: 16px; }
+        .logo-group { display: flex; align-items: center; gap: 18px; }
+        .avatar { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--brand); color: var(--brand); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-mono); font-size: 1.05rem; box-shadow: 0 0 20px var(--brand-glow); background: var(--brand-soft); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg,#fff,#c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 0.87rem; color: var(--text-secondary); margin-top: 2px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; color: var(--text-secondary); }
+        .tag-active { border-color: var(--brand); color: #c4b5fd; background: var(--brand-soft); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 18px; margin-bottom: 30px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all .3s; }
+        .metric-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--brand); opacity:.85; }
+        .metric-card:hover { transform: translateY(-4px); border-color: var(--border-glow); background: var(--bg-card-hover); }
+        .metric-title { font-size: 0.76rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing:.5px; font-weight:600; margin-bottom:10px; }
+        .metric-value { font-family: var(--font-mono); font-size: 1.32rem; font-weight:700; color:#fff; margin-bottom:5px; }
+        .metric-sub { font-size: 0.76rem; color: var(--text-secondary); }
+        .up { color: var(--green); } .down { color: var(--red); }
+        .content-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 18px; padding: 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); margin-bottom: 22px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(46%,1fr)); gap: 22px; margin-bottom: 22px; }
+        @media (max-width: 880px){ .grid-2 { grid-template-columns: 1fr; } }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; }
+        .card-header h2 { font-size: 1.15rem; font-weight: 700; color: #fff; }
+        .icon-box { width: 34px; height: 34px; border-radius: 9px; background: var(--brand-soft); color: var(--brand); display:flex; align-items:center; justify-content:center; }
+        p { color: #d4cfdd; font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        ul { list-style: none; padding-left: 0; } ul li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #d4cfdd; font-size: 0.9rem; }
+        ul li::before { content:'▸'; position:absolute; left:0; color: var(--brand); font-weight:700; }
+        .bull li::before { content:'▲'; color: var(--green); } .bear li::before { content:'▼'; color: var(--red); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 300px; margin-top: 12px; }
+        .pill { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:var(--font-mono); }
+        .pill-c { background: var(--brand-soft); color:#c4b5fd; } .pill-g { background: rgba(52,211,153,0.16); color: var(--green); } .pill-a { background: rgba(251,191,36,0.16); color: var(--amber); } .pill-r { background: rgba(251,113,133,0.16); color: var(--red); }
+        .callout { background: var(--brand-soft); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px 18px; margin: 14px 0; }
+        .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.3); }
+        .callout.danger { background: rgba(251,113,133,0.07); border-color: rgba(251,113,133,0.3); }
+        strong { color: #fff; }
+        footer { text-align: center; padding-top: 34px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 44px; }
+        .ref-list { text-align:left; max-width: 980px; margin: 16px auto 0; font-size: 0.74rem; line-height: 1.85; color: var(--text-muted); }
+        .ref-list a { color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">&larr; 返回 2026-08 研报库</a>
+        <header>
+            <div class="logo-group">
+                <div class="avatar">NTLA</div>
+                <div class="header-title">
+                    <h1>Intellia 深度研报</h1>
+                    <p>体内 CRISPR 先驱 · 全球首个体内基因编辑 III 期成功 · 临床→商业化拐点 · NASDAQ: NTLA</p>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="tag tag-active">2026年8月</div>
+                <div class="tag">临床期生物科技 · 基因编辑</div>
+            </div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-title">市值(6月参考)</div><div class="metric-value">~$1.9B</div><div class="metric-sub"><span class="up">近 6 月 +76%</span> · III 期消息驱动</div></div>
+            <div class="metric-card"><div class="metric-title">lonvo-z HAE III 期</div><div class="metric-value">发作 -87%</div><div class="metric-sub">vs 安慰剂 · 全球首个体内 CRISPR III 期</div></div>
+            <div class="metric-card"><div class="metric-title">现金(6/30)</div><div class="metric-value">$628.4M</div><div class="metric-sub">跑道至少到 2028(未计 lonvo-z 收入)</div></div>
+            <div class="metric-card"><div class="metric-title">Q2'26 净亏损</div><div class="metric-value">-$106.6M</div><div class="metric-sub">临床期烧钱 · 尚无产品收入</div></div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🧬</div><h2>一句话投资逻辑:唯一用 III 期证明"体内一次编辑"可行的公司,现在冲刺首个商业化</h2></div>
+            <p>Intellia 是<strong>体内(in vivo)CRISPR 基因编辑的先驱</strong>——直接把编辑器打进体内、一次性改写基因,而非"体外改造细胞再回输"。2026 年它拿下一个历史性里程碑:<strong>lonvo-z(lonvoguran ziclumeran,NTLA-2002)治疗遗传性血管性水肿(HAE)的 III 期 HAELO 成功</strong>——单次给药使发作率<strong>较安慰剂降低 87%</strong>(第 5–28 周),所有关键次要终点 <strong>p&lt;0.0001</strong>,lonvo-z 组无严重不良事件。这是<strong>全球首个体内 CRISPR 疗法的 III 期胜利</strong>,证明了整个"一针根治"范式的临床可行性。</p>
+            <div class="callout warn"><p style="margin-bottom:0;"><strong>⚠️ 与前四只本质不同——这是临床期(clinical-stage)标的:</strong>NTLA <strong>尚无产品收入、持续烧钱、由二元催化剂驱动</strong>(BLA 受理、上市、ATTR 数据)。它更像"平台已验证的高赔率期权",风险收益远高于已盈利的 ALNY 或蓝筹 DHR。请用彩票/期权的仓位逻辑,而非核心持仓。</p></div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">✅</div><h2>lonvo-z(HAE):领跑资产</h2></div>
+                <ul>
+                    <li><strong>疗效炸裂:</strong>单次输注,发作率较安慰剂 <strong>-87%</strong>,多数患者在 6 个月评估期内<strong>既无发作、也无需持续用药</strong>。</li>
+                    <li><strong>安全性良好:</strong>lonvo-z 组无严重不良事件。</li>
+                    <li><strong>机制:</strong>体内 CRISPR 敲低 KLKB1 基因,永久降低激肽释放酶/缓激肽——从源头堵住 HAE 发作。</li>
+                    <li><strong>监管:</strong>滚动 BLA,<strong>2026 年底前有望获受理</strong>,潜在<strong>2027 上半年美国上市</strong>。</li>
+                </ul>
+                <div class="callout" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">"一针管一年、不用天天吃药"对 HAE 患者是范式级改善——这是 NTLA 从"科学公司"变"商业公司"的第一张门票。</p></div>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">⚠️</div><h2>nex-z(ATTR):更大的池子,但有安全信号</h2></div>
+                <p><strong>nex-z(nexiguran ziclumeran,NTLA-2001)</strong>治疗 ATTR 淀粉样变心肌病(MAGNITUDE III 期)——这才是市值想象空间更大的适应症(对标 Alnylam 的 Amvuttra 心血管市场)。但有隐忧:</p>
+                <ul>
+                    <li>2026 年 3 月 FDA <strong>解除临床搁置</strong>,III 期恢复入组。</li>
+                    <li>但发现<strong>携带 C0501 HLA 等位基因的患者</strong>,3 级及以上转氨酶升高比例显著更高——<strong>可能限制可及患者群</strong>。</li>
+                </ul>
+                <div class="callout danger" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">这是典型的"基因编辑脱靶/安全性"风险:大适应症的钥匙握在手里,但安全信号可能缩小 TAM,是估值的关键摆动项。</p></div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🗓️</div><h2>催化剂日历</h2></div>
+            <div class="table-wrap">
+            <table>
+                <thead><tr><th>催化剂</th><th>内容</th><th>性质</th></tr></thead>
+                <tbody>
+                    <tr><td style="font-weight:700; color:#c4b5fd;">lonvo-z HAELO III 期(已兑现)</td><td>发作 -87%、全终点达标——全球首个体内 CRISPR III 期</td><td><span class="pill pill-g">重大利好</span></td></tr>
+                    <tr><td style="font-weight:700;">lonvo-z BLA 受理</td><td>滚动递交,2026 年底前有望受理</td><td><span class="pill pill-c">近期</span></td></tr>
+                    <tr><td style="font-weight:700;">lonvo-z 美国上市</td><td>潜在 2027 上半年——首笔产品收入</td><td><span class="pill pill-c">2027</span></td></tr>
+                    <tr><td style="font-weight:700;">nex-z ATTR MAGNITUDE</td><td>III 期入组恢复,对标心血管大市场</td><td><span class="pill pill-c">关键期权</span></td></tr>
+                    <tr><td style="font-weight:700;">nex-z HLA 安全信号</td><td>C0501 等位基因转氨酶升高,或限制患者群</td><td><span class="pill pill-a">风险</span></td></tr>
+                    <tr><td style="font-weight:700;">现金跑道</td><td>$628M,至少到 2028(未计产品收入)</td><td><span class="pill pill-a">需盯稀释</span></td></tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">💰</div><h2>现金跑道 vs 烧钱</h2></div>
+                <div class="chart-container"><canvas id="cashChart"></canvas></div>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; margin-bottom:0;">现金 $628M、季度净亏约 $107M,管理层指引跑道至少到 2028(保守、未计 lonvo-z 收入)。上市前若需扩张,存在再融资/稀释可能。示意演示。</p>
+            </div>
+            <div class="content-card">
+                <div class="card-header"><div class="icon-box">🎯</div><h2>它在这组里的定位</h2></div>
+                <p>NTLA 补上了这组个股缺失的<strong>第五个模态——基因编辑(体内 CRISPR)</strong>,并且是唯一的<strong>临床→商业化拐点</strong>标的:</p>
+                <ul>
+                    <li><strong>MRNA</strong> = 催化剂驱动的重估(已有平台)</li>
+                    <li><strong>ALNY</strong> = 已盈利质量成长(低二元)</li>
+                    <li><strong>DHR / MRVI</strong> = 卖铲人(蓝筹 / 困境反转)</li>
+                    <li><strong>NTLA</strong> = <strong>临床期高赔率期权</strong>,平台刚被 III 期证明,冲刺首个上市</li>
+                </ul>
+                <p style="margin-bottom:0; font-size:0.85rem; color:var(--text-secondary);">它是纯正的美国公司(Delaware 注册、Nasdaq 普通股,<strong>非 ADR</strong>)。</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="content-card" style="border-top:3px solid var(--green);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(52,211,153,0.15); color:var(--green);">🐂</div><h2>看多 (Bull)</h2></div>
+                <ul class="bull">
+                    <li><strong>平台被 III 期证明</strong>:全球首个体内 CRISPR III 期成功,技术风险大幅下降。</li>
+                    <li><strong>lonvo-z 疗效碾压</strong>(-87%),"一针根治" vs 终身用药,商业潜力清晰。</li>
+                    <li><strong>2027 首个上市</strong>,从烧钱临床公司迈向有收入公司。</li>
+                    <li><strong>nex-z/ATTR 是更大期权</strong>:若安全性可控,对标数十亿美元心血管市场。</li>
+                    <li><strong>现金到 2028</strong> + 纯美国公司(非 ADR),干净。</li>
+                </ul>
+            </div>
+            <div class="content-card" style="border-top:3px solid var(--red);">
+                <div class="card-header"><div class="icon-box" style="background:rgba(251,113,133,0.15); color:var(--red);">🐻</div><h2>看空 / 隐患 (Bear)</h2></div>
+                <ul class="bear">
+                    <li><strong>仍是临床期、无收入、持续亏损</strong>(Q2 净亏 $107M),二元风险高。</li>
+                    <li><strong>HAE 商业化不轻松</strong>:市场已有 Takhzyro、Orladeyo 等成熟疗法,"一针"渗透率待验证(卖方明确提示"III 期胜利没解决商业化问题")。</li>
+                    <li><strong>nex-z 安全信号</strong>(HLA 相关转氨酶升高)可能压缩最大适应症 TAM。</li>
+                    <li><strong>稀释风险</strong>:上市放量前若融资,摊薄股东。</li>
+                    <li>消息驱动、波动极大(6 月单日 +29%),追高风险大。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="card-header"><div class="icon-box">🧭</div><h2>估值视角与结论</h2></div>
+            <p>NTLA 无法用 P/E 估值——它是<strong>典型的"平台期权 + 单产品商业化"临床期标的</strong>,市值(~$1.9B)主要反映 lonvo-z 的商业化预期 + nex-z/ATTR 的期权价值。核心判断是:<strong>lonvo-z 能否顺利上市并放量,以及 nex-z 能否在安全性约束下打开 ATTR 大市场。</strong></p>
+            <ul>
+                <li><strong>牛市情景:</strong>lonvo-z 2027 顺利上市放量 + nex-z 安全可控推进 ATTR → 从 $1.9B 大幅重估。</li>
+                <li><strong>基准情景:</strong>lonvo-z 获批但 HAE 渗透渐进,nex-z 缓慢推进,股价随里程碑高波动。</li>
+                <li><strong>熊市情景:</strong>商业化不及预期 + nex-z 安全性受限 + 稀释 → 回吐重估涨幅。</li>
+            </ul>
+            <div class="callout warn" style="margin-bottom:0;"><p style="margin-bottom:0; font-size:0.85rem;">一句话:<strong>NTLA 是这组里科学含金量最高、也最"彩票"的一只——平台已被证明,但价值兑现取决于商业化与 ATTR 安全性两道关。</strong>适合作为高赔率期权型小仓位,盯 BLA 受理/上市/nex-z 数据三大胜负手。本报告仅供研究,不构成投资建议。</p></div>
+        </div>
+
+        <footer>
+            <p>© 2026 研报库 · Intellia (NTLA) 个股研究 · 联网核实 · 生成于 2026-08-27 · 仅供研究学习,不构成投资建议</p>
+            <div class="ref-list">
+                <strong style="color:var(--text-secondary);">来源:</strong>
+                <a href="https://ir.intelliatx.com/news-releases/news-release-details/intellia-therapeutics-reports-positive-phase-3-results">Intellia(HAELO III 期阳性)</a> ·
+                <a href="https://www.stocktitan.net/news/NTLA/intellia-therapeutics-announces-second-quarter-2026-financial-f8ssfi8dmwuo.html">StockTitan(Q2'26 · 发作 -87%)</a> ·
+                <a href="https://seekingalpha.com/news/4628395-intellia-expects-cash-runway-into-2028-as-it-targets-lonvo-z-u-s-launch-in-the-first-half-of">Seeking Alpha(现金跑道到 2028)</a> ·
+                <a href="https://www.genengnews.com/topics/translational-medicine/stockwatch-positive-phase-iii-data-sells-investors-on-intellia/">GEN(股价/市值)</a> ·
+                <a href="https://seekingalpha.com/article/4926731-intellia-therapeutics-phase-3-haelo-win-doesnt-fix-commercial-problem">Seeking Alpha(商业化质疑)</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chart(document.getElementById('cashChart').getContext('2d'), {
+                type: 'line',
+                data: { labels: ['Q2 26','Q4 26','Q2 27','Q4 27','2028'],
+                    datasets: [{ label: '现金 & 投资 (百万美元, 示意演示)', data: [628, 430, 250, 120, 40], borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.15)', fill: true, tension: 0.25, pointBackgroundColor: '#8b5cf6' }] },
+                options: { responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#a29caf' } }, tooltip: { callbacks: { label: c => '$' + c.parsed.y + 'M (示意)' } } },
+                    scales: { x: { ticks: { color: '#a29caf' }, grid: { color: 'rgba(255,255,255,0.05)' } }, y: { ticks: { color: '#a29caf', callback: v => '$'+v+'M' }, grid: { color: 'rgba(255,255,255,0.05)' } } } }
+            });
+        });
+    </script>
+</body>
+</html>
