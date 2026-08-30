@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研报标的全收益对照表 (含股息再投资) · 10年 / 5年 | Research August 2026</title>
+<meta name="description" content="research-2026-08 全部研报标的的 10 年 / 5 年 / 3 年 / 1 年总回报与年化收益，含股息再投资，并与 META、KO、AXP 及 SPY/QQQ/XBI 基准对照。数据截至 2026-08-28。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark:#070914; --bg-card:rgba(18,22,40,.78); --bg-card-hover:rgba(26,32,58,.9);
+  --border-color:rgba(255,255,255,.08); --accent-cyan:#00f2fe; --accent-purple:#9d4edd;
+  --text-primary:#f3f4f6; --text-secondary:#9ca3af; --text-muted:#6b7280;
+  --pos:#34d399; --neg:#f87171;
+  --font-sans:'Plus Jakarta Sans','Inter',-apple-system,sans-serif;
+  --mono:'SF Mono',ui-monospace,'Menlo','Consolas',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background-color:var(--bg-dark);color:var(--text-primary);font-family:var(--font-sans);
+ line-height:1.6;min-height:100vh;padding:30px 20px 80px;
+ background-image:radial-gradient(circle at 10% 10%,rgba(0,242,254,.06) 0%,transparent 40%),
+ radial-gradient(circle at 90% 90%,rgba(157,78,221,.06) 0%,transparent 40%)}
+.container{max-width:1280px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+ padding:24px 30px;background:rgba(13,19,31,.85);backdrop-filter:blur(16px);
+ border:1px solid var(--border-color);border-radius:20px;margin-bottom:28px}
+.header-title h1{font-size:1.6rem;font-weight:800;
+ background:linear-gradient(90deg,#fff,var(--accent-cyan));
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.header-title p{font-size:.88rem;color:var(--text-secondary)}
+.back-btn{background:rgba(255,255,255,.05);border:1px solid var(--border-color);
+ color:var(--accent-cyan);padding:8px 16px;border-radius:12px;font-size:.85rem;
+ font-weight:600;text-decoration:none;transition:all .25s ease;white-space:nowrap}
+.back-btn:hover{background:rgba(0,242,254,.15);border-color:var(--accent-cyan)}
+.section-header{display:flex;align-items:center;gap:12px;margin:40px 0 18px;flex-wrap:wrap}
+.section-title{font-size:1.25rem;font-weight:700;color:#fff}
+.badge{background:rgba(0,242,254,.12);color:var(--accent-cyan);padding:4px 12px;
+ border-radius:20px;font-size:.75rem;font-weight:700}
+.panel{background:var(--bg-card);backdrop-filter:blur(16px);border:1px solid var(--border-color);
+ border-radius:18px;padding:24px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:20px 22px}
+.tile .k{font-size:.78rem;color:var(--text-secondary);font-weight:600;letter-spacing:.02em}
+.tile .v{font-size:1.85rem;font-weight:800;font-family:var(--mono);margin:4px 0 2px;line-height:1.15}
+.tile .n{font-size:.78rem;color:var(--text-muted)}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .acc{color:var(--accent-cyan)}
+.lead{font-size:.92rem;color:var(--text-secondary);max-width:88ch}
+.lead b{color:var(--text-primary);font-weight:600}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.lg{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--text-secondary);font-weight:600}
+.lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:20px}
+.chart{background:var(--bg-card);border:1px solid var(--border-color);border-radius:18px;padding:22px 24px}
+.chart-hd{margin-bottom:14px}
+.chart-hd h3{font-size:1rem;font-weight:700;color:#fff}
+.chart-sub{font-size:.78rem;color:var(--text-muted)}
+.plot{position:relative}
+.row{display:flex;align-items:center;gap:10px;height:24px}
+.rl{width:66px;flex:none;font-size:.78rem;color:var(--text-secondary);font-family:var(--mono)}
+.rl b{color:var(--text-primary);font-weight:600}
+.rv{width:62px;flex:none;text-align:right;font-size:.74rem;font-family:var(--mono);
+ font-weight:600;font-variant-numeric:tabular-nums;color:var(--text-secondary)}
+.track{position:relative;flex:1;height:100%;min-width:0}
+/* zero baseline, drawn inside the track so it needs no cross-unit calc */
+.track::before{content:'';position:absolute;top:0;bottom:0;left:var(--zero);
+ width:1px;background:rgba(255,255,255,.2)}
+.bar{position:absolute;top:6px;height:12px;border-radius:3px;display:block;
+ transition:filter .15s ease}
+.track:hover .bar{filter:brightness(1.3)}
+/* hover layer: the row's own values, without leaning on the native title delay */
+.track[data-tip]:hover::after{content:attr(data-tip);position:absolute;left:0;top:-34px;
+ z-index:5;background:rgba(9,13,26,.97);border:1px solid var(--border-color);
+ border-radius:9px;padding:6px 10px;font-size:.74rem;font-weight:500;
+ color:var(--text-primary);white-space:nowrap;pointer-events:none;
+ box-shadow:0 8px 24px rgba(0,0,0,.55)}
+.row:first-child .track[data-tip]:hover::after{top:22px}
+.tablewrap{overflow-x:auto;border:1px solid var(--border-color);border-radius:18px;background:var(--bg-card)}
+table{border-collapse:collapse;width:100%;min-width:940px;font-size:.85rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.05);white-space:nowrap}
+thead th{position:sticky;top:0;background:rgba(13,19,31,.97);backdrop-filter:blur(8px);
+ font-size:.72rem;font-weight:700;color:var(--text-secondary);letter-spacing:.03em;
+ text-transform:uppercase;user-select:none;white-space:nowrap}
+thead th[data-col]{cursor:pointer}
+thead th[data-col]:hover{color:var(--accent-cyan)}
+thead th[data-dir]{color:var(--accent-cyan)}
+thead th[data-dir="desc"]::after{content:' \2193'}
+thead th[data-dir="asc"]::after{content:' \2191'}
+thead th.grp{text-align:center;border-bottom:1px solid var(--border-color);cursor:default}
+tbody tr:hover{background:rgba(255,255,255,.035)}
+td.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.sub{color:var(--text-muted);font-size:.78rem}
+td.na{color:var(--text-muted)}
+td.tk b{font-weight:700;color:#fff;margin-right:8px}
+td.tk .nm{color:var(--text-secondary);font-size:.8rem}
+td.tk .sb{display:block;color:var(--text-muted);font-size:.72rem;padding-left:19px}
+.dot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:8px;vertical-align:1px}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:8px}
+.note{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:20px 22px}
+.note h4{font-size:.92rem;font-weight:700;color:#fff;margin-bottom:8px}
+.note p,.note li{font-size:.83rem;color:var(--text-secondary);line-height:1.65}
+.note ul{padding-left:18px} .note li{margin-bottom:6px}
+.note code{font-family:var(--mono);font-size:.78rem;color:var(--accent-cyan);
+ background:rgba(0,242,254,.08);padding:1px 6px;border-radius:5px}
+.warn{border-color:rgba(248,113,113,.28)}
+.warn h4{color:var(--neg)}
+footer{text-align:center;margin-top:60px;color:var(--text-secondary);font-size:.82rem;
+ border-top:1px solid var(--border-color);padding-top:30px}
+@media (max-width:640px){
+  body{padding:16px 12px 60px} header{padding:20px}
+  .header-title h1{font-size:1.25rem}
+  .rl{width:52px} .rv{width:56px} .charts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="header-title">
+    <h1>全收益对照表 · 含股息再投资</h1>
+    <p>Total Return with Dividends Reinvested · research-2026-08 全部标的 + META / KO / AXP 对照 + 三大基准 · 数据截至 2026-08-28</p>
+  </div>
+  <a href="../index.html" class="back-btn">&larr; 返回 2026年8月研报导航</a>
+</header>
+
+<p class="lead">下表为<b>总回报（Total Return）</b>：假设期间每一笔现金股息都在除息日收盘价<b>全额再投资</b>，并已还原全部拆股。
+计算口径为复权收盘价之比 <code>P_adj(末) / P_adj(初) − 1</code>；年化列为对应的几何年化收益（CAGR）。
+上市不足对应年限的标的以 <b>—</b> 标注，不做任何填补或回溯拼接。</p>
+
+<div class="section-header"><div class="section-title">📌 关键结论</div><div class="badge">10 年窗口</div></div>
+<div class="tiles">
+  <div class="tile"><div class="k">10 年最佳 · NVDA</div>
+    <div class="v pos">+64.2%</div>
+    <div class="n">年化 · 区间总回报 +14,180%</div></div>
+  <div class="tile"><div class="k">10 年最差 · NTLA</div>
+    <div class="v neg">-4.7%</div>
+    <div class="n">年化 · 区间总回报 -39%</div></div>
+  <div class="tile"><div class="k">标普 500 (SPY) 基准</div>
+    <div class="v acc">+15.3%</div>
+    <div class="n">年化 · 区间总回报 +316%</div></div>
+  <div class="tile"><div class="k">跑赢 SPY 的研报标的</div>
+    <div class="v">6 / 9</div>
+    <div class="n">NVDA、MU、LITE、TSLA、COHR、GOOG</div></div>
+</div>
+
+<div class="section-header"><div class="section-title">📊 年化收益率排名（CAGR）</div>
+  <div class="badge">含股息再投资</div></div>
+<div class="legend"><span class="lg"><i style="background:#14a3b8"></i>研报标的</span><span class="lg"><i style="background:#c2810c"></i>对照标的</span><span class="lg"><i style="background:#9061f9"></i>指数基准</span><span class="lg" style="color:var(--text-muted)">悬停查看区间总回报与起算日</span></div>
+<div class="charts">
+<div class="chart"><div class="chart-hd"><h3>10 年年化收益率</h3>
+<span class="chart-sub">2016-08-26 → 2026-08-28｜上市不足 10 年者不参与排名</span></div>
+<div class="plot" style="--zero:8.540%">
+<div class="row"><div class="rl"><b>NVDA</b></div><div class="track" data-tip="NVIDIA 英伟达｜年化 +64.2%｜区间总回报 +14,179.8%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:89.537%;background:#14a3b8"></i></div><div class="rv pos">+64.2%</div></div>
+<div class="row"><div class="rl"><b>MU</b></div><div class="track" data-tip="Micron 美光｜年化 +50.0%｜区间总回报 +5,694.3%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:69.794%;background:#14a3b8"></i></div><div class="rv pos">+50.0%</div></div>
+<div class="row"><div class="rl"><b>LITE</b></div><div class="track" data-tip="Lumentum｜年化 +38.7%｜区间总回报 +2,540.9%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:53.988%;background:#14a3b8"></i></div><div class="rv pos">+38.7%</div></div>
+<div class="row"><div class="rl"><b>TSLA</b></div><div class="track" data-tip="Tesla 特斯拉｜年化 +37.3%｜区间总回报 +2,277.9%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:51.970%;background:#14a3b8"></i></div><div class="rv pos">+37.3%</div></div>
+<div class="row"><div class="rl"><b>COHR</b></div><div class="track" data-tip="Coherent｜年化 +29.3%｜区间总回报 +1,206.5%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:40.847%;background:#14a3b8"></i></div><div class="rv pos">+29.3%</div></div>
+<div class="row"><div class="rl"><b>GOOG</b></div><div class="track" data-tip="Alphabet 谷歌｜年化 +24.5%｜区间总回报 +799.0%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:34.234%;background:#14a3b8"></i></div><div class="rv pos">+24.5%</div></div>
+<div class="row"><div class="rl"><b>QQQ</b></div><div class="track" data-tip="纳斯达克 100 ETF｜年化 +20.7%｜区间总回报 +557.4%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:28.885%;background:#9061f9"></i></div><div class="rv pos">+20.7%</div></div>
+<div class="row"><div class="rl"><b>AXP</b></div><div class="track" data-tip="American Express｜年化 +19.4%｜区间总回报 +490.1%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:27.077%;background:#c2810c"></i></div><div class="rv pos">+19.4%</div></div>
+<div class="row"><div class="rl"><b>META</b></div><div class="track" data-tip="Meta Platforms｜年化 +16.6%｜区间总回报 +366.6%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:23.214%;background:#c2810c"></i></div><div class="rv pos">+16.6%</div></div>
+<div class="row"><div class="rl"><b>SPY</b></div><div class="track" data-tip="标普 500 ETF｜年化 +15.3%｜区间总回报 +315.7%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:21.344%;background:#9061f9"></i></div><div class="rv pos">+15.3%</div></div>
+<div class="row"><div class="rl"><b>ALNY</b></div><div class="track" data-tip="Alnylam｜年化 +12.8%｜区间总回报 +234.9%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:17.908%;background:#14a3b8"></i></div><div class="rv pos">+12.8%</div></div>
+<div class="row"><div class="rl"><b>DHR</b></div><div class="track" data-tip="Danaher 丹纳赫｜年化 +12.2%｜区间总回报 +215.9%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:16.992%;background:#14a3b8"></i></div><div class="rv pos">+12.2%</div></div>
+<div class="row"><div class="rl"><b>KO</b></div><div class="track" data-tip="Coca-Cola 可口可乐｜年化 +11.0%｜区间总回报 +182.8%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:15.272%;background:#c2810c"></i></div><div class="rv pos">+11.0%</div></div>
+<div class="row"><div class="rl"><b>XBI</b></div><div class="track" data-tip="生物科技 ETF｜年化 +10.4%｜区间总回报 +169.6%｜起算 2016-08-26"><i class="bar" style="left:8.540%;width:14.534%;background:#9061f9"></i></div><div class="rv pos">+10.4%</div></div>
+<div class="row"><div class="rl"><b>NTLA</b></div><div class="track" data-tip="Intellia｜年化 -4.7%｜区间总回报 -38.5%｜起算 2016-08-26"><i class="bar" style="left:1.923%;width:6.617%;background:#14a3b8"></i></div><div class="rv neg">-4.7%</div></div>
+</div></div>
+<div class="chart"><div class="chart-hd"><h3>5 年年化收益率</h3>
+<span class="chart-sub">2021-08-27 → 2026-08-28｜上市不足 5 年者不参与排名</span></div>
+<div class="plot" style="--zero:37.696%">
+<div class="row"><div class="rl"><b>MU</b></div><div class="track" data-tip="Micron 美光｜年化 +66.8%｜区间总回报 +1,192.8%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:60.381%;background:#14a3b8"></i></div><div class="rv pos">+66.8%</div></div>
+<div class="row"><div class="rl"><b>LITE</b></div><div class="track" data-tip="Lumentum｜年化 +59.4%｜区间总回报 +929.2%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:53.663%;background:#14a3b8"></i></div><div class="rv pos">+59.4%</div></div>
+<div class="row"><div class="rl"><b>NVDA</b></div><div class="track" data-tip="NVIDIA 英伟达｜年化 +57.3%｜区间总回报 +864.4%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:51.803%;background:#14a3b8"></i></div><div class="rv pos">+57.3%</div></div>
+<div class="row"><div class="rl"><b>PLTR</b></div><div class="track" data-tip="Palantir｜年化 +48.6%｜区间总回报 +624.6%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:43.903%;background:#14a3b8"></i></div><div class="rv pos">+48.6%</div></div>
+<div class="row"><div class="rl"><b>COHR</b></div><div class="track" data-tip="Coherent｜年化 +34.4%｜区间总回报 +339.0%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:31.102%;background:#14a3b8"></i></div><div class="rv pos">+34.4%</div></div>
+<div class="row"><div class="rl"><b>GOOG</b></div><div class="track" data-tip="Alphabet 谷歌｜年化 +19.1%｜区间总回报 +139.3%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:17.224%;background:#14a3b8"></i></div><div class="rv pos">+19.1%</div></div>
+<div class="row"><div class="rl"><b>AXP</b></div><div class="track" data-tip="American Express｜年化 +16.0%｜区间总回报 +109.9%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:14.446%;background:#c2810c"></i></div><div class="rv pos">+16.0%</div></div>
+<div class="row"><div class="rl"><b>QQQ</b></div><div class="track" data-tip="纳斯达克 100 ETF｜年化 +14.4%｜区间总回报 +96.3%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:13.048%;background:#9061f9"></i></div><div class="rv pos">+14.4%</div></div>
+<div class="row"><div class="rl"><b>KO</b></div><div class="track" data-tip="Coca-Cola 可口可乐｜年化 +13.3%｜区间总回报 +86.8%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:12.026%;background:#c2810c"></i></div><div class="rv pos">+13.3%</div></div>
+<div class="row"><div class="rl"><b>SPY</b></div><div class="track" data-tip="标普 500 ETF｜年化 +12.8%｜区间总回报 +82.8%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:11.587%;background:#9061f9"></i></div><div class="rv pos">+12.8%</div></div>
+<div class="row"><div class="rl"><b>META</b></div><div class="track" data-tip="Meta Platforms｜年化 +9.4%｜区间总回报 +56.5%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:8.464%;background:#c2810c"></i></div><div class="rv pos">+9.4%</div></div>
+<div class="row"><div class="rl"><b>TSLA</b></div><div class="track" data-tip="Tesla 特斯拉｜年化 +8.0%｜区间总回报 +47.0%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:7.231%;background:#14a3b8"></i></div><div class="rv pos">+8.0%</div></div>
+<div class="row"><div class="rl"><b>XBI</b></div><div class="track" data-tip="生物科技 ETF｜年化 +4.4%｜区间总回报 +23.8%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:3.936%;background:#9061f9"></i></div><div class="rv pos">+4.4%</div></div>
+<div class="row"><div class="rl"><b>ALNY</b></div><div class="track" data-tip="Alnylam｜年化 +3.1%｜区间总回报 +16.3%｜起算 2021-08-27"><i class="bar" style="left:37.696%;width:2.765%;background:#14a3b8"></i></div><div class="rv pos">+3.1%</div></div>
+<div class="row"><div class="rl"><b>DHR</b></div><div class="track" data-tip="Danaher 丹纳赫｜年化 -4.8%｜区间总回报 -21.7%｜起算 2021-08-27"><i class="bar" style="left:33.375%;width:4.321%;background:#14a3b8"></i></div><div class="rv neg">-4.8%</div></div>
+<div class="row"><div class="rl"><b>MRNA</b></div><div class="track" data-tip="Moderna｜年化 -18.4%｜区间总回报 -63.9%｜起算 2021-08-27"><i class="bar" style="left:21.041%;width:16.655%;background:#14a3b8"></i></div><div class="rv neg">-18.4%</div></div>
+<div class="row"><div class="rl"><b>MRVI</b></div><div class="track" data-tip="Maravai｜年化 -33.6%｜区间总回报 -87.1%｜起算 2021-08-27"><i class="bar" style="left:7.324%;width:30.372%;background:#14a3b8"></i></div><div class="rv neg">-33.6%</div></div>
+<div class="row"><div class="rl"><b>NTLA</b></div><div class="track" data-tip="Intellia｜年化 -39.6%｜区间总回报 -92.0%｜起算 2021-08-27"><i class="bar" style="left:1.923%;width:35.773%;background:#14a3b8"></i></div><div class="rv neg">-39.6%</div></div>
+</div></div>
+</div>
+
+<div class="section-header"><div class="section-title">📋 完整对照表</div>
+  <div class="badge">点击表头排序</div></div>
+<div class="tablewrap">
+<table id="main">
+<thead>
+  <tr>
+    <th rowspan="2" data-col="0" data-text>标的</th>
+    <th class="grp" colspan="2">10 年</th><th class="grp" colspan="2">5 年</th>
+    <th class="grp" colspan="2">3 年</th><th class="grp" colspan="2">1 年</th>
+    <th rowspan="2" data-col="9" data-text>数据起点</th>
+  </tr>
+  <tr>
+    <th data-col="1">总回报</th><th data-col="2">年化</th>
+    <th data-col="3">总回报</th><th data-col="4">年化</th>
+    <th data-col="5">总回报</th><th data-col="6">年化</th>
+    <th data-col="7">总回报</th><th data-col="8">年化</th>
+  </tr>
+</thead>
+<tbody>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>NVDA</b><span class="nm">NVIDIA 英伟达</span><span class="sb">AI 算力霸主</span></td><td class="num pos">+14,179.8%</td><td class="num sub pos">+64.2%</td><td class="num pos">+864.4%</td><td class="num sub pos">+57.3%</td><td class="num pos">+365.4%</td><td class="num sub pos">+66.9%</td><td class="num pos">+20.9%</td><td class="num sub pos">+20.9%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>MU</b><span class="nm">Micron 美光</span><span class="sb">HBM4 / DRAM 超级周期</span></td><td class="num pos">+5,694.3%</td><td class="num sub pos">+50.0%</td><td class="num pos">+1,192.8%</td><td class="num sub pos">+66.8%</td><td class="num pos">+1,344.3%</td><td class="num sub pos">+143.5%</td><td class="num pos">+665.9%</td><td class="num sub pos">+666.9%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>LITE</b><span class="nm">Lumentum</span><span class="sb">EML 激光芯片</span></td><td class="num pos">+2,540.9%</td><td class="num sub pos">+38.7%</td><td class="num pos">+929.2%</td><td class="num sub pos">+59.4%</td><td class="num pos">+1,652.2%</td><td class="num sub pos">+159.7%</td><td class="num pos">+560.3%</td><td class="num sub pos">+561.1%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>COHR</b><span class="nm">Coherent</span><span class="sb">光模块 / SiC</span></td><td class="num pos">+1,206.5%</td><td class="num sub pos">+29.3%</td><td class="num pos">+339.0%</td><td class="num sub pos">+34.4%</td><td class="num pos">+676.4%</td><td class="num sub pos">+98.0%</td><td class="num pos">+193.3%</td><td class="num sub pos">+193.5%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>SNDK</b><span class="nm">SanDisk 闪迪</span><span class="sb">WDC 分拆 · 企业级 SSD</span></td><td class="num na" title="2025-02 自 WDC 分拆">—</td><td class="num na">—</td><td class="num na" title="2025-02 自 WDC 分拆">—</td><td class="num na">—</td><td class="num na" title="2025-02 自 WDC 分拆">—</td><td class="num na">—</td><td class="num pos">+2,819.2%</td><td class="num sub pos">+2,825.9%</td><td class="num sub">2025-02-13</td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>GOOG</b><span class="nm">Alphabet 谷歌</span><span class="sb">Gemini 全栈 AI</span></td><td class="num pos">+799.0%</td><td class="num sub pos">+24.5%</td><td class="num pos">+139.3%</td><td class="num sub pos">+19.1%</td><td class="num pos">+162.5%</td><td class="num sub pos">+37.9%</td><td class="num pos">+61.9%</td><td class="num sub pos">+62.0%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>TSLA</b><span class="nm">Tesla 特斯拉</span><span class="sb">FSD / Robotaxi</span></td><td class="num pos">+2,277.9%</td><td class="num sub pos">+37.3%</td><td class="num pos">+47.0%</td><td class="num sub pos">+8.0%</td><td class="num pos">+46.0%</td><td class="num sub pos">+13.4%</td><td class="num pos">+0.8%</td><td class="num sub pos">+0.8%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>PLTR</b><span class="nm">Palantir</span><span class="sb">AIP 商业化</span></td><td class="num na" title="2020-09 直接上市">—</td><td class="num na">—</td><td class="num pos">+624.6%</td><td class="num sub pos">+48.6%</td><td class="num pos">+1,172.5%</td><td class="num sub pos">+133.4%</td><td class="num pos">+17.8%</td><td class="num sub pos">+17.8%</td><td class="num sub">2020-09-30</td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>DHR</b><span class="nm">Danaher 丹纳赫</span><span class="sb">生物医药卖铲人</span></td><td class="num pos">+215.9%</td><td class="num sub pos">+12.2%</td><td class="num neg">-21.7%</td><td class="num sub neg">-4.8%</td><td class="num neg">-5.2%</td><td class="num sub neg">-1.8%</td><td class="num pos">+6.0%</td><td class="num sub pos">+6.0%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>ALNY</b><span class="nm">Alnylam</span><span class="sb">RNAi 龙头</span></td><td class="num pos">+234.9%</td><td class="num sub pos">+12.8%</td><td class="num pos">+16.3%</td><td class="num sub pos">+3.1%</td><td class="num pos">+23.7%</td><td class="num sub pos">+7.3%</td><td class="num neg">-47.6%</td><td class="num sub neg">-47.6%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>MRNA</b><span class="nm">Moderna</span><span class="sb">mRNA 平台</span></td><td class="num na" title="2018-12 IPO">—</td><td class="num na">—</td><td class="num neg">-63.9%</td><td class="num sub neg">-18.4%</td><td class="num pos">+21.2%</td><td class="num sub pos">+6.6%</td><td class="num pos">+463.9%</td><td class="num sub pos">+464.6%</td><td class="num sub">2018-12-07</td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>MRVI</b><span class="nm">Maravai</span><span class="sb">CleanCap 耗材</span></td><td class="num na" title="2020-11 IPO">—</td><td class="num na">—</td><td class="num neg">-87.1%</td><td class="num sub neg">-33.6%</td><td class="num neg">-25.6%</td><td class="num sub neg">-9.4%</td><td class="num pos">+222.7%</td><td class="num sub pos">+222.9%</td><td class="num sub">2020-11-20</td></tr>
+<tr data-g="core"><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>NTLA</b><span class="nm">Intellia</span><span class="sb">体内 CRISPR</span></td><td class="num neg">-38.5%</td><td class="num sub neg">-4.7%</td><td class="num neg">-92.0%</td><td class="num sub neg">-39.6%</td><td class="num neg">-66.1%</td><td class="num sub neg">-30.3%</td><td class="num pos">+10.9%</td><td class="num sub pos">+11.0%</td><td class="num sub">2016-05-06</td></tr>
+<tr data-g="peer"><td class="tk"><i class="dot" style="background:#c2810c"></i><b>META</b><span class="nm">Meta Platforms</span><span class="sb">社交 / Llama</span></td><td class="num pos">+366.6%</td><td class="num sub pos">+16.6%</td><td class="num pos">+56.5%</td><td class="num sub pos">+9.4%</td><td class="num pos">+100.9%</td><td class="num sub pos">+26.2%</td><td class="num neg">-22.8%</td><td class="num sub neg">-22.8%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="peer"><td class="tk"><i class="dot" style="background:#c2810c"></i><b>KO</b><span class="nm">Coca-Cola 可口可乐</span><span class="sb">股息复利典范</span></td><td class="num pos">+182.8%</td><td class="num sub pos">+11.0%</td><td class="num pos">+86.8%</td><td class="num sub pos">+13.3%</td><td class="num pos">+61.7%</td><td class="num sub pos">+17.4%</td><td class="num pos">+34.9%</td><td class="num sub pos">+34.9%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="peer"><td class="tk"><i class="dot" style="background:#c2810c"></i><b>AXP</b><span class="nm">American Express</span><span class="sb">支付 / 巴菲特重仓</span></td><td class="num pos">+490.1%</td><td class="num sub pos">+19.4%</td><td class="num pos">+109.9%</td><td class="num sub pos">+16.0%</td><td class="num pos">+116.7%</td><td class="num sub pos">+29.4%</td><td class="num pos">+3.0%</td><td class="num sub pos">+3.0%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="bench"><td class="tk"><i class="dot" style="background:#9061f9"></i><b>SPY</b><span class="nm">标普 500 ETF</span><span class="sb">美股大盘基准</span></td><td class="num pos">+315.7%</td><td class="num sub pos">+15.3%</td><td class="num pos">+82.8%</td><td class="num sub pos">+12.8%</td><td class="num pos">+80.4%</td><td class="num sub pos">+21.7%</td><td class="num pos">+19.9%</td><td class="num sub pos">+19.9%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="bench"><td class="tk"><i class="dot" style="background:#9061f9"></i><b>QQQ</b><span class="nm">纳斯达克 100 ETF</span><span class="sb">成长股基准</span></td><td class="num pos">+557.4%</td><td class="num sub pos">+20.7%</td><td class="num pos">+96.3%</td><td class="num sub pos">+14.4%</td><td class="num pos">+98.8%</td><td class="num sub pos">+25.7%</td><td class="num pos">+24.7%</td><td class="num sub pos">+24.8%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+<tr data-g="bench"><td class="tk"><i class="dot" style="background:#9061f9"></i><b>XBI</b><span class="nm">生物科技 ETF</span><span class="sb">生物科技基准</span></td><td class="num pos">+169.6%</td><td class="num sub pos">+10.4%</td><td class="num pos">+23.8%</td><td class="num sub pos">+4.4%</td><td class="num pos">+107.0%</td><td class="num sub pos">+27.4%</td><td class="num pos">+80.7%</td><td class="num sub pos">+80.7%</td><td class="num sub"><span title="早于本表取数窗口，非上市日">&le;2015-08-31</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header"><div class="section-title">💰 股息对 10 年回报的贡献</div>
+  <div class="badge">总回报 − 纯价格回报</div></div>
+<p class="lead">这一栏说明<b>为什么必须用总回报口径</b>。对本组研报标的（除 DHR / GOOG / MU / NVDA 外均不分红）股息几乎不影响结论；
+但对 KO、AXP 与 SPY 这类分红资产，只看股价会系统性低估其真实回报——KO 有近四成的十年回报来自股息再投资。</p>
+<div class="tablewrap">
+<table id="div">
+<thead><tr><th data-col="0" data-text>标的</th><th data-col="1">10 年总回报</th>
+<th data-col="2">纯价格回报</th><th data-col="3">股息贡献</th><th data-col="4">占总回报比重</th></tr></thead>
+<tbody>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>NVDA</b><span class="nm">NVIDIA 英伟达</span></td><td class="num pos">+14,179.8%</td><td class="num pos">+13,928.7%</td><td class="num acc">+251.2 pp</td><td class="num sub">2%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>MU</b><span class="nm">Micron 美光</span></td><td class="num pos">+5,694.3%</td><td class="num pos">+5,550.3%</td><td class="num acc">+144.1 pp</td><td class="num sub">3%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#c2810c"></i><b>AXP</b><span class="nm">American Express</span></td><td class="num pos">+490.1%</td><td class="num pos">+414.3%</td><td class="num acc">+75.9 pp</td><td class="num sub">15%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#c2810c"></i><b>KO</b><span class="nm">Coca-Cola 可口可乐</span></td><td class="num pos">+182.8%</td><td class="num pos">+107.0%</td><td class="num acc">+75.8 pp</td><td class="num sub">41%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#9061f9"></i><b>SPY</b><span class="nm">标普 500 ETF</span></td><td class="num pos">+315.7%</td><td class="num pos">+254.1%</td><td class="num acc">+61.6 pp</td><td class="num sub">20%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#9061f9"></i><b>QQQ</b><span class="nm">纳斯达克 100 ETF</span></td><td class="num pos">+557.4%</td><td class="num pos">+513.5%</td><td class="num acc">+44.0 pp</td><td class="num sub">8%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>DHR</b><span class="nm">Danaher 丹纳赫</span></td><td class="num pos">+215.9%</td><td class="num pos">+200.2%</td><td class="num acc">+15.7 pp</td><td class="num sub">7%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>GOOG</b><span class="nm">Alphabet 谷歌</span></td><td class="num pos">+799.0%</td><td class="num pos">+791.1%</td><td class="num acc">+7.9 pp</td><td class="num sub">1%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#c2810c"></i><b>META</b><span class="nm">Meta Platforms</span></td><td class="num pos">+366.6%</td><td class="num pos">+362.6%</td><td class="num acc">+4.1 pp</td><td class="num sub">1%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#9061f9"></i><b>XBI</b><span class="nm">生物科技 ETF</span></td><td class="num pos">+169.6%</td><td class="num pos">+165.8%</td><td class="num acc">+3.8 pp</td><td class="num sub">2%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>LITE</b><span class="nm">Lumentum</span></td><td class="num pos">+2,540.9%</td><td class="num pos">+2,540.9%</td><td class="num acc">+0.0 pp</td><td class="num sub">0%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>COHR</b><span class="nm">Coherent</span></td><td class="num pos">+1,206.5%</td><td class="num pos">+1,206.5%</td><td class="num acc">+0.0 pp</td><td class="num sub">0%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>TSLA</b><span class="nm">Tesla 特斯拉</span></td><td class="num pos">+2,277.9%</td><td class="num pos">+2,277.9%</td><td class="num acc">+0.0 pp</td><td class="num sub">0%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>ALNY</b><span class="nm">Alnylam</span></td><td class="num pos">+234.9%</td><td class="num pos">+234.9%</td><td class="num acc">+0.0 pp</td><td class="num sub">0%</td></tr>
+<tr><td class="tk"><i class="dot" style="background:#14a3b8"></i><b>NTLA</b><span class="nm">Intellia</span></td><td class="num neg">-38.5%</td><td class="num neg">-38.5%</td><td class="num acc">+0.0 pp</td><td class="num sub">0%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header"><div class="section-title">🔬 方法与口径</div></div>
+<div class="notes">
+  <div class="note">
+    <h4>怎么算出来的</h4>
+    <p>数据源为 Yahoo Finance 日线复权收盘价（<code>yfinance</code>，<code>auto_adjust=True</code>）。
+    Yahoo 的复权价对拆股与现金分红同时做后向调整，在数学上等价于<b>每笔股息于除息日收盘价再投资</b>，
+    因此无需另行模拟 DRIP。纯价格回报列使用未做分红调整、但已做拆股调整的收盘价。</p>
+    <p style="margin-top:10px">生成脚本：<code>tools/build_returns_page.py</code>（本页）与
+    <code>tools/total_returns.py</code>（命令行表格）。重跑即刷新全部数字。</p>
+  </div>
+  <div class="note">
+    <h4>窗口如何取</h4>
+    <ul>
+      <li>末点为最近一个交易日（2026-08-28）。</li>
+      <li>起点为“末点减 N 年”当日或之前的最后一个交易日，因此实际年数可能略偏离整数，年化按实际天数 / 365.25 计算。</li>
+      <li>上市不足窗口长度者标 <b>—</b>：MRNA 2018-12 IPO；MRVI 2020-11 IPO；PLTR 2020-09 直接上市；SNDK 2025-02 自 WDC 分拆。</li>
+    </ul>
+  </div>
+  <div class="note warn">
+    <h4>⚠️ 三点必须注意的偏差</h4>
+    <ul>
+      <li><b>SPCX 无市场数据。</b>SpaceX 为非上市公司，研报目录中唯一无法计算回报的标的，本页不含该标的。</li>
+      <li><b>DHR 的 10 年回报被低估。</b>Danaher 期间分拆了 Fortive (2016)、Envista (2019) 与 Veralto (2023)，
+      而 Yahoo 复权价<b>不计入分拆所得股份</b>。表中 DHR 数字仅代表母公司股票本身，真实持有人回报显著更高。同理适用于 SNDK 自 WDC 分拆前的历史。</li>
+      <li><b>存在幸存者偏差。</b>本表是用“今天的标的清单”回看历史，可以回答“这只股票过去表现如何”，
+      但不能回答“当年我能否选中它”——十年前的可选集合远比这份清单大且噪音更多。</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h4>本表未包含的成本</h4>
+    <p>数字为<b>税前、免佣金</b>的理论总回报，未扣除股息预扣税、买卖价差与交易费用，也未考虑实际建仓的时间分布
+    （单点买入 vs. 定投的结果可能相差很大）。用于横向对比标的相对表现是合适的，直接等同于个人账户实际收益则不合适。</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Financial Research Repository · 全收益对照表（含股息再投资）· 数据截至 2026-08-28 · 由 <code>tools/build_returns_page.py</code> 自动生成</p>
+</footer>
+</div>
+
+<script>
+// Sorting: every sortable header carries data-col, so nothing has to be inferred
+// from rowspan/colspan. Numeric columns sort on the parsed percentage; columns
+// marked data-text sort as strings. Missing values ("—") always sink.
+document.querySelectorAll('table').forEach(function (table) {
+  var body = table.tBodies[0];
+  table.querySelectorAll('th[data-col]').forEach(function (th) {
+    var col = +th.dataset.col, isText = th.hasAttribute('data-text'), desc = !isText;
+    th.addEventListener('click', function () {
+      table.querySelectorAll('th[data-col]').forEach(function (o) {
+        if (o !== th) o.removeAttribute('data-dir');
+      });
+      var num = function (cell) {
+        var v = parseFloat(cell.textContent.replace(/[^0-9.+-]/g, ''));
+        return isNaN(v) ? null : v;
+      };
+      Array.prototype.slice.call(body.rows).sort(function (a, b) {
+        var x = a.cells[col], y = b.cells[col];
+        if (isText) {
+          return x.textContent.trim().localeCompare(y.textContent.trim()) * (desc ? -1 : 1);
+        }
+        var va = num(x), vb = num(y);
+        if (va === null && vb === null) return 0;
+        if (va === null) return 1;          // "—" sinks in both directions
+        if (vb === null) return -1;
+        return desc ? vb - va : va - vb;
+      }).forEach(function (r) { body.appendChild(r); });
+      th.dataset.dir = desc ? 'desc' : 'asc';
+      desc = !desc;
+    });
+  });
+});
+</script>
+</body>
+</html>
