@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 电力全产业链投资地图与细分赛道深度拆解 - 2026年8月</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #070a13;
+            color: #e2e8f0;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #090d16 0%, #111827 35%, #0369a1 100%);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.25);
+        }
+        .metric-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.25s ease-in-out;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6), 0 0 18px rgba(14, 165, 233, 0.15);
+        }
+        .card-inner {
+            background: rgba(10, 15, 29, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .table-custom th {
+            background-color: rgba(15, 23, 42, 0.9);
+            color: #94a3b8;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .table-custom td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .table-custom tr:hover td {
+            background-color: rgba(30, 41, 59, 0.4);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased min-h-screen">
+
+    <!-- Header Section -->
+    <header class="gradient-header text-white py-12 px-4 sm:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="bg-sky-500/20 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-sky-500/30 transition flex items-center gap-1">
+                        <span>← 返回总报告概览</span>
+                    </a>
+                    <span class="text-slate-400 text-sm">专题: 细分赛道深度拆解 · 投资策略与估值模型</span>
+                </div>
+                <div class="text-sm text-slate-300 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                    基准日期: 2026年8月
+                </div>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+                AI 电力全产业链投资地图与细分赛道深度拆解
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">
+                独立核电/气电基荷 (IPP)、重工变压器、数据中心液冷、极速燃料电池 (SOFC)、前沿 SMR 与科技股底层逻辑重构全景分析
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 py-10">
+
+        <!-- Executive Valuation Summary Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">独立发电巨头 (IPP) 估值区间</div>
+                <div class="text-2xl font-bold text-sky-400 font-mono">14x ～ 24x PE</div>
+                <div class="text-xs text-emerald-400 mt-2">代表: CEG / VST / TLN (长协现金流)</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">电气与电网设备 (卖铲人)</div>
+                <div class="text-2xl font-bold text-emerald-400 font-mono">25x ～ 30x PE</div>
+                <div class="text-xs text-slate-400 mt-2">代表: GEV / ETN / PWR (订单排到3年后)</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">数据中心液冷温控 (高溢价)</div>
+                <div class="text-2xl font-bold text-amber-400 font-mono">50x ～ 60x PE</div>
+                <div class="text-xs text-slate-400 mt-2">代表: VRT (单机柜100kW+液冷刚需)</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">现场极速发电 / SMR (高弹性)</div>
+                <div class="text-2xl font-bold text-purple-400 font-mono">> 70x / 高波动</div>
+                <div class="text-xs text-slate-400 mt-2">代表: BE (SOFC燃料电池) / OKLO / CCJ</div>
+            </div>
+        </section>
+
+        <!-- Sticky Table of Contents -->
+        <nav class="bg-slate-900/90 backdrop-blur-md rounded-xl p-3 border border-slate-800 mb-10 sticky top-4 z-40 flex flex-wrap gap-2 text-sm font-medium">
+            <a href="#sector-ipp" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">1. 独立核电/气电巨头</a>
+            <a href="#sector-grid" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">2. 电网与电气重工</a>
+            <a href="#sector-cooling" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">3. 温控与机房液冷</a>
+            <a href="#sector-onsite" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">4. 现场极速发电 (SOFC)</a>
+            <a href="#sector-smr" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">5. SMR 与核燃料</a>
+            <a href="#sector-bess" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">6. 储能与虚拟电厂</a>
+            <a href="#tech-vs-power" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">7. 电力 vs 科技底层逻辑</a>
+            <a href="#portfolio-strategy" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">8. 机构组合配置策略</a>
+        </nav>
+
+        <!-- Sub-sector 1: IPP / Baseload -->
+        <section id="sector-ipp" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">一、 独立发电巨头 (IPP / 存量核电与天然气基荷)</h2>
+                </div>
+                <span class="badge bg-sky-500/20 text-sky-300 border border-sky-500/30">确定性现金流之王</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>商业模式演进</strong>：传统 IPP 依赖日前批发电力市场（Day-ahead Spot Market）和容量电价拍卖（PJM Capacity Auction），承受极高的燃料价格波动风险。AI 时代，IPP 蜕变为<strong>直接与超大规模云厂商（Hyperscalers）签署 20 年固定高溢价、照付不议（Take-or-Pay）长协的公用事业债权人</strong>。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                <!-- CEG -->
+                <div class="card-inner p-5 border-t-2 border-t-sky-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Constellation Energy</div>
+                            <div class="font-mono text-xs text-sky-400 font-semibold">NASDAQ: CEG</div>
+                        </div>
+                        <span class="badge bg-sky-500/20 text-sky-300">P/E ~23x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        全美最大无碳电力营运商，拥有超 21GW 核电装机。独家买断并重启<strong>三里岛核电站 1号机组（Crane 清洁能源中心，835MW）</strong>为微软供电 20 年，锁定高额年化保底收益。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>核心壁垒: 核电存量垄断</span>
+                        <span class="text-sky-400">核电龙头</span>
+                    </div>
+                </div>
+
+                <!-- VST -->
+                <div class="card-inner p-5 border-t-2 border-t-emerald-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Vistra Corp</div>
+                            <div class="font-mono text-xs text-emerald-400 font-semibold">NYSE: VST</div>
+                        </div>
+                        <span class="badge bg-emerald-500/20 text-emerald-300">P/E ~14x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        在得州 ERCOT 与美东 PJM 拥有超过 41GW 的多元化发电资产（Comanche Peak 核电 + 调峰气电）。得益于得州独立电网的敏捷并网与强劲自由现金流（FCF），大量回购股份。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>核心壁垒: ERCOT 地缘套利</span>
+                        <span class="text-emerald-400">高现金流转化</span>
+                    </div>
+                </div>
+
+                <!-- TLN -->
+                <div class="card-inner p-5 border-t-2 border-t-amber-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Talen Energy</div>
+                            <div class="font-mono text-xs text-amber-400 font-semibold">NASDAQ: TLN</div>
+                        </div>
+                        <span class="badge bg-amber-500/20 text-amber-300">P/E ~16x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        拥有宾州 Susquehanna 核电站（2.5GW）。将核电站厂区内 Cumulus 数据中心以 $6.5 亿出售给亚马逊 AWS，开创了<strong>“表后直连（Behind-the-Meter）直接供电”</strong>的行业先河。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>核心壁垒: BTM 物理直连</span>
+                        <span class="text-amber-400">AWS 深度绑定</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-sector 2: Grid & Electrical Infrastructure -->
+        <section id="sector-grid" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-emerald-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">二、 电网装备与电气重工 (Pick & Shovel 卖铲人)</h2>
+                </div>
+                <span class="badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">全行业确定性最高</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>供应链卡点深度解析</strong>：全球大型升压变压器（LPT）面临<strong>取向硅钢（GOES）、特高压绝缘套管、铜绕组与老龄化熟练工匠</strong>的四重紧缺，交期高达 36-48 个月。电气重工企业手握积压订单（Backlog），享有无与伦比的提价权与抗周期能力。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                <!-- GEV -->
+                <div class="card-inner p-5 border-t-2 border-t-emerald-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">GE Vernova</div>
+                            <div class="font-mono text-xs text-emerald-400 font-semibold">NYSE: GEV</div>
+                        </div>
+                        <span class="badge bg-emerald-500/20 text-emerald-300">P/E ~27x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        从 GE 拆分出的纯血能源重工巨头。垄断全球重型燃气轮机（H/F级机组）与电网自动化调度软件，是所有“天然气自备电厂”与输配电调度的必经之路，订单排满至 2028+。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>主营: 燃气轮机/电网总成</span>
+                        <span class="text-emerald-400">万亿基建中枢</span>
+                    </div>
+                </div>
+
+                <!-- ETN -->
+                <div class="card-inner p-5 border-t-2 border-t-sky-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Eaton Corporation</div>
+                            <div class="font-mono text-xs text-sky-400 font-semibold">NYSE: ETN</div>
+                        </div>
+                        <span class="badge bg-sky-500/20 text-sky-300">P/E ~30x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        全球中高压变压器、配电母线槽、断路器与智能配电柜绝对领跑者。直接切入数据中心电能转换（高压电➔中压➔机柜低压），单机房电气设备价值量翻倍。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>主营: 变压器/配电枢纽</span>
+                        <span class="text-sky-400">数据中心标配</span>
+                    </div>
+                </div>
+
+                <!-- PWR -->
+                <div class="card-inner p-5 border-t-2 border-t-amber-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Quanta Services</div>
+                            <div class="font-mono text-xs text-amber-400 font-semibold">NYSE: PWR</div>
+                        </div>
+                        <span class="badge bg-amber-500/20 text-amber-300">P/E ~28x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        全美第一大输变电与电网工程建设（EPC）总包商。拥有全美规模最庞大的工会工人和特种高压施工执照，任何大型跨州输电线路和变电站扩建都无法绕过其工程队。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>主营: 高压电网施工EPC</span>
+                        <span class="text-amber-400">工会施工壁垒</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-sector 3: Thermal Management & Liquid Cooling -->
+        <section id="sector-cooling" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-amber-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">三、 数据中心电源管理与温控液冷 (Thermal & Liquid Cooling)</h2>
+                </div>
+                <span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/30">科技溢价最高</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>技术范式大跃迁</strong>：传统风冷散热的物理极限在单机柜 30～40 kW。英伟达 Blackwell NVL72 单机柜功耗突破 <strong>120 kW</strong>，下一代 Rubin 更逼近 200 kW。液冷（Direct-to-Chip 芯片级液冷 + 液冷分配单元 CDU）从“可选升级”变成了<strong>“物理强制标配”</strong>。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <!-- VRT -->
+                <div class="card-inner p-5 border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Vertiv Holdings</div>
+                            <div class="font-mono text-xs text-amber-400 font-semibold">NYSE: VRT</div>
+                        </div>
+                        <span class="badge bg-amber-500/20 text-amber-300">P/E ~55x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        数据中心端到端电源（UPS、PDU）与温控液冷（CDU、冷板、冷水机组）全球第一霸主。与英伟达深度联合研发 Blackwell 专用高密度冷却系统，享有极高的品牌溢价与市占率。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>壁垒: 英伟达联合设计认证</span>
+                        <span class="text-amber-400">液冷龙头</span>
+                    </div>
+                </div>
+
+                <!-- MOD -->
+                <div class="card-inner p-5 border-l-4 border-l-sky-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Modine Manufacturing</div>
+                            <div class="font-mono text-xs text-sky-400 font-semibold">NYSE: MOD</div>
+                        </div>
+                        <span class="badge bg-sky-500/20 text-sky-300">P/E ~28x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        老牌热管理制造龙头，成功从汽车散热转型为 AI 数据中心大型风冷冷水机组与直接蒸发冷却模块的核心供应商，毛利率与营收持续超预期。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>壁垒: 热交换器工艺与产能</span>
+                        <span class="text-sky-400">高性价比黑马</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-sector 4: On-site Fast Power & Fuel Cells -->
+        <section id="sector-onsite" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-purple-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">四、 现场极速发电与分布式燃料电池 (On-site Fast Power)</h2>
+                </div>
+                <span class="badge bg-purple-500/20 text-purple-300 border border-purple-500/30">90天极速救急</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>“时间即金钱（Time-to-Power Premium）”</strong>：对于手握数十万张 H100/B200 的科技巨头，算力集群每闲置一天就损失上千万美元。大厂宁愿支付两倍于公用事业电价的成本，也要采购<strong>能够在 90～180 天内现场点火发电的模块化设备</strong>。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <!-- BE -->
+                <div class="card-inner p-5 border-l-4 border-l-purple-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Bloom Energy</div>
+                            <div class="font-mono text-xs text-purple-400 font-semibold">NYSE: BE</div>
+                        </div>
+                        <span class="badge bg-purple-500/20 text-purple-300">高估值 / 爆发期</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        <strong>固体氧化物燃料电池（SOFC）龙头</strong>。机柜式模块化设计，直接接通天然气或氢气管道即可在 <strong>90 天内现场发电</strong>。获甲骨文（Oracle）2.8GW 意向订单及 Brookfield $250 亿基础设施基金加持。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>优势: 90天极速部署，无燃烧噪音</span>
+                        <span class="text-purple-400">大厂抢装热点</span>
+                    </div>
+                </div>
+
+                <!-- CAT / CMI -->
+                <div class="card-inner p-5 border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Caterpillar & Cummins</div>
+                            <div class="font-mono text-xs text-amber-400 font-semibold">CAT / CMI</div>
+                        </div>
+                        <span class="badge bg-amber-500/20 text-amber-300">P/E ~16x～18x</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        工业级重型内燃机与往复式燃气/柴油发电机组（Gensets）垄断厂商。为数据中心提供关键的备用电源与临时主供电，订单能见度显著拉长。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>优势: 传统工业可靠性，全球交付网络</span>
+                        <span class="text-amber-400">稳健工业底座</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-sector 5: SMR & Nuclear Fuel -->
+        <section id="sector-smr" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-rose-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">五、 前沿小型核堆 (SMR) 与浓缩铀燃料链</h2>
+                </div>
+                <span class="badge bg-rose-500/20 text-rose-300 border border-rose-500/30">终极远期期权</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>终极清洁基荷的商业化博弈</strong>：SMR 理论上具备工厂预制、现场快速组装、占地极小且 24/7 零碳发电的完美特质。但受制于 <strong>NRC 审查周期与 HALEU（高纯度低浓缩铀）燃料供应链瓶颈</strong>，规模化商用拐点预计在 2028-2030 年后。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                <!-- CCJ -->
+                <div class="card-inner p-5 border-t-2 border-t-rose-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Cameco Corporation</div>
+                            <div class="font-mono text-xs text-rose-400 font-semibold">NYSE: CCJ</div>
+                        </div>
+                        <span class="badge bg-rose-500/20 text-rose-300">铀矿巨头</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        西方世界最大高品位天然铀矿开采商，并持有西屋电气（Westinghouse）49% 股权。垄断从原铀采掘到核电反应堆建设维护的全链条。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>壁垒: 全球铀矿定价权</span>
+                        <span class="text-rose-400">核电上游核心</span>
+                    </div>
+                </div>
+
+                <!-- LEU -->
+                <div class="card-inner p-5 border-t-2 border-t-purple-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Centrus Energy</div>
+                            <div class="font-mono text-xs text-purple-400 font-semibold">NYSE: LEU</div>
+                        </div>
+                        <span class="badge bg-purple-500/20 text-purple-300">HALEU 独家</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        全美唯一获得 NRC 商业许可的高纯度低浓缩铀（HALEU）浓缩燃料生产商。几乎所有第四代快堆与新型 SMR 都必须使用其燃料，具备地缘战略垄断性。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>壁垒: 美国国家级浓缩许可</span>
+                        <span class="text-purple-400">战略稀缺燃料</span>
+                    </div>
+                </div>
+
+                <!-- OKLO -->
+                <div class="card-inner p-5 border-t-2 border-t-amber-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Oklo Inc</div>
+                            <div class="font-mono text-xs text-amber-400 font-semibold">NYSE: OKLO</div>
+                        </div>
+                        <span class="badge bg-amber-500/20 text-amber-300">Sam Altman 概念</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        快中子增殖反应堆（Aurora SMR）设计商。采用“电力直售（Build-Own-Operate）”模式直接对接数据中心，商业化落地进程备受瞩目但波动剧烈。
+                    </p>
+                    <div class="text-xs font-mono text-slate-500 border-t border-slate-800 pt-2 flex justify-between">
+                        <span>壁垒: 液态金属快堆设计</span>
+                        <span class="text-amber-400">高弹性投机期权</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-sector 6: BESS & VPP -->
+        <section id="sector-bess" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="w-2.5 h-7 bg-cyan-500 rounded-full"></span>
+                    <h2 class="text-2xl font-bold text-white">六、 大规模电池储能 (BESS) 与虚拟电厂 (VPP)</h2>
+                </div>
+                <span class="badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">峰谷平抑与稳定性</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                <strong>削峰填谷与电网韧性</strong>：AI 训练负载存在突发的瞬时功率脉冲（从怠速到全算力瞬时跃升数十兆瓦）。数据中心部署 GWh 级电池储能系统（BESS），既能充当毫秒级不断电保障（UPS），又能参与电力现货市场峰谷套利。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <div class="card-inner p-5 border-l-4 border-l-cyan-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Tesla Megapack (特斯拉能源)</div>
+                            <div class="font-mono text-xs text-cyan-400 font-semibold">NASDAQ: TSLA</div>
+                        </div>
+                        <span class="badge bg-cyan-500/20 text-cyan-300">GWh 级系统</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        全球出货量第一的大型公用事业储能系统。被 xAI 孟菲斯超算中心等多个大型算力集群采用，配合 Autobidder 算法进行全自动高频电网调度套利。
+                    </p>
+                </div>
+
+                <div class="card-inner p-5 border-l-4 border-l-sky-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <div class="font-bold text-white text-base">Fluence Energy</div>
+                            <div class="font-mono text-xs text-sky-400 font-semibold">NASDAQ: FLNC</div>
+                        </div>
+                        <span class="badge bg-sky-500/20 text-sky-300">纯储能龙头</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        由西门子与 AES 合资成立的纯储能集成巨头，为公用事业公司和数据中心提供软硬件一体化的电池储能解决方案与数字电网操作系统（Fluence OS）。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Tech vs Power Deep Logic -->
+        <section id="tech-vs-power" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">七、 电力赛道 vs. 传统科技赛道：底层投资逻辑的根本性重构</h2>
+            </div>
+
+            <div class="overflow-x-auto mb-6">
+                <table class="table-custom text-sm rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            <th>传统科技赛道 (Software / Chips)</th>
+                            <th>AI 电力基础设施赛道 (Power & Grid)</th>
+                            <th>投资哲学差异与启示</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-white">1. 资产属性与折旧</td>
+                            <td><strong>轻资产 / 极速迭代</strong><br><span class="text-xs text-slate-400">以月/季度计，代码重写成本极低。</span></td>
+                            <td><strong>极端重资产 / 超长寿命</strong><br><span class="text-xs text-slate-400">核电/变电站寿命 20～40 年，重工业交付周期长。</span></td>
+                            <td class="text-xs text-slate-300">电力资产具有强大的抗通胀与再重置成本壁垒，资金无法在短期内复制实体。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">2. 现金流形态</td>
+                            <td><strong>SaaS订阅 / 广告按点击付费</strong><br><span class="text-xs text-slate-400">受宏观经济波动与技术颠覆影响大。</span></td>
+                            <td><strong>20年固定长协 (Take-or-Pay)</strong><br><span class="text-xs text-slate-400">大厂全额兜底，现金流类似高等级固收债券。</span></td>
+                            <td class="text-xs text-slate-300">电力股兼具“债券级下行防守”与“AI 爆发期上行看涨期权”。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">3. 护城河来源</td>
+                            <td><strong>算法、专利与用户网络效应</strong><br><span class="text-xs text-slate-400">极易被颠覆（如新开源大模型冲击闭源）。</span></td>
+                            <td><strong>物理特许经营权 / 土地路权 / 核电执照</strong><br><span class="text-xs text-slate-400">受政府法律与物理排他性保护，无法被代码取代。</span></td>
+                            <td class="text-xs text-slate-300">电力护城河是“物理排他性”，不受 AI 算法迭代与模型开源冲击。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">4. 风险与回报曲线</td>
+                            <td><strong>高风险 / 高赔率 (10x+)</strong><br><span class="text-xs text-slate-400">赢家通吃，输家面临业务边缘化或归零。</span></td>
+                            <td><strong>中高确定性 / 极强安全边际</strong><br><span class="text-xs text-slate-400">即使 AI 降温，全社会电气化与民生仍需刚性用电。</span></td>
+                            <td class="text-xs text-slate-300">电力股是投资 AI 浪潮中“赔率适中但胜率极高”的确定性基石。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 8: Portfolio Strategy -->
+        <section id="portfolio-strategy" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-emerald-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">八、 机构投资者 AI 电力组合配置策略框架</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                <div class="card-inner p-5 border-t-4 border-t-emerald-500">
+                    <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">底仓压舱石 (50%)</div>
+                    <div class="text-lg font-bold text-white mb-2">电网与重工卖铲人</div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        <strong>标的：GEV, ETN, PWR</strong><br>
+                        无论未来哪个大模型胜出，都必须消耗变压器和燃气轮机。订单排满 3 年以上，享受全球电网老旧改造 + AI 增量双重红利。
+                    </p>
+                </div>
+
+                <div class="card-inner p-5 border-t-4 border-t-sky-500">
+                    <div class="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-1">现金流进攻 (35%)</div>
+                    <div class="text-lg font-bold text-white mb-2">独立核电与气电巨头</div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        <strong>标的：CEG, VST, TLN</strong><br>
+                        手握稀缺的 24/7 零碳核电站，通过 20 年 PPA 长协直接锁定大厂利润，享受低估值（14x-23x）与高自由现金流回购收益。
+                    </p>
+                </div>
+
+                <div class="card-inner p-5 border-t-4 border-t-purple-500">
+                    <div class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-1">高弹性卫星 (15%)</div>
+                    <div class="text-lg font-bold text-white mb-2">极速发电与高阶液冷</div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        <strong>标的：VRT, BE, CCJ</strong><br>
+                        捕捉英伟达芯片高功率液冷普及（VRT）、90天极速现场发电（BE）以及核燃料短缺（CCJ）带来的阶段性爆发溢价。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 text-xs py-8 border-t border-slate-800">
+            <p>本专题由投资研究团队自动生成 · 专注于 AI 电力细分产业链、公司标的分析与投资模型 · 不构成投资建议</p>
+            <p class="mt-1">Financial Research Repo · AI Electricity Sub-sectors & Valuation Guide (2026.08)</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
