@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 基础设施与电力超级周期深度投研报告 - 2026年8月</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0284c7 100%);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .metric-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.25s ease-in-out;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+        .table-custom {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .table-custom th {
+            background-color: rgba(15, 23, 42, 0.8);
+            color: #94a3b8;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .table-custom td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .table-custom tr:hover td {
+            background-color: rgba(51, 65, 85, 0.3);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .card-inner {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased min-h-screen">
+
+    <!-- Header Section -->
+    <header class="gradient-header text-white py-12 px-4 sm:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="bg-sky-500/20 text-sky-300 border border-sky-500/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        AI 基础设施专题 · 能源重构研报
+                    </span>
+                    <span class="text-slate-400 text-sm">研究范围: 中美欧电网 / 算力基建 / 标的估值</span>
+                </div>
+                <div class="text-sm text-slate-300 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                    基准日期: 2026年8月
+                </div>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+                AI 基础设施与电力超级周期深度报告
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">
+                电网并网阻滞、官僚审批迷宫、巨头自建能源突围战法与 AI 电力全产业链投资机会全景拆解
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 py-10">
+
+        <!-- Executive Summary Metric Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">AI 扩张被电力彻底卡死概率</div>
+                <div class="text-3xl font-extrabold text-emerald-400 font-mono">< 15%</div>
+                <div class="text-xs text-slate-400 mt-2">不会停摆，但演变为“强摩擦力与地理大迁徙”</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">美国核心区域并网排队周期</div>
+                <div class="text-3xl font-extrabold text-amber-400 font-mono">4 ～ 7 年</div>
+                <div class="text-xs text-slate-400 mt-2">变电站与重型变压器交付积压达 36-48 个月</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">自备微电网通电周期 (SOFC/气电)</div>
+                <div class="text-3xl font-extrabold text-sky-400 font-mono">90天 ～ 18月</div>
+                <div class="text-xs text-slate-400 mt-2">绕开公共电网，90天投产成为核心救命稻草</div>
+            </div>
+            <div class="metric-card p-5">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">跨国借电可行性</div>
+                <div class="text-2xl font-extrabold text-purple-400 font-mono">加 100% / 中 0%</div>
+                <div class="text-xs text-slate-400 mt-2">加拿大绿电直通美东，中国受制于地缘与芯片禁令</div>
+            </div>
+        </section>
+
+        <!-- Sticky Table of Contents -->
+        <nav class="bg-slate-900/90 backdrop-blur-md rounded-xl p-3 border border-slate-800 mb-10 sticky top-4 z-40 flex flex-wrap gap-2 text-sm font-medium">
+            <a href="#bottleneck-nature" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">一、电力瓶颈本质</a>
+            <a href="#geo-buffer" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">二、中美欧缓冲带</a>
+            <a href="#us-bureaucracy" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">三、美国官僚迷宫</a>
+            <a href="#tech-solutions" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">四、巨头四大破局战法</a>
+            <a href="#cross-border" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">五、跨国借电评估</a>
+            <a href="#invest-map" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">六、投资机会与估值</a>
+            <a href="#power-vs-tech" class="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition">七、电力 vs 科技赛道</a>
+        </nav>
+
+        <!-- Section 1: Bottleneck Nature -->
+        <section id="bottleneck-nature" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">一、 未来两年 AI 扩张会被电力彻底卡死吗？</h2>
+            </div>
+            
+            <div class="card-inner p-5 mb-6 border-l-4 border-l-sky-500">
+                <p class="text-slate-300 leading-relaxed font-medium">
+                    核心结论：全球 AI 算力扩张遭遇“彻底休克/中断”的概率低于 15%，但核心区域遭遇“电力硬约束、并网延期、被迫进行能源自救与地理大迁徙”的概率超过 85%。
+                </p>
+            </div>
+
+            <p class="text-slate-400 leading-relaxed mb-6">
+                很多人的误区在于以为“电厂总发电量不够”。实际上，真正卡住 AI 喉咙的是以下<strong>三大物理与制度壁垒</strong>：
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="card-inner p-5">
+                    <div class="text-sky-400 text-lg font-bold mb-2">1. 变压器供应链枯竭</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        大型升压变压器（LPT）交期长达 <strong>36～48 个月</strong>，高品位取向硅钢与绝缘套管产能紧缺，全球订单排满，即便有电也无法升压降压并入机房。
+                    </p>
+                </div>
+                <div class="card-inner p-5">
+                    <div class="text-amber-400 text-lg font-bold mb-2">2. 并网排队严重堵塞</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        全美积压在 RTO 并网队列的项目超 <strong>2,600 GW</strong>。机房 18 个月建完，但等变电站通电审批需要 <strong>4～7 年</strong>，造成严重的“芯片等电”错配。
+                    </p>
+                </div>
+                <div class="card-inner p-5">
+                    <div class="text-emerald-400 text-lg font-bold mb-2">3. 24/7 零碳基荷断层</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        风电、光伏具有强波动性，而 AI 算力集群要求 <strong>99.999% 持续不间断供电</strong>。储能成本高昂，退役煤电受环保限制，催生核电与气电刚需。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Geographic Buffer Comparison -->
+        <section id="geo-buffer" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">二、 中美欧三大经济体电力缓冲带全景对比</h2>
+            </div>
+
+            <div class="overflow-x-auto mb-6">
+                <table class="table-custom text-sm rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th>国家 / 地区</th>
+                            <th>电力紧张程度</th>
+                            <th>缓冲带厚度</th>
+                            <th>核心瓶颈与现状</th>
+                            <th>破局途径与出路</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-white">🇺🇸 美国</td>
+                            <td><span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/30">局部极度严峻</span></td>
+                            <td class="font-mono text-sky-300">中等 (1.5～2年)</td>
+                            <td>北弗吉尼亚、德州、硅谷逼近极限；跨州输电线审批受阻。</td>
+                            <td>核电重启、表后直连（BTM）、得州独立电网、迁徙至中西部能源州。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">🇪🇺 欧洲</td>
+                            <td><span class="badge bg-rose-500/20 text-rose-300 border border-rose-500/30">整体严重匮乏</span></td>
+                            <td class="font-mono text-rose-300">极薄 (< 1年)</td>
+                            <td>爱尔兰、阿姆斯特丹、法兰克福下达电网限连令；高电价与严苛碳税。</td>
+                            <td>算力被迫外溢至北欧（瑞典/冰岛）或外包给美国云厂商。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">🇨🇳 中国</td>
+                            <td><span class="badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">电力极其充裕</span></td>
+                            <td class="font-mono text-emerald-300">极大 (5～10年+)</td>
+                            <td>特高压电网与西北风光大基地电力过剩，<strong>唯一瓶颈是先进制程芯片</strong>。</td>
+                            <td>“东数西算”国家工程，直接将算力需求向西部清洁能源基地无缝输送。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3: US Bureaucracy -->
+        <section id="us-bureaucracy" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">三、 美国政府官僚主义对 AI 用电扩张的影响</h2>
+            </div>
+
+            <p class="text-slate-400 leading-relaxed mb-6">
+                美国电力的制度性阻碍并非单一机构，而是由<strong>联邦、区域、州、地方四级官僚监管</strong>相互掣肘形成的审批迷宫：
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <div class="card-inner p-5">
+                    <h3 class="text-base font-bold text-sky-400 mb-2">1. FERC 与跨州电网碎片化</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        联邦无权强行划定跨州输电走廊，任何一条跨州线路必须经沿途所有州、县和地主同意。当大厂尝试“表后直连（BTM）”绕开电网时，传统电力公用事业公司立即向 FERC 提起诉讼阻挠。
+                    </p>
+                </div>
+                <div class="card-inner p-5">
+                    <h3 class="text-base font-bold text-sky-400 mb-2">2. NRC（核管会）保守审批马拉松</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        小型模块化反应堆（SMR）与新堆型认证沿用冷战时期繁琐标准，审批周期长达 <strong>5～8 年</strong>，耗资数亿美元，官僚避险机制阻碍核能快速商用。
+                    </p>
+                </div>
+                <div class="card-inner p-5">
+                    <h3 class="text-base font-bold text-sky-400 mb-2">3. 州 PUC 与民意电费反弹</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        公用事业公司为数据中心扩容往往申请上调居民零售电价，引发选民抗议；州公用事业委员会（PUC）经常推迟或否决大厂通电申请。
+                    </p>
+                </div>
+                <div class="card-inner p-5">
+                    <h3 class="text-base font-bold text-sky-400 mb-2">4. NEPA 环保诉讼无休无止</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        编写《环境影响报告（EIS）》平均耗时 4.5 年。环保 NGO 和地方团体极易通过程序瑕疵申请法院施工禁制令，使电网工程无限期搁置。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Tech Giants' Solutions -->
+        <section id="tech-solutions" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">四、 科技巨头自救的四大王牌破局战法</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="card-inner p-6 border-l-4 border-l-emerald-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">1. 核电重启与专属绑定 (BTM)</h3>
+                        <span class="badge bg-emerald-500/20 text-emerald-300">20年长协</span>
+                    </div>
+                    <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                        <li>• <strong>微软</strong>：与 Constellation 签署 20 年协议，全额买断并重启<strong>三里岛核电站 1号机（835MW）</strong>。</li>
+                        <li>• <strong>亚马逊</strong>：$6.5 亿收购 Talen Energy 位于 Susquehanna 核电站（2.5GW）内部的数据中心，直接拉专线。</li>
+                        <li>• <strong>谷歌/甲骨文</strong>：长协采购 Kairos 500MW SMR；甲骨文设计 3 座小型核堆直驱数据中心。</li>
+                    </ul>
+                </div>
+
+                <div class="card-inner p-6 border-l-4 border-l-sky-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">2. 极速自备微电网 (SOFC / 燃气)</h3>
+                        <span class="badge bg-sky-500/20 text-sky-300">90天～18月投产</span>
+                    </div>
+                    <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                        <li>• <strong>Bloom Energy 燃料电池</strong>：甲骨文签署 2.8GW 大单，利用天然气管道 <strong>90天内现场极速发电</strong>。</li>
+                        <li>• <strong>xAI 孟菲斯模式</strong>：马斯克调运数十台移动挂车燃气机组 + 特斯拉 Megapack 储能，数月内点亮 10 万卡超算。</li>
+                        <li>• <strong>天然气孤岛模式</strong>：机房自建 GE Vernova 燃气轮机，完全脱离公共电网独立运行。</li>
+                    </ul>
+                </div>
+
+                <div class="card-inner p-6 border-l-4 border-l-amber-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">3. 地热能与地理空间大套利</h3>
+                        <span class="badge bg-amber-500/20 text-amber-300">24/7清洁基荷</span>
+                    </div>
+                    <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                        <li>• <strong>深度地热能</strong>：Meta 与 Fervo Energy 签署 150MW 购电长协；谷歌在内华达落地首个商业化地热项目。</li>
+                        <li>• <strong>逃离沿海枢纽</strong>：迁往得州（ERCOT 独立电网并网最快）以及怀俄明、北达科他等能源充沛腹地。</li>
+                    </ul>
+                </div>
+
+                <div class="card-inner p-6 border-l-4 border-l-purple-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-lg font-bold text-white">4. 算力架构与能效解耦</h3>
+                        <span class="badge bg-purple-500/20 text-purple-300">系统级降耗</span>
+                    </div>
+                    <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+                        <li>• <strong>训练与推理空间分离</strong>：非实时底座预训练迁往极冷/极低电价偏远区，高频实时推理放近端边缘。</li>
+                        <li>• <strong>每瓦性能革命 (Perf/Watt)</strong>：全浸没式液冷（PUE < 1.1）与自研低功耗芯片（TPU / MTIA）普及。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Cross-border Power Evaluation -->
+        <section id="cross-border" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">五、 跨国“借电”可行性深度剖析：加拿大 vs. 中国</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card-inner p-6 border-t-4 border-t-emerald-500">
+                    <div class="text-lg font-bold text-emerald-400 mb-2">🇨🇦 加拿大方案：可行性【极高】(北美绿电后方)</div>
+                    <ul class="text-xs text-slate-300 space-y-3 leading-relaxed">
+                        <li><strong>充沛廉价水电</strong>：魁北克水电（Hydro-Québec）与卑诗水电（BC Hydro）拥有全球最充沛清洁水电。</li>
+                        <li><strong>寒冷气候自然冷</strong>：常年低温使机房冷却能耗降低 30% 以上，PUE 极低。</li>
+                        <li><strong>美加电网同源</strong>：同属 NERC 监管，既有跨国高压输电线路（如 Champlain Hudson 直通纽约）。</li>
+                        <li><strong>现状</strong>：微软、AWS、谷歌已在蒙特利尔、多伦多大规模建厂，加拿大实质扮演美国“外包电池”。</li>
+                    </ul>
+                </div>
+
+                <div class="card-inner p-6 border-t-4 border-t-rose-500">
+                    <div class="text-lg font-bold text-rose-400 mb-2">🇨🇳 中国方案：可行性【绝对为 0】(双重硬锁死)</div>
+                    <ul class="text-xs text-slate-300 space-y-3 leading-relaxed">
+                        <li><strong>物理不可达</strong>：太平洋相隔万里，现有输电技术无法跨越大洋输送大规模电能。</li>
+                        <li><strong>芯片禁运壁垒</strong>：美国商务部（BIS）实体清单严禁向中国运送先进 GPU（H100/B200）或 TPU。</li>
+                        <li><strong>数据安全红线</strong>：中美《数据安全法》与《云法案》对立，核心模型与企业数据严禁跨境托管。</li>
+                        <li><strong>结论</strong>：中国是“有充沛电网但缺算力卡”，美国是“有先进芯片但缺并网电”。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Investment Opportunities & Valuation -->
+        <section id="invest-map" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">六、 AI 电力赛道投资地图与标的估值水平</h2>
+            </div>
+
+            <div class="overflow-x-auto mb-6">
+                <table class="table-custom text-sm rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th>细分赛道</th>
+                            <th>代表标的</th>
+                            <th>远期估值 (P/E)</th>
+                            <th>核心投资逻辑与驱动力</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-white">独立发电与核电 (IPP)</td>
+                            <td class="font-mono text-sky-400 font-bold">CEG, VST, TLN</td>
+                            <td class="font-mono text-slate-300">14x ～ 24x</td>
+                            <td class="text-slate-400 text-xs">手握 24/7 存量核电/气电，直接与科技大厂签署 20 年高溢价长协，现金流极度稳健。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">电网装备与重工 (Pick & Shovel)</td>
+                            <td class="font-mono text-sky-400 font-bold">GEV, ETN, PWR, HUBB</td>
+                            <td class="font-mono text-slate-300">25x ～ 30x</td>
+                            <td class="text-slate-400 text-xs">变压器、燃气轮机、高压输电总包排单满载至 3 年后，确定性最高的“卖铲人”。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">数据中心温控液冷</td>
+                            <td class="font-mono text-sky-400 font-bold">VRT, MOD</td>
+                            <td class="font-mono text-slate-300">50x ～ 60x</td>
+                            <td class="text-slate-400 text-xs">单机柜功率突破 100kW 强推液冷普及，作为英伟达核心温控伙伴享受高科技溢价。</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-white">现场极速发电与 SMR</td>
+                            <td class="font-mono text-sky-400 font-bold">BE, OKLO, CCJ, LEU</td>
+                            <td class="font-mono text-slate-300">> 70x / 高波动</td>
+                            <td class="text-slate-400 text-xs">Bloom Energy 靠 90 天通电获甲骨文大单催化；SMR 与高纯度铀燃料属于高弹性期权。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 7: Power vs Tech Sector -->
+        <section id="power-vs-tech" class="metric-card p-6 sm:p-8 mb-10">
+            <div class="flex items-center space-x-3 mb-6">
+                <span class="w-2.5 h-7 bg-sky-500 rounded-full"></span>
+                <h2 class="text-2xl font-bold text-white">七、 电力赛道 vs. 传统科技赛道：四大底层逻辑差异</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                <div class="card-inner p-5 border-l-4 border-l-sky-500">
+                    <h3 class="text-base font-bold text-sky-400 mb-2">1. 资产属性与迭代周期</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        • <strong>科技股</strong>：轻资产运营，算法与软件迭代以“月/季度”计，容易出现技术突变。<br>
+                        • <strong>电力股</strong>：极端重资产，核电站/变电站寿命长达 20～40 年，建设周期以“年”计。
+                    </p>
+                </div>
+                <div class="card-inner p-5 border-l-4 border-l-emerald-500">
+                    <h3 class="text-base font-bold text-emerald-400 mb-2">2. 现金流形态与确定性</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        • <strong>科技股</strong>：SaaS 订阅、广告按点击付费，受宏观经济波动与竞争影响大。<br>
+                        • <strong>电力股</strong>：与大厂签署 20 年“照付不议（Take-or-Pay）”PPA，具备高等级固收债券属性。
+                    </p>
+                </div>
+                <div class="card-inner p-5 border-l-4 border-l-amber-500">
+                    <h3 class="text-base font-bold text-amber-400 mb-2">3. 护城河不可复制性</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        • <strong>科技股</strong>：护城河来自代码、算法与用户网络效应，易被下一代颠覆。<br>
+                        • <strong>电力股</strong>：物理特许经营权、电网路权（Right-of-Way）、核电执照是资金无法凭空制造的物理实体。
+                    </p>
+                </div>
+                <div class="card-inner p-5 border-l-4 border-l-purple-500">
+                    <h3 class="text-base font-bold text-purple-400 mb-2">4. 风险收益比特征</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        • <strong>科技股</strong>：上行空间巨大（10x+），但下行面临技术淘汰与估值归零风险。<br>
+                        • <strong>电力股</strong>：极强下行安全边际（即使 AI 降温，工业与民生仍需用电），附赠 AI 高增长看涨期权。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 text-xs py-8 border-t border-slate-800">
+            <p>本报告由投资研究团队自动生成 · 聚焦 AI 基础设施与能源超级周期 · 不构成直接要约或投资建议</p>
+            <p class="mt-1">Financial Research Repo · Electricity & AI Power Deep Equity Report</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
