@@ -173,34 +173,41 @@
                 <h2 class="text-2xl font-bold text-white">二、 冲击 ①：中国开源“成本杀手”正在击碎美股软件的高毛利神话</h2>
             </div>
 
+            <div class="card-inner p-5 mb-6 border-l-4 border-l-amber-500">
+                <p class="text-slate-200 text-sm leading-relaxed font-medium">
+                    实证数据：截至 2026 年，<strong>中国开源权重模型已占据全球模型聚合平台约 30% 的调用份额</strong>。DeepSeek 与阿里 Qwen 正在以极致的 MoE 架构与工程优化，对硅谷闭源模型的暴利定价发起全面绞杀。
+                </p>
+            </div>
+
+            <!-- Pricing Comparison Table -->
             <div class="overflow-x-auto mb-6">
                 <table class="table-custom text-sm rounded-lg overflow-hidden">
                     <thead>
                         <tr>
-                            <th>受影响资产类别</th>
-                            <th>美股典型受波及领域</th>
-                            <th>冲击机制与量化影响</th>
-                            <th>对冲与应对建议</th>
+                            <th>模型家族 / 核心标杆</th>
+                            <th>输入价格 (每百万 Tokens)</th>
+                            <th>输出价格 (每百万 Tokens)</th>
+                            <th>核心性能与代差评价</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="font-bold text-rose-400">纯闭源模型转售商<br><span class="text-xs text-slate-400 font-normal">(受损最重)</span></td>
-                            <td>高估值的纯算法创企、独立 API 转售商、中间层套壳工具。</td>
-                            <td>阿里 Qwen 2.5、DeepSeek 等以接近免费的价格向全球开源，<strong>将商业级 API 价格打到美系的 1/10～1/20</strong>，闭源高毛利神话破灭。</td>
-                            <td class="text-xs text-slate-300">严禁追高没有自研芯片和专有数据的纯软件套壳公司。</td>
+                            <td class="font-bold text-rose-400">DeepSeek V4 Flash / Pro</td>
+                            <td class="font-mono text-emerald-400 font-bold">$0.14 ～ $0.66</td>
+                            <td class="font-mono text-emerald-400 font-bold">$0.28 ～ $1.98</td>
+                            <td class="text-xs text-slate-300">数学/编程/复杂推理榜单（GPQA）直逼甚至反超闭源，缓存输入仅 1/10 价格。</td>
                         </tr>
                         <tr>
-                            <td class="font-bold text-amber-400">传统按人头卖 SaaS<br><span class="text-xs text-slate-400 font-normal">(面临长期去估值)</span></td>
-                            <td>Salesforce (`CRM`), ServiceNow (`NOW`), Workday (`WDAY`).</td>
-                            <td>企业用户可直接在本地部署廉价开源大模型 + 自建企业 Agent，不再愿意为传统 SaaS 支付每年几百万美元的昂贵席位费。</td>
-                            <td class="text-xs text-slate-300">对传统表单 SaaS 保持低配或做空对冲。</td>
+                            <td class="font-bold text-sky-400">Alibaba Qwen3.8-Max</td>
+                            <td class="font-mono text-white font-bold">$2.00 (Flash 仅 $0.10)</td>
+                            <td class="font-mono text-white font-bold">$6.00</td>
+                            <td class="text-xs text-slate-300">100 万超长上下文（1M Context）+ 原生多模态，全球知识与多语言领跑。</td>
                         </tr>
                         <tr>
-                            <td class="font-bold text-emerald-400">通用云计算底座巨头<br><span class="text-xs text-slate-400 font-normal">(坐收渔翁之利)</span></td>
-                            <td>谷歌 GCP (`GOOGL`), 微软 Azure (`MSFT`), 亚马逊 AWS (`AMZN`), Meta (`META`).</td>
-                            <td>无论全球企业采用开源 Llama 还是 Qwen，都必须租用云巨头的底层算力与存储，云巨头成为<strong>收过路费的通用基础设施</strong>。</td>
-                            <td class="text-xs text-slate-300">坚定持有拥有最低自研算力成本（TPU）的云巨头。</td>
+                            <td class="font-bold text-slate-400">美系典型前沿闭源旗舰</td>
+                            <td class="font-mono text-rose-400 font-bold">$5.00 ～ $15.00+</td>
+                            <td class="font-mono text-rose-400 font-bold">$15.00 ～ $60.00+</td>
+                            <td class="text-xs text-slate-400">昂贵的每 Token 溢价正被开源平替迅速挤压，毛利率面临重压。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -227,9 +234,9 @@
                 <div class="card-inner p-5 border-l-4 border-l-rose-500">
                     <div class="text-base font-bold text-white mb-2">中系技术栈 (Global South & Emerging Stack)</div>
                     <p class="text-xs text-slate-400 leading-relaxed mb-3">
-                        • <strong>特征</strong>：国产 ASIC/云算力 + 阿里云/华为云 + Qwen/DeepSeek 模型 + 本地电厂配套；<br>
-                        • <strong>市场</strong>：<strong>东南亚、中东（沙特/阿联酋）、拉美、中亚、非洲</strong>；<br>
-                        • <strong>杀伤力</strong>：提供“算力+网络+电网+模型”一站式廉价交钥匙工程，不附带地缘政治条件。
+                        • <strong>阿里云全球扩张</strong>：亚太 IaaS 份额达 <strong>22.5%（亚太第一）</strong>，已在<strong>马来西亚柔佛、沙特利雅得（与 STC 5亿美元合作）、阿联酋迪拜（第二数据中心）</strong>设立 AI 节点，全球承诺 530 亿美元 AI 基建；<br>
+                        • <strong>华为云全面渗透</strong>：在中东（LEAP 峰会）与东南亚力推“全智能（All Intelligence）”Pangu 行业大模型与昇腾 AI 算力服务；<br>
+                        • <strong>杀伤力</strong>：提供“算力+网络+电网+开源模型”一站式廉价交钥匙工程，不附带地缘政治条件。
                     </p>
                 </div>
             </div>
@@ -249,7 +256,7 @@
                 <h2 class="text-2xl font-bold text-white">四、 冲击 ③：具身智能与硬件制造（降本血包 vs 终极死敌）</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div class="card-inner p-5 border-l-4 border-l-sky-500">
                     <div class="text-base font-bold text-sky-400 mb-2">特斯拉 Optimus 的中国供应链共生</div>
                     <p class="text-xs text-slate-400 leading-relaxed">
@@ -258,9 +265,12 @@
                 </div>
 
                 <div class="card-inner p-5 border-l-4 border-l-rose-500">
-                    <div class="text-base font-bold text-rose-400 mb-2">中国机器人与大疆的“群狼截流”</div>
+                    <div class="text-base font-bold text-rose-400 mb-2">中国机器人现货量产与“群狼价格战”</div>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        宇树科技（Unitree）、智元、大疆、小米、小鹏等中国本土机器人正在复制当年新能源车出海的狂暴战术。大疆垄断全球 70%+ 商用无人机，中国四足与双足机器人正以 <strong>美系 1/3 的极致价格</strong> 抢先占领海外工业巡检与仓储市场。
+                        与西方大多停留在实验室摆拍不同，中国人形机器人已全面开启全球公开发售与现货交付：<br>
+                        • <strong>宇树科技 (Unitree)</strong>：R1 入门款仅 <strong>$4,290～$10,500</strong>，G1 开发者版 <strong>$13,500</strong>，H2 工业级 <strong>$29,900</strong>；<br>
+                        • <strong>智元机器人 (AgiBot)</strong>：X2 / A2 交互服务机器人 <strong>$24,240～$44,560</strong>；<br>
+                        • <strong>大疆 (DJI)</strong> 垄断全球 70%+ 商用无人机，正以 <strong>美系 1/3 到 1/5 的极致价格</strong> 抢先占领全球工业巡检与特种市场。
                     </p>
                 </div>
             </div>
